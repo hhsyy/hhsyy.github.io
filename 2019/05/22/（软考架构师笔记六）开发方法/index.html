@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>（软考架构师笔记六）开发方法 | 易语的博客</title>
+  
+  
+  <meta name="description" content="这是易语的博客">
+  
+
+  
+  <link rel="alternate" href="/atom.xml" title="易语的博客">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/css/style.css">
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>yiyu's blog</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/"
+            
+            
+            id="home">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;最新文章
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/projects/"
+            
+            
+            id="projects">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;我的项目
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/friends/"
+            
+              rel="nofollow"
+            
+            
+            id="friends">
+            <i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/about/"
+            
+              rel="nofollow"
+            
+            
+            id="about">
+            <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于相关
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          易语的博客
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/"
+                  
+                  
+                  id="home">
+									<i class='fas fa-grin fa-fw'></i>&nbsp;最新文章
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="categories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;文章分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/tags/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="tags">
+									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签汇总
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="archives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;全部文章
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;最新文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/archives/"
+                
+                  rel="nofollow"
+                
+                
+                id="archives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;全部文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/projects/"
+                
+                
+                id="projects">
+								<i class='fas fa-code-branch fa-fw'></i>&nbsp;我的项目
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/friends/"
+                
+                  rel="nofollow"
+                
+                
+                id="friends">
+								<i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="https://xaoxuu.com/wiki/material-x/"
+                
+                  rel="nofollow"
+                
+                
+                id="https:xaoxuu.comwikimaterial-x">
+								<i class='fas fa-book fa-fw'></i>&nbsp;主题文档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2019/05/22/（软考架构师笔记六）开发方法/">
+        （软考架构师笔记六）开发方法
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    <a href="http://www.yiyuclub.club" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>易语</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-05-22</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/学习笔记/软考架构师/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>学习笔记&nbsp;/&nbsp;软考架构师</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          <p>（软考架构师笔记六）开发方法<br><a id="more"></a></p>
+<h2 id="1-软件生命周期"><a href="#1-软件生命周期" class="headerlink" title="1.软件生命周期"></a>1.软件生命周期</h2><p>（1）定义：软件自开始构思与研发到不再使用而消亡的过程</p>
+<p>（2）生命周期阶段：</p>
+<blockquote>
+<p>可行性研究与计划<br>需求分析<br>概要设计<br>详细设计<br>实现<br>集成测试<br>确认测试<br>使用和维护</p>
+</blockquote>
+<h2 id="2-软件开发模型"><a href="#2-软件开发模型" class="headerlink" title="2.软件开发模型"></a>2.软件开发模型</h2><p>（1）瀑布模型<br>定义：</p>
+<blockquote>
+<p>软件开发是一个阶段化的精确的过程,要经过需求分析、总体设计、详细设计、编码、调试、集成测试和系统测试阶段才能够被准确地实现,在软件开发中当在后续阶段发现缺陷的时候，可以把这个缺陷反馈到上一阶段进行修正,如图：</p>
+</blockquote>
+<p> <img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/ruankao/six/ruankao6-1.png" height="50%" width="60%"></p>
+<p>缺陷：当软件需求不明确或变动剧烈时，成后期修改代价太大，难以控制开发的风险。</p>
+<p>（2）瀑布V模型</p>
+<blockquote>
+<p>定义：同标准瀑布模型，但除总体设计外，需求分析还有一条虚线指向系统测试，需求分析的结果将作为系统测试的准则，即需求分析阶段也将产生同软件需求一致的系统测试<br> <img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/ruankao/six/ruankao6-2.png" height="50%" width="80%"></p>
+</blockquote>
+<p>缺点：</p>
+<blockquote>
+<p>需求分析阶有偏差，对后续影响大<br>每阶段依赖上阶段，如后续变化，每个阶段都将改变<br>瀑布模型只有在所有阶段完成后客户才能看到结果，时间久<br>文档驱动型的瀑布模型文档冗余，大多对客户无用</p>
+</blockquote>
+<p>（3）演化模型</p>
+<blockquote>
+<p>一般情况下，一个演化模型可以看做若干次瀑布模型的迭代，当完成一个瀑布模型后，重新进入下一个迭代周期，软件在这样的迭代过程中得以演化、完善。根据不同的迭代特点，演化模型可以演变为螺旋模型、增量模型和原型法开发</p>
+</blockquote>
+<p>（4）螺旋模型<br>定义：</p>
+<blockquote>
+<p>结合了瀑布模型和演化模型，每一周期都包括需求定义、风险分析、工程实现和评审 4 个阶段，需进行风险分析，其把项目分为众多小项目，每个小项目都有风险评估</p>
+</blockquote>
+<p> <img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/ruankao/six/ruankao6-3.png" height="40%" width="50%"></p>
+<p>缺点：</p>
+<blockquote>
+<p>需要丰富的风险评估经验<br>迭代次数会增加成本和时间</p>
+</blockquote>
+<p>（5）增量模型<br>定义：</p>
+<blockquote>
+<p>演化模型的另一表现形式，适用于技术架构成熟、风险较低的场景，可以有效的缩短周期，保证用户对系统的可见性</p>
+</blockquote>
+<p>策略： </p>
+<blockquote>
+<p>增量发布：分析系统，划分版本，后版本为前版本的扩充（每个版完整可用，版本之间增量均匀）。<br>原型法：目的是获得精确的用户需求，或验证架构的可用性，每次迭代都是完整周期，始于技术不明确的场景</p>
+</blockquote>
+<p>（6）构件组装模型<br>定义：</p>
+<blockquote>
+<p>分析功能，划分结构，完整单个构件</p>
+</blockquote>
+<p> <img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/ruankao/six/ruankao6-4.png" height="10%" width="80%"></p>
+<p>优点：</p>
+<blockquote>
+<p>易扩展<br>可重用<br>构件独立而灵活</p>
+</blockquote>
+<p>缺点：</p>
+<blockquote>
+<p>需经验丰富<br>对其他方面的需求需让步<br>需研发人员技术强<br>第三方构件开发人员难以控制<br><br></p>
+</blockquote>
+<h2 id="2-统一过程（UP）"><a href="#2-统一过程（UP）" class="headerlink" title="2.统一过程（UP）"></a>2.统一过程（UP）</h2><p>（1）定义</p>
+<blockquote>
+<p>由Rational研发的软件迭代过程，提供完整开发过程解决方案，降低开发风险</p>
+</blockquote>
+<p>（2）UP的二维模型</p>
+<blockquote>
+<p>时间主线是横轴，开发经过初始、细化、构建和交付这4阶段<br>描述不同阶段的主要工作在纵轴</p>
+</blockquote>
+<p> <img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/ruankao/six/ruankao6-5.png" height="55%" width="80%"></p>
+<p>横轴阶段：</p>
+<blockquote>
+<p>初始阶段：业务建模和需求（2次细化）<br>细化阶段：分析设计<br>构建阶段：实施和测试（3阶段构建）<br>交付（转移）阶段：重构、修改、测试和部署</p>
+</blockquote>
+<p>每个阶段可能执行其他阶段的工作，与瀑布模型不同，不严格</p>
+<p>纵轴阶段（9个核心工作流）： </p>
+<blockquote>
+<p>业务建模、需求、分析设计、实施、测试、部署、配置与变更管理、项目管理、环境</p>
+</blockquote>
+<p>（3）UP的生命周期</p>
+<blockquote>
+<p>目标里程碑：明确软件系统的目标和范围<br>架构里程碑：确定稳定的系统架构<br>能力里程碑：系统足够稳定和成熟并完成 Alpha 测试<br>发布里程碑：完成系统测试、完成系统发布和用户培训</p>
+</blockquote>
+<p>（4）UP特点</p>
+<blockquote>
+<p>给出了生命周期与迭代指南<br>不同迭代方式的up可以演变模型<br>风险控制更简单<br>UP为重载过程<br>可对UP裁剪，适应各种团队与软件</p>
+</blockquote>
+<p>（5）UP如何使用</p>
+<blockquote>
+<p>建立系统架构模型<br>同需求人员和项目管理人员密切协作<br>细化软件架构<br>保持架构概念完整性<br><br></p>
+</blockquote>
+<h2 id="3-敏捷方法"><a href="#3-敏捷方法" class="headerlink" title="3.敏捷方法"></a>3.敏捷方法</h2><blockquote>
+<p>快而持续的交付任务<br>变化能力强<br>时间周期短<br>业务与开发人员密切联系<br>开发环境好<br>沟通方便<br>进度<br>可持续开发<br>良好的技术与设计<br>工作量少<br>架构优秀<br>高效的自我总结<br><br></p>
+</blockquote>
+<h3 id="3-1-极限编程（XP）"><a href="#3-1-极限编程（XP）" class="headerlink" title="3.1.极限编程（XP）"></a>3.1.极限编程（XP）</h3><p>（1）特点</p>
+<blockquote>
+<p>反馈信息周期短<br>迭代的计划编制<br>依赖自动程序捕获缺陷<br>依赖口头交流<br>倡导演化设计<br>依赖紧密协作<br>开发人员短期盈利，项目长期盈利平衡</p>
+</blockquote>
+<p>（2）四大价值观</p>
+<blockquote>
+<p>沟通<br>简单<br>反馈<br>勇气<br>隐藏属性：尊重</p>
+</blockquote>
+<p>（3）十二个最佳实践</p>
+<blockquote>
+<p>计划游戏<br>小型发布<br>隐喻<br>简单设计<br>测试先行<br>重构<br>结对编程<br>集体代码所有制<br>持续集成<br>每周工作40h<br>现场客户<br>编码标准<br><br></p>
+</blockquote>
+<h3 id="3-2-特征驱动开发-FDD"><a href="#3-2-特征驱动开发-FDD" class="headerlink" title="3.2.特征驱动开发(FDD)"></a>3.2.特征驱动开发(FDD)</h3><p>（1）定义：</p>
+<blockquote>
+<p>是一个迭代的开发模型。FDD 的每一步都强调质量，不断地交付可运行的软件，并以很小的开发提供精确的项目进度报告和状态信息.</p>
+</blockquote>
+<p>（2）角色定义<br>人：</p>
+<blockquote>
+<p>项目经理<br>首席架构师<br>开发经理<br>主程序员<br>程序员<br>领域专家</p>
+</blockquote>
+<p>核心过程</p>
+<blockquote>
+<p>开发整体对象模型<br>构造特征列表<br>计划特征开发<br>特征设计<br>特征构建</p>
+</blockquote>
+<p>实践：</p>
+<blockquote>
+<p>领域对象建模、根据特征进行开发、类的个体所有、组成特征小组、审查、定期构造、配置管理、结果的可见性<br><br></p>
+</blockquote>
+<h3 id="3-3-Scrum"><a href="#3-3-Scrum" class="headerlink" title="3.3.Scrum"></a>3.3.Scrum</h3><p>（1）定义：</p>
+<blockquote>
+<p>用于开发和维持复杂产品的框架，是一个增量的、迭代的开发过程，整个开发周期划分许多个短的迭代周期（Sprint，2-4周），而在一个周期中选择最高优先级的先开发，Sprint会议经过讨论、分析和估算得到相应的任务列表，我们称它为 Sprint backlog。</p>
+</blockquote>
+<p>（2）五个活动</p>
+<blockquote>
+<p>产品待办事项列表梳理<br>Sprint计划会议<br>每日Sprint会议<br>Sprint评审会议<br>Sprint回顾会议</p>
+</blockquote>
+<p>（3）Scrum的5大价值观</p>
+<blockquote>
+<p>承诺：愿意对目标做出承诺。<br>专注：把你的心思和能力都用到你承诺的工作上去。<br>开放：Scrum把项目中的一切开放给每个人看。<br>尊重：每个人都有他独特的背景和经验。<br>勇气：有勇气做出承诺，履行承诺，接受别人的尊重。<br><br></p>
+</blockquote>
+<h3 id="3-4-水晶方法"><a href="#3-4-水晶方法" class="headerlink" title="3.4.水晶方法"></a>3.4.水晶方法</h3><p>（1）定义：</p>
+<blockquote>
+<p>由 Alistair Cockburn 和 Jim Highsmith 建立的敏捷方法系列，其目的是发展一种提倡“机动性的”方法，包含具有共性的核心元素，每个都含有独特的角色、过程模式、工作产品和实践。使用频度较高的是 Crystal Clear——透明水晶方法（适合小团队&lt;6）</p>
+</blockquote>
+<p>（2）透明水晶方法七大体系特征</p>
+<blockquote>
+<p>经常交付<br>反思改进<br>渗透式交流<br>个人安全<br>焦点<br>与专家用户建立方便的联系<br>配有自动测试、配置管理和经常集成功能的技术环境<br><br></p>
+</blockquote>
+<h3 id="3-5-其他敏捷方法"><a href="#3-5-其他敏捷方法" class="headerlink" title="3.5.其他敏捷方法"></a>3.5.其他敏捷方法</h3><blockquote>
+<p>开放式源码：开放式源码指的是开放源码界所用的一种运作方式(查错排障（debug）的高度并行性)</p>
+</blockquote>
+<blockquote>
+<p>ASD 方法：核心是三个非线性的、重叠的开发阶段：猜测、合作与学习<br><br></p>
+</blockquote>
+<h2 id="4-软件重用"><a href="#4-软件重用" class="headerlink" title="4.软件重用"></a>4.软件重用</h2><p>（1）定义：</p>
+<blockquote>
+<p>利用已经存在的软件元素建立新的软件系统，这其中的软件元素既可以是软件产品、源程序，也可以是文档、设计思想甚至是领域知识。软件重用可以直接提高软件的开发效率、降低软件的开发成本、缩短软件的开发周期、提高软件质量</p>
+</blockquote>
+<p>（2）常见的软件重用形式</p>
+<blockquote>
+<p>源代码重用<br>架构重用<br>应用框架的重用<br>业务建模重用<br>文档及过程的重用<br>软构建重用<br>软件服务重用</p>
+</blockquote>
+<p>（3）构件技术<br>定义：</p>
+<blockquote>
+<p>构件又称为组件，是一个自包容、可复用的程序集</p>
+</blockquote>
+<p>两特征</p>
+<blockquote>
+<p>自包容：构件的本身是一个功能完整的独立体，构件内部与外部的功能界限清晰明确，可以独立配置与使用<br>可重用：构件的特点，也是构件出现的目的</p>
+</blockquote>
+<h2 id="5-基于架构的软件设计-ABSD"><a href="#5-基于架构的软件设计-ABSD" class="headerlink" title="5.基于架构的软件设计(ABSD)"></a>5.基于架构的软件设计(ABSD)</h2><p>（1）其为架构驱动方法，三基础：</p>
+<blockquote>
+<p>功能的分解<br>选择架构风格来实现质量和业务需求<br>软件模板的使用</p>
+</blockquote>
+<p>软件模板:是一个特殊类型的软件元素，包括描述所有这种类型的元素在共享服务和底层构造的基础上如何进行交互.其还包含该类型的所有元素功能。</p>
+<p>（2）方法与生命周期</p>
+<p> <img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/ruankao/six/ruankao6-6.png" height="70%" width="40%"></p>
+<p>ABSD 方法的输入组成：</p>
+<blockquote>
+<p>抽象功能需求，包括变化的需求和通用的需求<br>用例（实际功能需求）<br>抽象的质量和业务需求<br>质量因素（实际质量和业务需求）<br>架构选项<br>约束</p>
+</blockquote>
+<p>ABSD 方法的输入组成：</p>
+<blockquote>
+<p>抽象功能需求<br>用例<br>抽象的质量和业务需求<br>架构选项<br>质量场景<br>约束</p>
+</blockquote>
+<p>（3）基于架构的软件开发模型（ABSDM）</p>
+<p> <img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/ruankao/six/ruankao6-7.png" height="60%" width="50%"></p>
+<p>过程：<br>① 架构需求：用户对目标软件系统在功能、行为、性能、设计约束等方面的期望<br> <img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/ruankao/six/ruankao6-8.png" height="50%" width="50%"></p>
+<blockquote>
+<p>需求获取<br>表示构件：生成类图-&gt;对类进行分组-&gt;把类打包成构件<br>需求评审</p>
+</blockquote>
+<p>② 架构设计：激发和调整设计决策，不同的视图被用来表达与质量目标有关的信息（迭代过程）</p>
+<p> <img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/ruankao/six/ruankao6-9.png" height="40%" width="40%"></p>
+<blockquote>
+<p>提出软件架构模型<br>把已标识的构件映射到软件架构中<br>分析构件之间的相互作用<br>产生软件架构<br>设计评审</p>
+</blockquote>
+<p>③ 架构文档化：主要输出结果是架构需求规格说明和测试架构需求的质量设计说明书这两个文档</p>
+<p>④ 架构复审</p>
+<blockquote>
+<p>目的是标识潜在的风险，以及早发现架构设计中的缺陷和错误，包括架构能否满足需求、质量需求是否在设计中得到体现、层次是否清晰、构件的划分是否合理、文档表达是否明确、构件的设计是否满足功能与性能的要求</p>
+</blockquote>
+<p>⑤ 架构实现：</p>
+<blockquote>
+<p>用实体来显示出一个软件架构，即要符合架构所描述的结构性设计决策，分割成规定的构件，按规定方式互相交互。</p>
+</blockquote>
+<p> <img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/ruankao/six/ruankao6-10.png" height="50%" width="50%"></p>
+<p>⑥ 架构演化：按需求变动修改</p>
+<p> <img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/ruankao/six/ruankao6-11.png" height="50%" width="50%"></p>
+<blockquote>
+<p>对需求变动归类<br>在原架构修改之前，制定修改计划<br>开发人员决定是否增删改构件<br>更新构件后，相互关系需更新<br>完成构件合成<br>技术评审<br>演化的架构修改添加到原架构上</p>
+</blockquote>
+<p><br></p>
+<h2 id="6-形式化方法"><a href="#6-形式化方法" class="headerlink" title="6.形式化方法"></a>6.形式化方法</h2><p>（1）定义：</p>
+<blockquote>
+<p>形式化方法：采用严格的数学方法，使用形式化规约语言来精确定义软件系统</p>
+<p>非形式化方法：通过自然语言、图形或表格描述软件系统的行为和特性，然后基于这些描述进行设计和开发，而形式化开发则是基于数学的方式描述、开发和验证系统</p>
+</blockquote>
+<p>（2）形式化方法</p>
+<blockquote>
+<p>形式化描述（形式化规约）：用形式化语言进行描绘，建立软件需求和特性，即解决软件“做什么”的问题，形式化描述主要可以分为两类，一类是通过建立计算模型来描述系统的行为特性，另一类则通过定义系统必须满足的一些属性来描述系统</p>
+<p>基于形式化描述的形式化验证：验证已有的程序是否满足形式化描述的定义</p>
+</blockquote>
+
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <hr>
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-06-24T17:13:28+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>最后更新于 2019年6月24日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/软考/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>软考</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/架构师/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>架构师</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.yiyuclub.club/2019/05/22/（软考架构师笔记六）开发方法/&title=（软考架构师笔记六）开发方法 | 易语的博客&summary=（软考架构师笔记六）开发方法"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.yiyuclub.club/2019/05/22/（软考架构师笔记六）开发方法/&title=（软考架构师笔记六）开发方法 | 易语的博客&summary=（软考架构师笔记六）开发方法"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=http://www.yiyuclub.club/2019/05/22/（软考架构师笔记六）开发方法/&title=（软考架构师笔记六）开发方法 | 易语的博客&summary=（软考架构师笔记六）开发方法"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+            <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                            <h4>
+                                <a href="/2019/05/23/（软考架构师笔记七）系统规划/" rel="prev" title="（软考架构师笔记七）系统规划">
+                                  
+                                      （软考架构师笔记七）系统规划
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/软考/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>软考</a> <a class="tag" href="/tags/架构师/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>架构师</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2019/05/22/（软考架构师笔记五）系统性能评价/" rel="prev" title="（软考架构师笔记五）系统性能评价">
+                                    
+                                        （软考架构师笔记五）系统性能评价
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/软考/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>软考</a> <a class="tag" href="/tags/架构师/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>架构师</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '（软考架构师笔记六）开发方法',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              <section class='widget grid'>
+  
+<header class='pure'>
+  <div><i class="fas fa-map-signs fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;站内导航</div>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="grid navgation">
+      
+        <li><a class="flat-box" title="/" href="/"
+          
+          
+          id="home">
+          
+            <i class="fas fa-clock fa-fw" aria-hidden="true"></i>
+          
+          近期发布
+        </a></li>
+      
+        <li><a class="flat-box" title="/archives/" href="/archives/"
+          
+            rel="nofollow"
+          
+          
+          id="archives">
+          
+            <i class="fas fa-archive fa-fw" aria-hidden="true"></i>
+          
+          全部文章
+        </a></li>
+      
+        <li><a class="flat-box" title="/projects/" href="/projects/"
+          
+          
+          id="projects">
+          
+            <i class="fas fa-code-branch fa-fw" aria-hidden="true"></i>
+          
+          我的项目
+        </a></li>
+      
+        <li><a class="flat-box" title="/friends/" href="/friends/"
+          
+            rel="nofollow"
+          
+          
+          id="friends">
+          
+            <i class="fas fa-link fa-fw" aria-hidden="true"></i>
+          
+          我的友链
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/material-x/" href="https://xaoxuu.com/wiki/material-x/"
+          
+            rel="nofollow"
+          
+          
+          id="https:xaoxuu.comwikimaterial-x">
+          
+            <i class="fas fa-book fa-fw" aria-hidden="true"></i>
+          
+          常用代码
+        </a></li>
+      
+        <li><a class="flat-box" title="/about/" href="/about/"
+          
+            rel="nofollow"
+          
+          
+          id="about">
+          
+            <i class="fas fa-info-circle fa-fw" aria-hidden="true"></i>
+          
+          与我相关
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-软件生命周期"><span class="toc-text">1.软件生命周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-软件开发模型"><span class="toc-text">2.软件开发模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-统一过程（UP）"><span class="toc-text">2.统一过程（UP）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-敏捷方法"><span class="toc-text">3.敏捷方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-极限编程（XP）"><span class="toc-text">3.1.极限编程（XP）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-特征驱动开发-FDD"><span class="toc-text">3.2.特征驱动开发(FDD)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-Scrum"><span class="toc-text">3.3.Scrum</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-水晶方法"><span class="toc-text">3.4.水晶方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-其他敏捷方法"><span class="toc-text">3.5.其他敏捷方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-软件重用"><span class="toc-text">4.软件重用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-基于架构的软件设计-ABSD"><span class="toc-text">5.基于架构的软件设计(ABSD)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-形式化方法"><span class="toc-text">6.形式化方法</span></a></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml"
+            class="social fas fa-rss flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://mail.qq.com"
+            class="social fas fa-envelope flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/hhsyy"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="http://music.163.com"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>
+    本站使用
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">易语的博客</a>
+    作为主题
+    
+      ，
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+    。
+  </div>
+ <div>
+ <i class="fas fa-chart-area"></i><span class="post-count">字数统计：78.6k</span>
+ </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["https://img.vim-cn.com/f6/78aed21213230b9220f310f9ea6c822b011846.jpg", "https://img.vim-cn.com/d5/b004c81a13aea401375d03b1258ecadbfcbaa7.jpg", "https://img.vim-cn.com/4c/8e7294998989454b2dcd2624373d5a699c4414.jpg"],
+          {
+            duration: "6000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+          ["https://img.vim-cn.com/f6/78aed21213230b9220f310f9ea6c822b011846.jpg", "https://img.vim-cn.com/d5/b004c81a13aea401375d03b1258ecadbfcbaa7.jpg", "https://img.vim-cn.com/4c/8e7294998989454b2dcd2624373d5a699c4414.jpg"],
+          {
+            duration: "6000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+    
+      <script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js"></script>
+    
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'false' == true;
+  var verify = 'false' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "5lQzNxqx4MqwUJkUl8p8gMDn-gzGzoHsz",
+    appKey: "YXL8AD7S2KBv7efGilMYDOJl",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'mp',
+    lang:'zh-cn',
+    highlight:'false'
+  })
+  </script>
+
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/js/app.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/js/search.js"></script>
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

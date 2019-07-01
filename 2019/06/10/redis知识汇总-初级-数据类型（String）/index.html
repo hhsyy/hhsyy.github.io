@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>redis知识汇总[初级]--数据类型（String） | 易语的博客</title>
+  
+  
+  <meta name="description" content="这是易语的博客">
+  
+
+  
+  <link rel="alternate" href="/atom.xml" title="易语的博客">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/css/style.css">
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>yiyu's blog</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/"
+            
+            
+            id="home">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;最新文章
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/projects/"
+            
+            
+            id="projects">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;我的项目
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/friends/"
+            
+              rel="nofollow"
+            
+            
+            id="friends">
+            <i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/about/"
+            
+              rel="nofollow"
+            
+            
+            id="about">
+            <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于相关
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          易语的博客
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/"
+                  
+                  
+                  id="home">
+									<i class='fas fa-grin fa-fw'></i>&nbsp;最新文章
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="categories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;文章分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/tags/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="tags">
+									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签汇总
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="archives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;全部文章
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;最新文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/archives/"
+                
+                  rel="nofollow"
+                
+                
+                id="archives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;全部文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/projects/"
+                
+                
+                id="projects">
+								<i class='fas fa-code-branch fa-fw'></i>&nbsp;我的项目
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/friends/"
+                
+                  rel="nofollow"
+                
+                
+                id="friends">
+								<i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="https://xaoxuu.com/wiki/material-x/"
+                
+                  rel="nofollow"
+                
+                
+                id="https:xaoxuu.comwikimaterial-x">
+								<i class='fas fa-book fa-fw'></i>&nbsp;主题文档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2019/06/10/redis知识汇总-初级-数据类型（String）/">
+        redis知识汇总[初级]--数据类型（String）
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    <a href="http://www.yiyuclub.club" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>易语</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-06-10</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/框架/redis/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>框架&nbsp;/&nbsp;redis</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          <p>redis知识汇总[初级]–数据类型（String）<br><a id="more"></a></p>
+<h2 id="1-append"><a href="#1-append" class="headerlink" title="1.append"></a>1.append</h2><p>（1）命令：APPEND key value</p>
+<p>（2）介绍：</p>
+<blockquote>
+<p>① key存在，value将会追加到原有值的后面<br>② key不存在，将初始化设置该值（输入的设置）</p>
+</blockquote>
+<pre><code>127.0.0.1:6379&gt; append myname yiyu
+(integer) 4
+127.0.0.1:6379&gt; get myname
+&quot;yiyu&quot;
+127.0.0.1:6379&gt; append myname isman
+(integer) 9
+127.0.0.1:6379&gt; get myname
+&quot;yiyuisman&quot;
+</code></pre><h2 id="2-bitcount"><a href="#2-bitcount" class="headerlink" title="2.bitcount"></a>2.bitcount</h2><p>（1）命令：BITCOUNT key [start] [end]</p>
+<p>（2）介绍：</p>
+<blockquote>
+<p>① key存在，返回被设置为 1 的位的数量<br>② key不存在，当做字符串处理，故为0<br>③ -1 表示最后一个位，而 -2 表示倒数第二个位</p>
+</blockquote>
+<pre><code>//不存在
+127.0.0.1:6379&gt; bitcount bcname
+(integer) 0
+//存在
+127.0.0.1:6379&gt; setbit sbname 20 1
+(integer) 0
+127.0.0.1:6379&gt; bitcount sbname
+(integer) 1
+</code></pre><h2 id="3-bitop"><a href="#3-bitop" class="headerlink" title="3.bitop"></a>3.bitop</h2><p>（1）命令：BITOP operation destkey key [key …]</p>
+<p>（2）介绍：</p>
+<blockquote>
+<p>① key存在，对一个或多个保存二进制位的字符串 key 进行位元操作，并将结果保存到 destkey 上<br>② key不存在，默认字符串为0<br>③ operation：AND（一个或多个逻辑并）、OR（一个或多个逻辑或）、NOT（此只能单个key，逻辑非）、XOR（一个或多个逻辑异或）</p>
+</blockquote>
+<pre><code>//key不存在
+127.0.0.1:6379&gt; BITOP AND and-result bit
+(integer) 0
+//key存在
+127.0.0.1:6379&gt; setbit topbit1 1 1
+(integer) 0
+127.0.0.1:6379&gt; setbit topbit2 3 1
+(integer) 0
+127.0.0.1:6379&gt; BITOP AND and-result topbit1 topbit2
+(integer) 1
+</code></pre><h2 id="4-decr"><a href="#4-decr" class="headerlink" title="4.decr"></a>4.decr</h2><p>（1）命令：DECR key</p>
+<p>（2）介绍：</p>
+<blockquote>
+<p>① key存在，改对应value减1<br>② key不存在，value初始化0后减1<br>③ value为不能加减的数，报错</p>
+</blockquote>
+<pre><code>//key不存在
+127.0.0.1:6379&gt; decr decrcount2
+(integer) -1
+//key存在
+127.0.0.1:6379&gt; set decrcount1 100
+OK
+127.0.0.1:6379&gt; decr decrcount1
+(integer) 99
+</code></pre><h2 id="5-decrby"><a href="#5-decrby" class="headerlink" title="5.decrby"></a>5.decrby</h2><p>（1）命令：DECRBY key decrement</p>
+<p>（2）介绍：</p>
+<blockquote>
+<p>① key存在，改对应value减decrement<br>② key不存在，value初始化0后减decrement<br>③ value为不能加减的数，报错</p>
+</blockquote>
+<pre><code>//key不存在
+127.0.0.1:6379&gt; decrby drcount 100
+(integer) -100
+//key存在
+127.0.0.1:6379&gt; set drcount1 50
+OK
+127.0.0.1:6379&gt; decrby drcount1 2
+(integer) 48
+</code></pre><h2 id="6-get"><a href="#6-get" class="headerlink" title="6.get"></a>6.get</h2><p>（1）命令：GET key</p>
+<p>（2）介绍：</p>
+<blockquote>
+<p>① key存在，返回对应value的值<br>② key不存在，返回nil<br>③ key非字符串，报错</p>
+</blockquote>
+<pre><code>//key不存在
+127.0.0.1:6379&gt; get name1
+(nil)
+//key存在
+127.0.0.1:6379&gt; set gname yiyu
+OK
+127.0.0.1:6379&gt; get gname
+&quot;yiyu&quot;
+</code></pre><h2 id="7-getbit"><a href="#7-getbit" class="headerlink" title="7.getbit"></a>7.getbit</h2><p>（1）命令：GETBIT key offset</p>
+<p>（2）介绍：</p>
+<blockquote>
+<p>① key存在，获取偏移量对应的value<br>② key不存在，返回0（offset&gt;value 也会返回0）</p>
+</blockquote>
+<pre><code>// key不存在返回0
+127.0.0.1:6379&gt; getbit gbit 20190606
+(integer) 0
+//对存在的offset 获取
+127.0.0.1:6379&gt; setbit sbit 20190606 1
+(integer) 1
+127.0.0.1:6379&gt; getbit sbit 20190606
+(integer) 1
+</code></pre><h2 id="8-getrance"><a href="#8-getrance" class="headerlink" title="8.getrance"></a>8.getrance</h2><p>（1）命令：GETRANGE key start end</p>
+<p>（2）介绍：</p>
+<blockquote>
+<p>key存在，返回该范围的字符串<br>key不存在，返回””<br>-1 表示最后一个字符， -2 表示倒数第二个</p>
+</blockquote>
+<pre><code>//已存在key
+127.0.0.1:6379&gt; set rangename yiyu
+OK
+127.0.0.1:6379&gt; get rangename
+&quot;yiyu&quot;
+//第一个字符为0开始
+127.0.0.1:6379&gt; getrange rangename 1 2
+&quot;iy&quot;
+//key不存在返回“”
+127.0.0.1:6379&gt; getrange rangename1 1 2
+&quot;&quot;
+</code></pre><h2 id="9-getset"><a href="#9-getset" class="headerlink" title="9.getset"></a>9.getset</h2><p>（1）命令：GETSET key value</p>
+<p>（2）介绍：</p>
+<blockquote>
+<p>key存在，设置新值，返回旧值（非字符串报错）<br>key不存在，返回nil</p>
+</blockquote>
+<pre><code>127.0.0.1:6379&gt; getset gsname yiyu
+(nil)
+127.0.0.1:6379&gt; getset gsname yiyuhahaha
+&quot;yiyu&quot;
+</code></pre><h2 id="11-incr"><a href="#11-incr" class="headerlink" title="11.incr"></a>11.incr</h2><p>（1）命令：INCR key</p>
+<p>（2）介绍:</p>
+<blockquote>
+<p>key存在：值增加1<br>key不存在：初始化值0，在执行incr</p>
+</blockquote>
+<pre><code>//对已存在key加一
+127.0.0.1:6379&gt; set incrname1 20
+OK
+127.0.0.1:6379&gt; get incrname1
+&quot;20&quot;
+127.0.0.1:6379&gt; incr incrname1
+(integer) 21
+//对不存在key初始化0加一
+127.0.0.1:6379&gt; incr incrname2
+(integer) 1
+</code></pre><h2 id="12-incrby"><a href="#12-incrby" class="headerlink" title="12.incrby"></a>12.incrby</h2><p>（1）命令：INCRBY key increment</p>
+<p>（2）介绍:</p>
+<blockquote>
+<p>key存在：值增加increment<br>key不存在：初始化值0，在执行incr</p>
+</blockquote>
+<pre><code>//对已存在的值加5
+127.0.0.1:6379&gt; set incrbyname 10
+OK
+127.0.0.1:6379&gt; get incrbyname
+&quot;10&quot;
+127.0.0.1:6379&gt; incrby incrbyname 5
+(integer) 15
+//对不存在的值初始化0加5
+127.0.0.1:6379&gt; incrby incrbyname1 5
+(integer) 5
+</code></pre><h2 id="13-incrbyfloat"><a href="#13-incrbyfloat" class="headerlink" title="13.incrbyfloat"></a>13.incrbyfloat</h2><p>（1）命令：INCRBYFLOAT key increment</p>
+<p>（2）介绍:</p>
+<blockquote>
+<p>与incrby同理，支持float数据</p>
+</blockquote>
+<h2 id="14-mget"><a href="#14-mget" class="headerlink" title="14.mget"></a>14.mget</h2><p>（1）命令：MGET key [key …]</p>
+<p>（2）介绍:</p>
+<blockquote>
+<p>key存在：返回value<br>key不存在：不存在的key返回nil</p>
+</blockquote>
+<pre><code>127.0.0.1:6379&gt;  msetnx mname1 1 mname2 2
+(integer) 0
+127.0.0.1:6379&gt; mget mname1 mname2 mname2
+1) &quot;1&quot;
+2) &quot;2&quot;
+3) (nil)
+</code></pre><h2 id="15-msetnx"><a href="#15-msetnx" class="headerlink" title="15.msetnx"></a>15.msetnx</h2><p>（1）命令：MSETNX key value [key value …]</p>
+<p>（2）介绍:</p>
+<blockquote>
+<p>key存在：即使存在一个也会全部失败<br>key不存在：设置多个key-value<br>此操作为原子性操作</p>
+</blockquote>
+<p>//key未存在<br>    127.0.0.1:6379&gt; msetnx mname1 1 mname2 2 mname3 3<br>    (integer) 1<br>    127.0.0.1:6379&gt; mget mname1 mname2 mname3<br>    1) “1”<br>    2) “2”<br>    3) “3”<br>    //存在个别key（存不进会失败但不会影响已存在的值）<br>    127.0.0.1:6379&gt;  msetnx mname4 4 mname1 1<br>    (integer) 0<br>    127.0.0.1:6379&gt; mget mname4 mname1<br>    1) (nil)<br>    2) “1”</p>
+<h2 id="16-psetex"><a href="#16-psetex" class="headerlink" title="16.psetex"></a>16.psetex</h2><p>(1) 命令：PSETEX key milliseconds value</p>
+<p>（2）介绍：</p>
+<blockquote>
+<p>与setex类似，只是时间换成毫秒</p>
+</blockquote>
+<h2 id="17-set"><a href="#17-set" class="headerlink" title="17.set"></a>17.set</h2><p>（1）命令：SET key value [EX seconds] [PX milliseconds] [NX|XX]</p>
+<p>（2）介绍:</p>
+<blockquote>
+<p>key存在：value覆盖原值<br>key不存在：关联key与value<br>EX seconds：key过期时间，单位秒<br>PX millisecond：key过期时间，单位毫秒<br>NX：等同命令SETNX key value（可以不存在时起作用）<br>XX：与上同理</p>
+</blockquote>
+<pre><code>//设值
+127.0.0.1:6379&gt; set myname yiyu
+OK
+127.0.0.1:6379&gt; get myname
+&quot;yiyu&quot;
+//覆盖原值
+127.0.0.1:6379&gt; set myname goodman
+OK
+127.0.0.1:6379&gt; get myname
+&quot;goodman&quot;
+//设值时间
+127.0.0.1:6379&gt; set myname yiyu EX 20
+OK
+127.0.0.1:6379&gt; GET myname
+&quot;yiyu&quot;
+//20s后
+127.0.0.1:6379&gt; get myname
+(nil)
+</code></pre><h2 id="18-setbit"><a href="#18-setbit" class="headerlink" title="18.setbit"></a>18.setbit</h2><p>（1）命令：SETBIT key offset value</p>
+<p>（2）介绍：</p>
+<blockquote>
+<p>① key存在，设值偏移量的值<br>② key不存在，生成新的字符串<br>③ offset：偏移量，大于或等于0，小于2^32</p>
+</blockquote>
+<pre><code>//可用来记录当日是否登陆
+127.0.0.1:6379&gt; setbit sbit 20190606 1
+(integer) 0
+127.0.0.1:6379&gt; getbit sbit 20190606
+(integer) 1
+</code></pre><h2 id="19-setex"><a href="#19-setex" class="headerlink" title="19.setex"></a>19.setex</h2><p>（1）命令：SETEX key seconds value</p>
+<p>（2）介绍：</p>
+<blockquote>
+<p>原子性操作<br>key存在，value覆盖旧值<br>key不存在，设置该值<br>seconds ：设值key过期时间，单位秒</p>
+</blockquote>
+<pre><code>127.0.0.1:6379&gt; setex exname 20 yiyu
+OK
+127.0.0.1:6379&gt; get exname
+&quot;yiyu&quot;
+//已过期
+127.0.0.1:6379&gt; get exname
+(nil)
+</code></pre><h2 id="20-setnx"><a href="#20-setnx" class="headerlink" title="20.setnx"></a>20.setnx</h2><p>（1）命令：SETNX key value</p>
+<p>（2）介绍：</p>
+<blockquote>
+<p>key存在，不做任何操作<br>key不存在，设置该值</p>
+</blockquote>
+<pre><code>//设值（key不存在）
+127.0.0.1:6379&gt; setnx nxname yiyu
+(integer) 1
+127.0.0.1:6379&gt; get nxname
+&quot;yiyu&quot;
+//设置值（key存在）
+127.0.0.1:6379&gt; setnx nxname hahaha
+(integer) 0
+127.0.0.1:6379&gt; get nxname
+&quot;yiyu&quot;
+</code></pre><h2 id="21-setrance"><a href="#21-setrance" class="headerlink" title="21.setrance"></a>21.setrance</h2><p>（1）命令：SETRANGE key offset value</p>
+<p>（2）介绍：</p>
+<blockquote>
+<p>key存在，从偏移量开始的位置设值<br>key不存在，当做空白字符串处理设值</p>
+</blockquote>
+<pre><code>//对已存在的key设值
+127.0.0.1:6379&gt; set rname yiyuhahaha
+OK
+127.0.0.1:6379&gt; setrange rname 5 lalala
+(integer) 11
+127.0.0.1:6379&gt; get rname
+&quot;yiyuhlalala&quot;
+//对未存在的key设值
+127.0.0.1:6379&gt; setrange empty_name 2 &quot;yiyu&quot;
+(integer) 6
+//  该偏移前的位置被空格替代
+127.0.0.1:6379&gt; get empty_name
+&quot;\x00\x00yiyu&quot;
+</code></pre><h2 id="22-strlen"><a href="#22-strlen" class="headerlink" title="22.strlen"></a>22.strlen</h2><p>（1）命令：strlen key</p>
+<p>（2）介绍:</p>
+<blockquote>
+<p>key存在：返回对应value的长度（value不是字符串返回错误）<br>key不存在：返回0</p>
+</blockquote>
+<pre><code>127.0.0.1:6379&gt; strlen myname
+(integer) 9
+127.0.0.1:6379&gt; strlen myname1
+(integer) 0
+127.0.0.1:6379&gt;
+</code></pre>
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <hr>
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-06-24T17:13:28+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>最后更新于 2019年6月24日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/redis/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>redis</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/框架/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>框架</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.yiyuclub.club/2019/06/10/redis知识汇总-初级-数据类型（String）/&title=redis知识汇总[初级]--数据类型（String） | 易语的博客&summary=redis知识汇总[初级]–数据类型（String）"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.yiyuclub.club/2019/06/10/redis知识汇总-初级-数据类型（String）/&title=redis知识汇总[初级]--数据类型（String） | 易语的博客&summary=redis知识汇总[初级]–数据类型（String）"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=http://www.yiyuclub.club/2019/06/10/redis知识汇总-初级-数据类型（String）/&title=redis知识汇总[初级]--数据类型（String） | 易语的博客&summary=redis知识汇总[初级]–数据类型（String）"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+            <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                            <h4>
+                                <a href="/2019/06/11/（软考架构师笔记十七）系统的可靠性分析与设计/" rel="prev" title="（软考架构师笔记十七）系统的可靠性分析与设计">
+                                  
+                                      （软考架构师笔记十七）系统的可靠性分析与设计
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/软考/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>软考</a> <a class="tag" href="/tags/架构师/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>架构师</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2019/06/10/（软考架构师笔记十六）安全性和保密性设计/" rel="prev" title="（软考架构师笔记十六）安全性和保密性设计">
+                                    
+                                        （软考架构师笔记十六）安全性和保密性设计
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/软考/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>软考</a> <a class="tag" href="/tags/架构师/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>架构师</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'redis知识汇总[初级]--数据类型（String）',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              <section class='widget grid'>
+  
+<header class='pure'>
+  <div><i class="fas fa-map-signs fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;站内导航</div>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="grid navgation">
+      
+        <li><a class="flat-box" title="/" href="/"
+          
+          
+          id="home">
+          
+            <i class="fas fa-clock fa-fw" aria-hidden="true"></i>
+          
+          近期发布
+        </a></li>
+      
+        <li><a class="flat-box" title="/archives/" href="/archives/"
+          
+            rel="nofollow"
+          
+          
+          id="archives">
+          
+            <i class="fas fa-archive fa-fw" aria-hidden="true"></i>
+          
+          全部文章
+        </a></li>
+      
+        <li><a class="flat-box" title="/projects/" href="/projects/"
+          
+          
+          id="projects">
+          
+            <i class="fas fa-code-branch fa-fw" aria-hidden="true"></i>
+          
+          我的项目
+        </a></li>
+      
+        <li><a class="flat-box" title="/friends/" href="/friends/"
+          
+            rel="nofollow"
+          
+          
+          id="friends">
+          
+            <i class="fas fa-link fa-fw" aria-hidden="true"></i>
+          
+          我的友链
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/material-x/" href="https://xaoxuu.com/wiki/material-x/"
+          
+            rel="nofollow"
+          
+          
+          id="https:xaoxuu.comwikimaterial-x">
+          
+            <i class="fas fa-book fa-fw" aria-hidden="true"></i>
+          
+          常用代码
+        </a></li>
+      
+        <li><a class="flat-box" title="/about/" href="/about/"
+          
+            rel="nofollow"
+          
+          
+          id="about">
+          
+            <i class="fas fa-info-circle fa-fw" aria-hidden="true"></i>
+          
+          与我相关
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-append"><span class="toc-text">1.append</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-bitcount"><span class="toc-text">2.bitcount</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-bitop"><span class="toc-text">3.bitop</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-decr"><span class="toc-text">4.decr</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-decrby"><span class="toc-text">5.decrby</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-get"><span class="toc-text">6.get</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-getbit"><span class="toc-text">7.getbit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-getrance"><span class="toc-text">8.getrance</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-getset"><span class="toc-text">9.getset</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-incr"><span class="toc-text">11.incr</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-incrby"><span class="toc-text">12.incrby</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-incrbyfloat"><span class="toc-text">13.incrbyfloat</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-mget"><span class="toc-text">14.mget</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-msetnx"><span class="toc-text">15.msetnx</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#16-psetex"><span class="toc-text">16.psetex</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#17-set"><span class="toc-text">17.set</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#18-setbit"><span class="toc-text">18.setbit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#19-setex"><span class="toc-text">19.setex</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#20-setnx"><span class="toc-text">20.setnx</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#21-setrance"><span class="toc-text">21.setrance</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#22-strlen"><span class="toc-text">22.strlen</span></a></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml"
+            class="social fas fa-rss flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://mail.qq.com"
+            class="social fas fa-envelope flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/hhsyy"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="http://music.163.com"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>
+    本站使用
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">易语的博客</a>
+    作为主题
+    
+      ，
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+    。
+  </div>
+ <div>
+ <i class="fas fa-chart-area"></i><span class="post-count">字数统计：78.6k</span>
+ </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["https://img.vim-cn.com/f6/78aed21213230b9220f310f9ea6c822b011846.jpg", "https://img.vim-cn.com/d5/b004c81a13aea401375d03b1258ecadbfcbaa7.jpg", "https://img.vim-cn.com/4c/8e7294998989454b2dcd2624373d5a699c4414.jpg"],
+          {
+            duration: "6000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+          ["https://img.vim-cn.com/f6/78aed21213230b9220f310f9ea6c822b011846.jpg", "https://img.vim-cn.com/d5/b004c81a13aea401375d03b1258ecadbfcbaa7.jpg", "https://img.vim-cn.com/4c/8e7294998989454b2dcd2624373d5a699c4414.jpg"],
+          {
+            duration: "6000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+    
+      <script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js"></script>
+    
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'false' == true;
+  var verify = 'false' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "5lQzNxqx4MqwUJkUl8p8gMDn-gzGzoHsz",
+    appKey: "YXL8AD7S2KBv7efGilMYDOJl",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'mp',
+    lang:'zh-cn',
+    highlight:'false'
+  })
+  </script>
+
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/js/app.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/js/search.js"></script>
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

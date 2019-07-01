@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>（软考架构师笔记四）计算机网络 | 易语的博客</title>
+  
+  
+  <meta name="description" content="这是易语的博客">
+  
+
+  
+  <link rel="alternate" href="/atom.xml" title="易语的博客">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/css/style.css">
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>yiyu's blog</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/"
+            
+            
+            id="home">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;最新文章
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/projects/"
+            
+            
+            id="projects">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;我的项目
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/friends/"
+            
+              rel="nofollow"
+            
+            
+            id="friends">
+            <i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/about/"
+            
+              rel="nofollow"
+            
+            
+            id="about">
+            <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于相关
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          易语的博客
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/"
+                  
+                  
+                  id="home">
+									<i class='fas fa-grin fa-fw'></i>&nbsp;最新文章
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="categories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;文章分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/tags/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="tags">
+									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签汇总
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="archives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;全部文章
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;最新文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/archives/"
+                
+                  rel="nofollow"
+                
+                
+                id="archives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;全部文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/projects/"
+                
+                
+                id="projects">
+								<i class='fas fa-code-branch fa-fw'></i>&nbsp;我的项目
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/friends/"
+                
+                  rel="nofollow"
+                
+                
+                id="friends">
+								<i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="https://xaoxuu.com/wiki/material-x/"
+                
+                  rel="nofollow"
+                
+                
+                id="https:xaoxuu.comwikimaterial-x">
+								<i class='fas fa-book fa-fw'></i>&nbsp;主题文档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2019/05/21/（软考架构师笔记四）计算机网络/">
+        （软考架构师笔记四）计算机网络
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    <a href="http://www.yiyuclub.club" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>易语</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-05-21</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/学习笔记/软考架构师/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>学习笔记&nbsp;/&nbsp;软考架构师</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          <p>（软考架构师笔记四）计算机网络<br><a id="more"></a></p>
+<h2 id="1-概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h2><blockquote>
+<p>由通信线路互相连接的许多独立自主工作的计算机构成的资源共享集合体<br><br></p>
+</blockquote>
+<h2 id="2-网络架构与协议"><a href="#2-网络架构与协议" class="headerlink" title="2.网络架构与协议"></a>2.网络架构与协议</h2><blockquote>
+<p>网络架构：计算机网络的各层及其协议的集合<br>网络协议：规定信息的格式及如何发送和接收信息的一套规则<br><br></p>
+</blockquote>
+<h2 id="3-网络互联模型"><a href="#3-网络互联模型" class="headerlink" title="3.网络互联模型"></a>3.网络互联模型</h2><p>（1） 网络架构的国际标准：开放系统互联参考模型（OSI/RM）<br>（2）OSI/RM七层模型</p>
+<blockquote>
+<p>物理层：透明地完成相邻节点之间原始比特流的传输<br>数据链路层：传送以帧为单位的数据，把不可靠的物理层变为无差错的数据通道<br>网络层：通信子网的最高层，实现通信子网的连接，并通过网络连接交换网络服务数据单元（packet）<br>传输层：网络通信的最高层，是资源子网和通信子网的桥梁，为两台计算机的通信提供可靠的端到端的数据传输服务<br>会话层：利用传输层提供的端到端数据传输服务<br>表示层：用户信息的表示问题<br>应用层：计算机网络与最终用户之间的界面</p>
+</blockquote>
+<p>（3）TCP/IP 结构模型 （传输控制协议/网际协议）</p>
+<blockquote>
+<p>网络接口层：对应于数据链路层和物理层，负责管理为物理网络准备数据所需的全部服务程序和功能<br>网络互联层：对应于网络层，负责将数据报独立地从信源传送到信宿<br>传输层：对应于传输层，负责在信源和信宿之间提供端到端的数据传输服务<br>应用层：对应于会话层与表示层，为用户方便地提供对各种网络资源的访问服务<br><br></p>
+</blockquote>
+<h2 id="4-常见的网络协议"><a href="#4-常见的网络协议" class="headerlink" title="4.常见的网络协议"></a>4.常见的网络协议</h2><p>（1）应用层协议</p>
+<blockquote>
+<p>1.文件传输协议（FTP）-（TCP）：用于传输文件，有bin与ASCII两种方式，两条连接：控制信息（21），传输文件信息（20）<br>2.简单文件传输协议（TFTP）-(UDP)：用于开销不大的文件传输<br>3.超文本传输协议（HTTP）-(TCP)：从 WWW 服务器传输超文本到本地浏览器的传送协议<br>4.简单又见传输协议（SMTP）-(TCP)：用于传输系统之间的邮件信息，并提供与电子邮件有关的通知<br>5.动态主机配置协议（DHCP）-（UDP）:管理IP网络设置数据<br>6.远程登录协议（Telnet）-（tcp）：将所有用户输入送到远程计算机进行处理的简单的终端程序<br>7.域名系统（DNS）:进行域名解析的服务器,将名称解析为与之相关的其他信息<br>8.简单网络管理协议（SNMP）：解决 Internet上的路由器管理的问题，指一系列网络管理规范的集合</p>
+</blockquote>
+<p>（2）传输层协议<br>UDP：</p>
+<blockquote>
+<p>是面向无连接, 将数据及源的封装成数据包中,不需要建立建立连接<br>每个数据报的大小在限制64k内<br>因无连接,是不可靠协议<br>不需要建立连接,速度快</p>
+</blockquote>
+<p>TCP：</p>
+<blockquote>
+<p>建立连接，形成传输数据的通道.<br>在连接中进行大数据量传输，以字节流方式<br>通过三次握手完成连接,是可靠协议<br>必须建立连接m效率会稍低</p>
+</blockquote>
+<p>（3）网络层协议</p>
+<blockquote>
+<p>1.IP：无连接的和不可靠的，<br>2.地址解析协议（ARP）：用于动态地完成 IP 地址向物理地址（MAC，网卡地址）的转换<br>3.网际控制报文协议（ICMP）：用于发送差错报文的协议<br>4.网际组管理协议（IGMP）：计算机用作向相邻多目路由器报告多目组成员的协议，允许 Internet 中的计算机参加多播<br><br></p>
+</blockquote>
+<h2 id="5-IPv6"><a href="#5-IPv6" class="headerlink" title="5.IPv6"></a>5.IPv6</h2><p>（1）出现缘由：</p>
+<blockquote>
+<p>为了解决IPv4地址空间耗尽、路由表急剧膨胀、缺乏对 QoS 的支持、本身并不提供任何安全机制、移动性差等问题，推出了互联网协议第 6 版</p>
+</blockquote>
+<p>（2）表示方式</p>
+<blockquote>
+<p>一个 32 位的 IPv4 地址以 8 个位为一段分成 4 段，每段之间用点“.”分开。而 IPv6地址的 128 位是以 16 位为一段，共分为 8 段，每段的 16 位转换为一个 4 位的 16 进制数字，每段之间用冒号“：”分开。<br>例如：2001：0da8：d001：0001：0000：0000：0000：0001</p>
+</blockquote>
+<p>（3）压缩地址表示</p>
+<blockquote>
+<p>在 IPv6 中，常见到使用包含一长串 0 的地址，为了方便书写，对于每一段中的前导 0可以进行省略。如前面的首选格式地址经过一次压缩<br>例如：2001：da8：d001：1：0：0：0：1<br>对于连续 2 段以上都为 0 的字段，可以使用“：：”（两个冒号）来表示，这样再次压缩<br>例如：2001：da8：d001：1：：1</p>
+</blockquote>
+<p>（4）内嵌 IPv4 地址的 IPv6 地址<br>（5）IPv6地址类型</p>
+<blockquote>
+<p>单播IPv6地址：<br>多播IPv6地址：<br>泛播IPv6地址：</p>
+</blockquote>
+<p>（6）IPv6优势</p>
+<blockquote>
+<p>具有更大地址空间<br>使用更小路由表<br>增加组播和对流的支持<br>加入自动配置支持<br>安全性更高</p>
+</blockquote>
+<p>（7）IPv4／IPv6 过渡技术</p>
+<blockquote>
+<p>双协议栈技术:两种协议共存<br>隧道技术：在IPv4部署隧道，实现对IPv6的支持<br>NAT-PT技术：使用网关设备连接IPv6和 IPv4网络<br><br></p>
+</blockquote>
+<h2 id="6-局域网与广域网"><a href="#6-局域网与广域网" class="headerlink" title="6.局域网与广域网"></a>6.局域网与广域网</h2><p>（1）定义：</p>
+<blockquote>
+<p>局域网（LAN）：将分散在有限地理范围内的多台计算机通过传输媒体连接起来的通信网络，通过功能完善的网络软件，实现计算机之间的相互通信和资源共享；<br>广域网（WAN）：在传输距离较长的前提下所发展的相关技术的集合，用于将大区域范围内的各种计算机设备和通信设备互联在一起，组成一个资源共享的通信网络</p>
+</blockquote>
+<p>（2）局域网<br>特点：</p>
+<blockquote>
+<p>范围小<br>数率高<br>数据误码率低<br>不架设骨干网<br>协议相对简单、结构灵活，建网成本低、周期短，便于管理和扩充</p>
+</blockquote>
+<p>结构：</p>
+<blockquote>
+<p>星形结构<br>总线结构<br>环形结构<br>网状结构</p>
+</blockquote>
+<p>（3）无限局域网（WLAN）<br>定义：</p>
+<blockquote>
+<p>运用射频（Radio Frequency，RF）技术取代原来局域网系统中必不可少的传输介质（例如，同轴电缆、双绞线等）来完成数据的传送任务</p>
+</blockquote>
+<p>拓扑结构：</p>
+<blockquote>
+<p>基础设施网络：使用无线通信，存在接入点，通过接入点将一组节点逻辑上联系在一起，形成一个局域网<br>Adhoc网络：使用无限通信，通关无线网卡点对点连接</p>
+</blockquote>
+<p>IEEE 802.11 标准</p>
+<blockquote>
+<p>定义了媒体访问控制层（MAC 层）和物理层,采用主动避免碰撞而非被动侦测的方式来解决冲突问题</p>
+</blockquote>
+<p>3G 通信技术:</p>
+<blockquote>
+<p>3G 是第三代移动通信及其技术的简称，其主流标准包括：WCDMA、CDMA 2000 和TD-SCDMA</p>
+</blockquote>
+<p>4G 通信技术</p>
+<blockquote>
+<p>4G 是第四代移动通信及其技术的简称，是集 3G 与 WLAN 于一体并能够传输高质量视频图像且图像传输质量与高清晰度电视不相上下的技术产品<br>4G 标准主要有两大方向，即 LTE（Long Term Evolution）与 WiMAX，而 LTE 又可进一步分为 TD-LTE 与 FDD-LTE</p>
+</blockquote>
+<p>（4）广域网</p>
+<blockquote>
+<p>主要提供面向通信的服务，支持用户使用计算机进行远距离的信息交换</p>
+</blockquote>
+<p>（5）网络接入技术<br>PSTN 接入（公用交换电话网络）：</p>
+<blockquote>
+<p>利用电话线拨号接入 Internet</p>
+</blockquote>
+<p>ISDN 接入（综合业务数字网）：</p>
+<blockquote>
+<p>在电话网络的基础上构造的纯数字方式的综合业务数字网,俗称一线通</p>
+</blockquote>
+<p>ADSL 接入（非对称数字用户线路）：</p>
+<blockquote>
+<p>通过普通的电话线连接，无须对入户线缆进行改造，就可以为现有的大量电话用户提供 ADSL 宽带入</p>
+</blockquote>
+<p>FTTx+LAN 接入:</p>
+<blockquote>
+<p>利用光导纤维（简称为光纤）传输光波信号的一种通信方法</p>
+</blockquote>
+<p>同轴+光纤接入：</p>
+<blockquote>
+<p>将光缆敷设到小区，然后通过光电转换节点，利用有线电视（Community Antenna Television，CATV）的总线式同轴电缆连接到用户，提供综合电信业务的技术<br><br></p>
+</blockquote>
+<h2 id="7-网络互连与常用设备"><a href="#7-网络互连与常用设备" class="headerlink" title="7.网络互连与常用设备"></a>7.网络互连与常用设备</h2><p>（1）定义：</p>
+<blockquote>
+<p>为了将两个以上具有独立自治能力、同构或异构的计算机网络连接起来，实现数据流通，扩大资源共享的范围，或者容纳更多的用户</p>
+</blockquote>
+<p>（2）网络互连设备</p>
+<blockquote>
+<p>中继器：实现物理层协议转换，在电缆间转换二进制信号<br>网桥：实现物理层和和数据链路层协议转换<br>路由器：实现网络层和以下各层协议转换<br>网关：提供从最底层到传输层或以上各层的协议转换<br>交换机</p>
+</blockquote>
+<p>（3）交换技术<br>定义：</p>
+<blockquote>
+<p>当用户较多而传输的距离较远时，通常不采用两点固定连接的专用线路，而是采用交换技术，使通信传输线路为各个用户公用，以提高传输设备的利用率，降低系统费用</p>
+</blockquote>
+<p>特点：</p>
+<blockquote>
+<p>电路交换：在数据传送之前必须先设置一条通路。在线路释放之前，该通路将由一对用户独占<br>报文交换：报文从源点传送到目的地采用存储转发的方式，不满足实时性<br>分组交换：报文被分成分组传送，并规定了最大的分组长度，与报文交换类似</p>
+</blockquote>
+<p>（4）路由技术<br>功能：进行路由选择，根据目的地址信息，选择合适的路由</p>
+<p>路由选择协议的应用范围划分：</p>
+<blockquote>
+<p>内部网关协议(IGP):指在一个自治系统（Autonomous System，AS）内运行的路由选择协议<br>外部网关协议(EGP):指在两个 AS 之间使用的路由选择协议,主要功能是控制路由策略<br>核心网关协议(GGP):AS 全联接在主网干，主网干的网关称为核心网关，核心网关之间交换路由信息时使用的是 GGP</p>
+</blockquote>
+<p>从路由协议使用的算法划分：</p>
+<blockquote>
+<p>距离向量协议<br>链路状态协议<br>平衡型协议<br><br></p>
+</blockquote>
+<h2 id="8-网络工程"><a href="#8-网络工程" class="headerlink" title="8.网络工程"></a>8.网络工程</h2><p>（1）网络规划</p>
+<blockquote>
+<p>网络需求分析：深入调查用户网络建设的背景、必要性、上网的人数和信息量<br>可行性分析：从技术可行性、经济可行性、法律可行性和用户使用可行性等方面进行论证<br>对现有网络的分析与描述：对现有网络进行分析，并系统化地描述出来。对现有网络系统进行调研</p>
+</blockquote>
+<p>（2）网络设计</p>
+<blockquote>
+<p>网络逻辑结构设计:<br>网络物理结构设计<br>分层设计</p>
+</blockquote>
+<p>（3）网络实施</p>
+<blockquote>
+<p>工程实施计划<br>网络设备到货验收<br>设备安装<br>系统测试<br>系统试运行<br>用户培训<br>系统转换</p>
+</blockquote>
+<p>（4）网络存储技术</p>
+<blockquote>
+<p>直接附加存储<br>网络附加存储<br>存储区域网络</p>
+</blockquote>
+<p>（5）综合布线</p>
+<blockquote>
+<p>工作区<br>配线子系统<br>干线子系统<br>建筑群子系统<br>设备间<br>进线间<br>管理</p>
+</blockquote>
+
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <hr>
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-06-24T17:13:28+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>最后更新于 2019年6月24日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/软考/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>软考</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/架构师/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>架构师</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.yiyuclub.club/2019/05/21/（软考架构师笔记四）计算机网络/&title=（软考架构师笔记四）计算机网络 | 易语的博客&summary=（软考架构师笔记四）计算机网络"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.yiyuclub.club/2019/05/21/（软考架构师笔记四）计算机网络/&title=（软考架构师笔记四）计算机网络 | 易语的博客&summary=（软考架构师笔记四）计算机网络"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=http://www.yiyuclub.club/2019/05/21/（软考架构师笔记四）计算机网络/&title=（软考架构师笔记四）计算机网络 | 易语的博客&summary=（软考架构师笔记四）计算机网络"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+            <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                            <h4>
+                                <a href="/2019/05/22/（软考架构师笔记五）系统性能评价/" rel="prev" title="（软考架构师笔记五）系统性能评价">
+                                  
+                                      （软考架构师笔记五）系统性能评价
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/软考/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>软考</a> <a class="tag" href="/tags/架构师/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>架构师</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2019/05/20/（软考架构师笔记三）数据库系统/" rel="prev" title="（软考架构师笔记三）数据库系统">
+                                    
+                                        （软考架构师笔记三）数据库系统
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/软考/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>软考</a> <a class="tag" href="/tags/架构师/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>架构师</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '（软考架构师笔记四）计算机网络',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              <section class='widget grid'>
+  
+<header class='pure'>
+  <div><i class="fas fa-map-signs fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;站内导航</div>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="grid navgation">
+      
+        <li><a class="flat-box" title="/" href="/"
+          
+          
+          id="home">
+          
+            <i class="fas fa-clock fa-fw" aria-hidden="true"></i>
+          
+          近期发布
+        </a></li>
+      
+        <li><a class="flat-box" title="/archives/" href="/archives/"
+          
+            rel="nofollow"
+          
+          
+          id="archives">
+          
+            <i class="fas fa-archive fa-fw" aria-hidden="true"></i>
+          
+          全部文章
+        </a></li>
+      
+        <li><a class="flat-box" title="/projects/" href="/projects/"
+          
+          
+          id="projects">
+          
+            <i class="fas fa-code-branch fa-fw" aria-hidden="true"></i>
+          
+          我的项目
+        </a></li>
+      
+        <li><a class="flat-box" title="/friends/" href="/friends/"
+          
+            rel="nofollow"
+          
+          
+          id="friends">
+          
+            <i class="fas fa-link fa-fw" aria-hidden="true"></i>
+          
+          我的友链
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/material-x/" href="https://xaoxuu.com/wiki/material-x/"
+          
+            rel="nofollow"
+          
+          
+          id="https:xaoxuu.comwikimaterial-x">
+          
+            <i class="fas fa-book fa-fw" aria-hidden="true"></i>
+          
+          常用代码
+        </a></li>
+      
+        <li><a class="flat-box" title="/about/" href="/about/"
+          
+            rel="nofollow"
+          
+          
+          id="about">
+          
+            <i class="fas fa-info-circle fa-fw" aria-hidden="true"></i>
+          
+          与我相关
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-概念"><span class="toc-text">1.概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-网络架构与协议"><span class="toc-text">2.网络架构与协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-网络互联模型"><span class="toc-text">3.网络互联模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-常见的网络协议"><span class="toc-text">4.常见的网络协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-IPv6"><span class="toc-text">5.IPv6</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-局域网与广域网"><span class="toc-text">6.局域网与广域网</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-网络互连与常用设备"><span class="toc-text">7.网络互连与常用设备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-网络工程"><span class="toc-text">8.网络工程</span></a></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml"
+            class="social fas fa-rss flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://mail.qq.com"
+            class="social fas fa-envelope flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/hhsyy"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="http://music.163.com"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>
+    本站使用
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">易语的博客</a>
+    作为主题
+    
+      ，
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+    。
+  </div>
+ <div>
+ <i class="fas fa-chart-area"></i><span class="post-count">字数统计：78.6k</span>
+ </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["https://img.vim-cn.com/f6/78aed21213230b9220f310f9ea6c822b011846.jpg", "https://img.vim-cn.com/d5/b004c81a13aea401375d03b1258ecadbfcbaa7.jpg", "https://img.vim-cn.com/4c/8e7294998989454b2dcd2624373d5a699c4414.jpg"],
+          {
+            duration: "6000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+          ["https://img.vim-cn.com/f6/78aed21213230b9220f310f9ea6c822b011846.jpg", "https://img.vim-cn.com/d5/b004c81a13aea401375d03b1258ecadbfcbaa7.jpg", "https://img.vim-cn.com/4c/8e7294998989454b2dcd2624373d5a699c4414.jpg"],
+          {
+            duration: "6000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+    
+      <script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js"></script>
+    
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'false' == true;
+  var verify = 'false' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "5lQzNxqx4MqwUJkUl8p8gMDn-gzGzoHsz",
+    appKey: "YXL8AD7S2KBv7efGilMYDOJl",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'mp',
+    lang:'zh-cn',
+    highlight:'false'
+  })
+  </script>
+
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/js/app.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/js/search.js"></script>
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

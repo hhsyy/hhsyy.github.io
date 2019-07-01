@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>（软考架构师笔记十八）软件的知识产权保护 | 易语的博客</title>
+  
+  
+  <meta name="description" content="这是易语的博客">
+  
+
+  
+  <link rel="alternate" href="/atom.xml" title="易语的博客">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/css/style.css">
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>yiyu's blog</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/"
+            
+            
+            id="home">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;最新文章
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/projects/"
+            
+            
+            id="projects">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;我的项目
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/friends/"
+            
+              rel="nofollow"
+            
+            
+            id="friends">
+            <i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/about/"
+            
+              rel="nofollow"
+            
+            
+            id="about">
+            <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于相关
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          易语的博客
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/"
+                  
+                  
+                  id="home">
+									<i class='fas fa-grin fa-fw'></i>&nbsp;最新文章
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="categories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;文章分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/tags/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="tags">
+									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签汇总
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="archives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;全部文章
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;最新文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/archives/"
+                
+                  rel="nofollow"
+                
+                
+                id="archives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;全部文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/projects/"
+                
+                
+                id="projects">
+								<i class='fas fa-code-branch fa-fw'></i>&nbsp;我的项目
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/friends/"
+                
+                  rel="nofollow"
+                
+                
+                id="friends">
+								<i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="https://xaoxuu.com/wiki/material-x/"
+                
+                  rel="nofollow"
+                
+                
+                id="https:xaoxuu.comwikimaterial-x">
+								<i class='fas fa-book fa-fw'></i>&nbsp;主题文档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2019/06/11/（软考架构师笔记十八）软件的知识产权保护/">
+        （软考架构师笔记十八）软件的知识产权保护
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    <a href="http://www.yiyuclub.club" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>易语</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-06-11</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/学习笔记/软考架构师/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>学习笔记&nbsp;/&nbsp;软考架构师</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          <p>（软考架构师笔记十八）软件的知识产权保护<br><a id="more"></a></p>
+<h2 id="1-概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h2><p>（1）定义</p>
+<blockquote>
+<p>其称为“智力成果权”、“智慧财产权”，指民事权利主体（自然人、法人）基于创造性的智力成果</p>
+</blockquote>
+<p>（2）特点</p>
+<blockquote>
+<p>无形性<br>专有性<br>地域性<br>时间性</p>
+</blockquote>
+<p>（3）相关法律法规</p>
+<blockquote>
+<p>《著作权法》<br>《计算机软件保护条件》<br>《专利法》<br>《商标法》<br>《反不正当竞争法》</p>
+</blockquote>
+<h2 id="2-著作权法及实施条例"><a href="#2-著作权法及实施条例" class="headerlink" title="2.著作权法及实施条例"></a>2.著作权法及实施条例</h2><p>（1）著作权法客体：</p>
+<p>① 作品类型：</p>
+<blockquote>
+<p>文字作品：包括小说、诗词、散文、论文等以文字形式表现的作品<br>口述作品：是指即兴的演说、授课、法庭辩论等以口头语言形式表现的作品<br>音乐、戏剧、曲艺、舞蹈、杂技作品<br>美术、摄影作品<br>电影、电视、录像作品<br>工程设计、产品设计图纸及其说明<br>地图、示意图等图形作品<br>计算机软件<br>法律、行政法规规定的其他作品</p>
+</blockquote>
+<p>② 职务作品</p>
+<blockquote>
+<p>为完成单位工作任务所创作的作品，称为职务作品<br>该职务作品是利用单位的物质技术条件进行创作，并由单位承担责任的<br>有合同约定，其著作权属于单位(作者将仅享有署名权，其他著作权归单位享有)<br>著作权仍由作者享有，单位有权在业务范围内优先使用，并且在两年内，未经单位同意，作者不能够许可其他人、单位使用该作品</p>
+</blockquote>
+<p>（2）著作权法的主体</p>
+<p>① 著作权人与受让者：</p>
+<blockquote>
+<p>著作权人：又称为原始著作权人，是根据创作的事实进行确定的，创作、开发者将依法取得著作权资格<br>受让者：又称为后继著作权人，是指没有参与创作，通过著作权转移活动成为享有著作权的人</p>
+</blockquote>
+<p>② 著作权人的确定：</p>
+<blockquote>
+<p>根据创作事实确认，提意见不算<br>多人参与，著作权共同所有<br>合同作品可分割，可单独享有自己完成那部分的著作权<br>著作权不明，作品原件的所有人可以行使除署名权以外的著作权</p>
+</blockquote>
+<p>注意：委托关系，一般需合同约定，如无合同，著作权归受托人所有（创造作品的人）</p>
+<p>（3）著作权：</p>
+<p>① 著作人对作品享有的权利</p>
+<blockquote>
+<p>发表权：即决定作品是否公之于众的权利<br>署名权：即表明作者身份，在作品上署名的权利<br>修改权：即修改或者授权他人修改作品的权利<br>保护作品完整权：即保护作品不受歪曲、篡改的权利<br>使用权、使用许可权和获取报酬权、转让权：即以复制、表演、播放、展览、发行、摄制电影、电视、录像或者改编、翻译、注释、编辑等方式使用作品的权利；以及许可他人以上述方式使用作品，并由此获得报酬的权利</p>
+</blockquote>
+<p>② 著作权保护期限：</p>
+<blockquote>
+<p>著作权属于公民：署名权、修改权、保护作品完整权的保护期没有任何限制，永远属于保护范围;发表权、使用权和获得报酬权的保护期为作者终生及其死亡后的50年（第50年的12月31日）。作者死亡后，著作权依照继承法进行转移</p>
+<p>著作权属于单位：发表权、使用权和获得报酬权的保护期为 50 年（首次发表后的第50年的12月31日），若50年内未发表的，不予保护。但单位变更、终止后，其著作权由承受其权利义务的单位享有</p>
+</blockquote>
+<p>③ 使用许可权：</p>
+<blockquote>
+<p>第三方需要使用时，需得到著作权人的使用许可，双方应签订相应的合同（合同不能超过10年）<br>对于出版者、表演者、录音录像制作者、广播电台、电视台而言，在下列情况下使用作品，可以不经著作权人许可、不向其支付报酬。但应指名作者姓名、作品名称，不得侵犯其他著作权<br>为个人学习、研究或者欣赏，使用他人已经发表的作品<br>为介绍、评论某一个作品或者说明某一个问题，在作品中适当引用他人已经发表的作品<br>为报道时间新闻，在报纸、期刊、广播、电视节目或者新闻记录影片中引用已经发表的作品<br>报纸、期刊、广播电台、电视台刊登或者播放其他报纸、期刊、广播电台、电视台已经发表的社论、评论员文章<br>报纸、期刊、广播电台、电视台刊登或者播放在公众集会上发表的讲话，但作者声明不许刊登、播放的除外<br>为学校课堂教学或者科学研究，翻译或者少量复制已经发表的作品，供教学或者科研人员使用，但不得出版发行<br>国家机关为执行公务使用已经发表的作品<br>图书馆、档案馆、纪念馆、博物馆、美术馆等为陈列或者保存版本的需要，复制本馆收藏的作品<br>免费表演已经发表的作品<br>对设置或者陈列在室外公共场所的艺术作品进行临摹、绘画、摄影、录像<br>将已经发表的汉族文字作品翻译成少数民族文字在国内出版发行<br>将已经发表的作品改成盲文出版。</p>
+</blockquote>
+<p><br></p>
+<h2 id="3-计算机软件保护条例"><a href="#3-计算机软件保护条例" class="headerlink" title="3. 计算机软件保护条例"></a>3. 计算机软件保护条例</h2><p>（1）《计算机软件保护条例》</p>
+<blockquote>
+<p>1991 年 6 月通过，10 月 1 日正式实施<br>最新版本是在 2001 年底通过，2002 年 1 月 1 日正式实施的<br>客体是计算机软件<br>受保护的软件必须由开发者独立开发，并且已经固定在某种有形物体上<br>保护只是针对计算机软件和文档，并不包括开发软件所用的思想、处理过程、操作方法或数学概念</p>
+</blockquote>
+<p>（1）著作权人的确定</p>
+<blockquote>
+<p>合作开发<br>职务开发<br>委托开发</p>
+</blockquote>
+<p>（2）软件著作权</p>
+<blockquote>
+<p>著作权属于公民（第17章）<br>著作权属于单位（第17章）<br>合法复制品所有人权利（第17章）<br>使用许可的特例：用以学习，而以安装、显示、存储软件等方式使用软件，可以使用<br>侵权责任：民事责任、刑事责任和行政责任</p>
+</blockquote>
+<p><br></p>
+<h2 id="4-商标法及实施条例"><a href="#4-商标法及实施条例" class="headerlink" title="4.商标法及实施条例"></a>4.商标法及实施条例</h2><p>（1）定义：</p>
+<blockquote>
+<p>可注册地商标：任何能够将自然人、法人及组织的商品与他人的商品区别开的可视性标志<br>包括文字、图形、字母、数字、三维标志和颜色组合<br>须报商标局核准注册<br>包括商品商标、服务商标、集体商标，以及证明商标</p>
+</blockquote>
+<p>（2）商标的使用</p>
+<blockquote>
+<p>将商标用于商品、包装、容器、交易文书、广告宣传、展览，以及其商业活动中。</p>
+</blockquote>
+<p>（3）商标的使用期限：</p>
+<blockquote>
+<p>注册商标的有效期是 10 年，从核准通过、正式注册之日起开始计算。在有效期满之后，可以续注册，但必须在期满前 6 个月提出申请，如未在此期间提出申请的，则给予6个月的宽限期，在宽限期还未提出申请的，将注销其商标</p>
+</blockquote>
+<p>（4）注册商标的申请</p>
+<p>（5）注册商标专用权保护（下列为侵犯）：</p>
+<blockquote>
+<p>① 未经商标注册人的许可，使用相同或近似商标<br>② 销售侵犯商标专用权的商品（注：如果销售方不知道是侵权商品，并且能够证明自己是合法取得的，不承担相应责任）<br>③ 伪造他人注册商标，或销售这些伪造的注册商标<br>④ 未经商标注册人同意，更换其注册商标，并将更换商标的商品投入市场</p>
+</blockquote>
+<p>（6）注册商标使用的管理</p>
+<blockquote>
+<p>当合法地注册了商标使用权后，就可以在商品、商品包装、说明书或者其他附着物上标明“注册商标”或者注册标记（包括©和®）</p>
+</blockquote>
+<p>注意：如注册商标人死亡，1年内没有办理商标转移手续，其商标可被任何人注册</p>
+<p><br></p>
+<h2 id="5-专利法及实施细则"><a href="#5-专利法及实施细则" class="headerlink" title="5.专利法及实施细则"></a>5.专利法及实施细则</h2><p>（1）定义</p>
+<blockquote>
+<p>客体：发明创造，也就是其保护的对象<br>发明创造：指发明、实用新型和外观设计<br>发明：指对产品、方法或者其改进所提出的新的技术方案<br>实用新型：指对产品的形状、构造及其组合，提出的适于实用的新的技术方案<br>外观设计：指对产品的形状、图案及其组合，以及色彩与形状、图案的结合所作出的富有美感并适于工业应用的新设计</p>
+</blockquote>
+<p>（2）申请专利权条件</p>
+<blockquote>
+<p>新颖性<br>创造性<br>实用性</p>
+</blockquote>
+<p>注意：对于科学发现、智力活动的规则和方法、疾病的诊断和治疗方法、动植物品种及用原子核变换方法获得的物质，不能够被授予专利权</p>
+<p>（3）确定专利权人</p>
+<p>① 定义：</p>
+<blockquote>
+<p>专利权归属于发明人或者设计人，这是指对发明创造作出创造性贡献的人<br>在发明创造过程中，只负责组织、提供方便、从事辅助工作的都不属于发明人或设计人</p>
+</blockquote>
+<p>② 职务发明：执行单位任务，或者利用本单位的物质技术条件所完成的发明创造，被视为职务发明创造</p>
+<blockquote>
+<p>在本职工作中作出的发明创造<br>在履行单位交付的本职工作之外的任务所做出的发明创造<br>退职、退休或者调动工作后 1 年内做的，与其原来承担的任务相关的发明创造</p>
+</blockquote>
+<p>③ 合作发明、设计：</p>
+<blockquote>
+<p>对于合作发明、设计的，其专利权应属共同所有，但可以根据合作方之间另行签订的合同来确定专利权的归属</p>
+</blockquote>
+<p>④ 委托发明：</p>
+<blockquote>
+<p>一个单位或者个人接受其他单位或个人的委托，所完成的发明创造，若没有签订合同规定专利权归属，则专利权归属发明、设计者<br>非职务发明，则单位无权压制个人进行专利权申请。对于多个相类似的专利申请，则专利权归属最先提交的申请人</p>
+</blockquote>
+<p>（4）专利权</p>
+<p>① 定义：</p>
+<blockquote>
+<p>未经专利权人许可，实施专利的，就属于侵犯专利权，专利权人可以起诉，申请调解<br>处 3 倍以下，或 5 万元以下的罚款<br>专利诉讼的有效期是 2年，以专利权人得知侵权行为之日起计算</p>
+</blockquote>
+<p>② 不视为侵权行为</p>
+<blockquote>
+<p>① 对于专利权人制造、进口或者经专利权人许可而制造、进口的专利产品，或者依照专利方法直接获得的产品售出后，使用、许诺销售或者销售该产品<br>② 在专利申请日前已经制造相同产品，使用相同方法或者已经作好制造、使用的必要准备，并且在原有范围内继续制造、使用<br>③ 临时通过中国的国外运输工具，按其自身需要使用了专利<br>④ 专为科学研究和实验而使用有关专利的。我国现行专利法规定的发明专利权保护期限为 20 年，实用新型和外观设计专利权的期限为 10 年，均从申请日开始计算。</p>
+</blockquote>
+<p>（5）反不正当竞争法</p>
+<p>① 定义：</p>
+<blockquote>
+<p>指经营者违反规定，损害其他经营者的合法权益，扰乱社会经济秩序的行为</p>
+</blockquote>
+<p>② 行为：</p>
+<blockquote>
+<p>采用不正当的市场交易手段利用垄断的地位，来排挤其他经营者的公平竞争<br>利用政府职权，限定商品购买，以及对商品实施地方保护主义<br>利用财务或其他手段进行贿赂，以达到销售商品的目的<br>利用广告或者其他方法，对商品的质量、成分、性能、用途、生产者、有效期、产地等进行误导性的虚假宣传<br>以低于成本价进行销售，排挤竞争对手。不过对于鲜活商品、有效期将至及积压产品的处理，以及季节性降价，清债、转产、歇业等原因进行降价销售均不属于不正当竞争<br>搭售违背购买者意愿的商品<br>采用不正当的有奖销售。例如谎称有奖，却是内定人员中奖；利用有奖销售推销价高产品；奖金超过 5 000 元的抽奖式有奖销售<br>捏造、散布虚伪事实，损害对手商誉<br>串通投标，排挤对手</p>
+</blockquote>
+<p>③ 罚款说明</p>
+<blockquote>
+<p>（1）对于假冒注册商标、姓名、认证、产地的不正当竞争行为根据《商标法》进行处罚；仿冒知名商标的，则可以根据情节处违法所得的 1 万～3 万元罚款，特别严重的追究<br>刑事责任<br>（2）通过贿赂达到销售目的，根据情节处以 1 万～20 万元罚款，严重的追究刑事责任。<br>（3）利用独占地位进行经营，根据情节处以 5 万～20 万元罚款；借此销售质次价高商品的，则没收违法所得，并罚款 1 万～3 万元。<br>（4）采用广告误导消费者，处以 1 万～20 万元罚款。<br>（5）采用不合法的有奖销售的，根据情节处以 1 万～10 万元的罚款。<br>（6）串通投标者，根据情节处以 1 万～20 万元的罚款。</p>
+</blockquote>
+<p>④ 侵犯商业秘密(按情节处以 1 万～20 万元罚款)：</p>
+<blockquote>
+<p>（1）以盗窃、利诱、胁迫等不正当手段获取别人的商业秘密<br>（2）披露、使用以不正当手段获取的商业秘密<br>（3）违反有关保守商业秘密的要求约定，披露、使用其掌握的商业秘密</p>
+</blockquote>
+
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <hr>
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-06-24T17:13:28+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>最后更新于 2019年6月24日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/软考/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>软考</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/架构师/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>架构师</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.yiyuclub.club/2019/06/11/（软考架构师笔记十八）软件的知识产权保护/&title=（软考架构师笔记十八）软件的知识产权保护 | 易语的博客&summary=（软考架构师笔记十八）软件的知识产权保护"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.yiyuclub.club/2019/06/11/（软考架构师笔记十八）软件的知识产权保护/&title=（软考架构师笔记十八）软件的知识产权保护 | 易语的博客&summary=（软考架构师笔记十八）软件的知识产权保护"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=http://www.yiyuclub.club/2019/06/11/（软考架构师笔记十八）软件的知识产权保护/&title=（软考架构师笔记十八）软件的知识产权保护 | 易语的博客&summary=（软考架构师笔记十八）软件的知识产权保护"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+            <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                            <h4>
+                                <a href="/2019/06/12/（软考架构师笔记十九）标准化知识/" rel="prev" title="（软考架构师笔记十九）标准化知识">
+                                  
+                                      （软考架构师笔记十九）标准化知识
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/软考/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>软考</a> <a class="tag" href="/tags/架构师/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>架构师</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2019/06/11/（软考架构师笔记十七）系统的可靠性分析与设计/" rel="prev" title="（软考架构师笔记十七）系统的可靠性分析与设计">
+                                    
+                                        （软考架构师笔记十七）系统的可靠性分析与设计
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/软考/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>软考</a> <a class="tag" href="/tags/架构师/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>架构师</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '（软考架构师笔记十八）软件的知识产权保护',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              <section class='widget grid'>
+  
+<header class='pure'>
+  <div><i class="fas fa-map-signs fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;站内导航</div>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="grid navgation">
+      
+        <li><a class="flat-box" title="/" href="/"
+          
+          
+          id="home">
+          
+            <i class="fas fa-clock fa-fw" aria-hidden="true"></i>
+          
+          近期发布
+        </a></li>
+      
+        <li><a class="flat-box" title="/archives/" href="/archives/"
+          
+            rel="nofollow"
+          
+          
+          id="archives">
+          
+            <i class="fas fa-archive fa-fw" aria-hidden="true"></i>
+          
+          全部文章
+        </a></li>
+      
+        <li><a class="flat-box" title="/projects/" href="/projects/"
+          
+          
+          id="projects">
+          
+            <i class="fas fa-code-branch fa-fw" aria-hidden="true"></i>
+          
+          我的项目
+        </a></li>
+      
+        <li><a class="flat-box" title="/friends/" href="/friends/"
+          
+            rel="nofollow"
+          
+          
+          id="friends">
+          
+            <i class="fas fa-link fa-fw" aria-hidden="true"></i>
+          
+          我的友链
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/material-x/" href="https://xaoxuu.com/wiki/material-x/"
+          
+            rel="nofollow"
+          
+          
+          id="https:xaoxuu.comwikimaterial-x">
+          
+            <i class="fas fa-book fa-fw" aria-hidden="true"></i>
+          
+          常用代码
+        </a></li>
+      
+        <li><a class="flat-box" title="/about/" href="/about/"
+          
+            rel="nofollow"
+          
+          
+          id="about">
+          
+            <i class="fas fa-info-circle fa-fw" aria-hidden="true"></i>
+          
+          与我相关
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-概念"><span class="toc-text">1.概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-著作权法及实施条例"><span class="toc-text">2.著作权法及实施条例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-计算机软件保护条例"><span class="toc-text">3. 计算机软件保护条例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-商标法及实施条例"><span class="toc-text">4.商标法及实施条例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-专利法及实施细则"><span class="toc-text">5.专利法及实施细则</span></a></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml"
+            class="social fas fa-rss flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://mail.qq.com"
+            class="social fas fa-envelope flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/hhsyy"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="http://music.163.com"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>
+    本站使用
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">易语的博客</a>
+    作为主题
+    
+      ，
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+    。
+  </div>
+ <div>
+ <i class="fas fa-chart-area"></i><span class="post-count">字数统计：78.6k</span>
+ </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["https://img.vim-cn.com/f6/78aed21213230b9220f310f9ea6c822b011846.jpg", "https://img.vim-cn.com/d5/b004c81a13aea401375d03b1258ecadbfcbaa7.jpg", "https://img.vim-cn.com/4c/8e7294998989454b2dcd2624373d5a699c4414.jpg"],
+          {
+            duration: "6000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+          ["https://img.vim-cn.com/f6/78aed21213230b9220f310f9ea6c822b011846.jpg", "https://img.vim-cn.com/d5/b004c81a13aea401375d03b1258ecadbfcbaa7.jpg", "https://img.vim-cn.com/4c/8e7294998989454b2dcd2624373d5a699c4414.jpg"],
+          {
+            duration: "6000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+    
+      <script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js"></script>
+    
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'false' == true;
+  var verify = 'false' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "5lQzNxqx4MqwUJkUl8p8gMDn-gzGzoHsz",
+    appKey: "YXL8AD7S2KBv7efGilMYDOJl",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'mp',
+    lang:'zh-cn',
+    highlight:'false'
+  })
+  </script>
+
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/js/app.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/js/search.js"></script>
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

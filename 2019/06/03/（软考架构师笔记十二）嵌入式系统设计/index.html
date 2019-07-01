@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>（软考架构师笔记十二）嵌入式系统设计 | 易语的博客</title>
+  
+  
+  <meta name="description" content="这是易语的博客">
+  
+
+  
+  <link rel="alternate" href="/atom.xml" title="易语的博客">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/css/style.css">
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>yiyu's blog</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/"
+            
+            
+            id="home">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;最新文章
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/projects/"
+            
+            
+            id="projects">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;我的项目
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/friends/"
+            
+              rel="nofollow"
+            
+            
+            id="friends">
+            <i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/about/"
+            
+              rel="nofollow"
+            
+            
+            id="about">
+            <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于相关
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          易语的博客
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/"
+                  
+                  
+                  id="home">
+									<i class='fas fa-grin fa-fw'></i>&nbsp;最新文章
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="categories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;文章分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/tags/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="tags">
+									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签汇总
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="archives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;全部文章
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;最新文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/archives/"
+                
+                  rel="nofollow"
+                
+                
+                id="archives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;全部文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/projects/"
+                
+                
+                id="projects">
+								<i class='fas fa-code-branch fa-fw'></i>&nbsp;我的项目
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/friends/"
+                
+                  rel="nofollow"
+                
+                
+                id="friends">
+								<i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="https://xaoxuu.com/wiki/material-x/"
+                
+                  rel="nofollow"
+                
+                
+                id="https:xaoxuu.comwikimaterial-x">
+								<i class='fas fa-book fa-fw'></i>&nbsp;主题文档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2019/06/03/（软考架构师笔记十二）嵌入式系统设计/">
+        （软考架构师笔记十二）嵌入式系统设计
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    <a href="http://www.yiyuclub.club" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>易语</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-06-03</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/学习笔记/软考架构师/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>学习笔记&nbsp;/&nbsp;软考架构师</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          <p>（软考架构师笔记十二）嵌入式系统设计<br><a id="more"></a></p>
+<h2 id="1-概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h2><blockquote>
+<p>一种以应用为中心，以计算机技术为基础，可以适应不同应用对功能、可靠性、成本、体积、功耗等方面的要求，集可配置，可裁减的软、硬件于一体的专用计算机系统</p>
+</blockquote>
+<p>三要素：</p>
+<blockquote>
+<p>嵌入性：计算机计算机嵌入到对象系统中，且满足对象系统的环境要求<br>专用性：软、硬件的裁剪性，满足对象要求的最小软、硬件配置<br>计算机系统：嵌入式系统必须是一个能满足对象系统控制要求的计算机系统</p>
+</blockquote>
+<p>特点：</p>
+<blockquote>
+<p>系统专用性强<br>系统实时性强<br>软、硬件依赖性强<br>处理器专用<br>多种技术紧密结合<br>系统透明性<br>系统资源受限</p>
+</blockquote>
+<p><br></p>
+<h2 id="2-组成"><a href="#2-组成" class="headerlink" title="2.组成"></a>2.组成</h2><p>（1）定义</p>
+<blockquote>
+<p>硬件：嵌入式处理器、存储器和外部设备<br>软件：系统软件、应用支撑软件和应用软件</p>
+</blockquote>
+<p><br></p>
+<h2 id="2-硬件架构"><a href="#2-硬件架构" class="headerlink" title="2.硬件架构"></a>2.硬件架构</h2><p>（1）嵌入式基本硬件架构图</p>
+<p> <img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/ruankao/twelve/ruankao12-1.png" height="70%" width="100%"></p>
+<p>（2）嵌入式处理器</p>
+<p>① 核心：各种类型的嵌入式处理器</p>
+<p>② 类别：</p>
+<blockquote>
+<p>嵌入式微处理器（EMPU）<br>嵌入式微控制器（EMCU）<br>嵌入式数字信号处理器（EDSP）<br>嵌入式片上系统</p>
+</blockquote>
+<p>（3）总线</p>
+<p>① 定义：</p>
+<blockquote>
+<p>连接计算机系统内部各个部件的共享高速通路</p>
+</blockquote>
+<p>② 分类：</p>
+<blockquote>
+<p>片内总线：嵌入式微处理器内的CPU 与片内其他部件连接的总线<br>片外总线：总线控制器集成在微处理器内部或外部芯片上的用于连接外部设备的总线</p>
+</blockquote>
+<p>③ 代表：</p>
+<blockquote>
+<p>先进微控制总线（AMBA总线）<br>外围构件互围总线（PCI 总线）<br>Avalon总线</p>
+</blockquote>
+<p>（4）存储器</p>
+<blockquote>
+<p>高速缓存：Cache 全部集成在嵌入式微处理器内部，分为数据Cache、指令 Cache 和混合 Cache<br>主存：处理器能够直接访问的存储器，用来存放系统和用户的程序和数据<br>外存：是不与运算器直接联系的后备存储器，用来存放不常用的或暂不使用的信息</p>
+</blockquote>
+<p>（5）I/O 设备与接口</p>
+<p><br></p>
+<h2 id="3-嵌入式软件架构"><a href="#3-嵌入式软件架构" class="headerlink" title="3.嵌入式软件架构"></a>3.嵌入式软件架构</h2><p> <img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/ruankao/twelve/ruankao12-2.png" height="50%" width="70%"></p>
+<blockquote>
+<p>操作系统： 操作系统内核、应用程序接口、设备驱动程序接口等几部分组成<br>应用支撑软件：由窗口系统、网络系统、数据库管理系统及 Java 虚拟机等几部分组成<br>应用软件</p>
+</blockquote>
+<p><br></p>
+<h2 id="4-嵌入式开发平台与调试环境"><a href="#4-嵌入式开发平台与调试环境" class="headerlink" title="4.嵌入式开发平台与调试环境"></a>4.嵌入式开发平台与调试环境</h2><p>（1）开发平台</p>
+<p>① 使用的是交叉式开发方法</p>
+<p>② 交叉平台开发环境</p>
+<p>定义：软件在一个通用的平台上开发，而在另一个嵌入式目标平台上运行<br>宿主机系统：用于开发的机器系统<br>目标机系统：被开发的嵌入式系统<br>二者相同：本地开发</p>
+<p>② 交叉编译环境：由宿主机提供</p>
+<p>（2）嵌入式开发调试<br>① 介绍：由于嵌入式系统条件限制，调试的方式不能和通用的方式一样在同一台机子调试，通常采用交叉方式</p>
+<p>② 方式分类：</p>
+<blockquote>
+<p>直接调试法：将目标代码下载到目标机上，让其执行，通过观察指示灯来判断程序的运行状态</p>
+<p>调试监控法（插桩法）：目标机和宿主机一般通过串行口、并行口或以太网相连接，采用这种方法还需要在宿主机的调试器内和目标机的操作系统上分别启动一个功能模块，然后通过这两个功能模块的相互通信来实现对应用程序的调试</p>
+<p>在线仿真法：替代目标机上 CPU 的设备<br>片上调试法：CPU 芯片内部的一种用于支持调试的功能模块</p>
+<p>模拟器法：运行于宿主机上的一个纯软件工具，它通过模拟目标机的指令系统或目标机操作系统的系统调用来达到在宿主机上运行和调试嵌入式应用程序的目的</p>
+</blockquote>
+<p><br></p>
+<h2 id="5-嵌入式网络系统"><a href="#5-嵌入式网络系统" class="headerlink" title="5.嵌入式网络系统"></a>5.嵌入式网络系统</h2><p>（1）定义：用于连接各种嵌入式系统，使之可以互相传递信息、共享资源的网络系统</p>
+<p>（2）现场总线网(工业自动化领域的计算机局域网)</p>
+<p>① 定义：</p>
+<blockquote>
+<p>是一种将数字传感器、变换器、工业仪表及控制执行机构等现场设备与工业过程控制单元、现场操作站等互相连接而成的网络</p>
+</blockquote>
+<p>（3）家庭信息网</p>
+<p>① 定义：</p>
+<blockquote>
+<p>是一种把家庭范围内的个人计算机、家用电器、水、电、气仪表、照明设备和网络设备、安全设备连接在一起的局域网</p>
+</blockquote>
+<p>② 功能：集中控制上述设备并将其接入Internet，以共享网络资源和服务</p>
+<p>（4）无线数据通信网</p>
+<p>① 定义：是一种通过无线电波传送数据的网络系统</p>
+<p>② 分类：</p>
+<blockquote>
+<p>短程无线网： 802.11、蓝牙、IrDA 及 HomeRF<br>无线inernet：移动无线接入技术、固定无线接入技术</p>
+</blockquote>
+<p>（2）嵌入式Internet</p>
+<p>① 接入方式：</p>
+<blockquote>
+<p>集成了 TCP/IP 协议栈及相关软件，这类设备可以作为 Internet 的一个节点，分配有 IP 地址，与 Internet 直接互联</p>
+<p>通 Internet，即采用瘦设备方案，设备不直接接入 Internet，不需要复杂的TCP/IP 协议全集，而是通过接入设备接入 Internet</p>
+</blockquote>
+<p>（3）嵌入式 TCP/IP 协议栈</p>
+<blockquote>
+<p>嵌入式协议栈的调用接口与普通的协议栈不同<br>嵌入式协议栈的可裁剪性<br>嵌入式协议栈的平台兼容性<br>嵌入式协议栈的高效率</p>
+</blockquote>
+<p><br></p>
+<h2 id="6-嵌入式数据库管理系统"><a href="#6-嵌入式数据库管理系统" class="headerlink" title="6.嵌入式数据库管理系统"></a>6.嵌入式数据库管理系统</h2><p>（1）使用环境特点</p>
+<blockquote>
+<p>设备随时移动性<br>网络频繁断接<br>网络条件多样化<br>通信能力不对称</p>
+</blockquote>
+<p>（2）系统组成与关键技术<br> <img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/ruankao/twelve/ruankao12-3.png" height="50%" width="100%"></p>
+<p>① 嵌入式数据库管理系统</p>
+<p>② 同步服务器</p>
+<p>③ 数据服务器</p>
+<p>④ 连接网络</p>
+<p><br></p>
+<h2 id="7-实时系统与嵌入式操作系统"><a href="#7-实时系统与嵌入式操作系统" class="headerlink" title="7.实时系统与嵌入式操作系统"></a>7.实时系统与嵌入式操作系统</h2><p>（1）实时系统：<br>① 定义：对外部事件能够及时响应的系统</p>
+<p>② 实时系统与嵌入式操作系统关系：</p>
+<blockquote>
+<p>逻辑（或功能）正确，是指系统对外部事件的处理能够产生正确的结果<br>时间正确，是指系统对外部事件的处理必须在预定的周期内完成<br>死线（Deadline）或时限、死限、截止时间，是指系统必须对外部事件进行处理的最迟时间界限<br>实时系统，是指功能正确和时间正确同时满足的系统</p>
+</blockquote>
+<p>③ 分类：</p>
+<blockquote>
+<p>强实时系统<br>一般实时系统<br>弱实时系统<br>硬实时系统<br>软实时系统</p>
+</blockquote>
+<p>（2）嵌入式操作系统<br>① 定义：</p>
+<blockquote>
+<p>运行在嵌入式计算机系统上支持嵌入式应用程序的操作系统，是用于控制和管理嵌入式系统中的硬件和软件资源、提供系统服务的软件集合</p>
+</blockquote>
+<p>② 特点：</p>
+<blockquote>
+<p>微型化<br>代码质量高<br>专业化<br>实时性强<br>可裁减、可配置</p>
+</blockquote>
+<p>③ 分类</p>
+<blockquote>
+<p>根据获取方式：商业型和免费型<br>实时性：实时操作系统和非实时操作系统</p>
+</blockquote>
+<p>（3）实时嵌入式操作系统</p>
+<p>① 分类：</p>
+<blockquote>
+<p>实时内核型的 RTEOS：驱动程序传统嵌在内核之中，应用程序和中间件实现在标准的应用程序接口之上<br>通用型的 RTEOS：驱动程序并非深度嵌入到内核中，而是在内核之上实现，并且仅包含少数必要的驱动程序，应用程序和中间件可以直接在驱动程序之上实现，而不必在标准的 APIs 实现</p>
+</blockquote>
+<p> <img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/ruankao/twelve/ruankao12-4.png" height="30%" width="75%"></p>
+<p>② 特性：</p>
+<blockquote>
+<p>满足嵌入式应用的高可靠性；<br>满足应用需要的可裁减能力；<br>内存需求少；<br>运行的可预测性；<br>采用实时调度策略；<br>系统的规模紧凑；<br>支持从 ROM 或 RAM 上引导和运行；<br>对不同的硬件平台均有更好的可移植性。</p>
+</blockquote>
+<p>③ 性能指标：</p>
+<blockquote>
+<p>任务切换时间<br>中断处理相关的时间指标<br>系统响应时间</p>
+</blockquote>
+<p><br></p>
+<h2 id="嵌入式系统的开发设计"><a href="#嵌入式系统的开发设计" class="headerlink" title=".嵌入式系统的开发设计"></a>.嵌入式系统的开发设计</h2><p>（1）目的：定义系统的功能、决定系统的架构，并将功能映射到系统实现架构上</p>
+<p>（2）设计特点：</p>
+<blockquote>
+<p>软、硬件协同并行开发；<br>微处理器的类型多种多样；<br>实时嵌入式操作系统具有多样性；<br>与通用系统开发相比，可利用系统资源很少；<br>应用支持少；<br>要求特殊的开发工具；<br>软、硬件都要很健壮；<br>调试很困难。</p>
+</blockquote>
+<p>（3）设计指标</p>
+<blockquote>
+<p>非重复性工程成本(NRE成本)<br>单位成本<br>大小<br>性能<br>功率<br>灵活性<br>上市时间<br>可维护性<br>安全性<br>正确性</p>
+</blockquote>
+<p>（4）设计挑战</p>
+<blockquote>
+<p>需要多少硬件<br>如何满足时限<br>如何减少系统的功耗<br>如何满足系统可升级性<br>如何保证系统的可靠性<br>测试复杂性<br>可视性和可控制性有限<br>开发环境受限</p>
+</blockquote>
+<p>（5）开发模型与设计流程</p>
+<p>① 常用开发模型</p>
+<blockquote>
+<p>瀑布模型<br>螺旋模型<br>逐步求精模型<br>层次模型</p>
+</blockquote>
+<p>（6）设计方法</p>
+<blockquote>
+<p>嵌入式系统软件的开发过程可以分为项目计划、可行性分析、需求分析、概要设计、详细设计、程序建立、下载、调试、固化、测试及运行等几个阶段</p>
+</blockquote>
+<p> <img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/ruankao/twelve/ruankao12-5.png" height="70%" width="90%"></p>
+<p>（7）核心技术</p>
+<p>① 处理器技术</p>
+<blockquote>
+<p>通用处理器<br>单用途处理器<br>专用处理器</p>
+</blockquote>
+<p>② IC 技术</p>
+<blockquote>
+<p>全定制/VLSI（Very Large Scale Integrated Circuites，超大规模集成电路）<br>半定制/ASIC（Application Specific Integrated Circuit，专用集成电路）<br>可编程/ASIC</p>
+</blockquote>
+<p>③ 设计/验证技术</p>
+<blockquote>
+<p>芯片级设计技术：核心是编译/综合、库/IP（Intellectual Property，知识产权）、测试/验证<br>软件设计技术：核心是软件语言</p>
+</blockquote>
+<p>（8）设计环境</p>
+<blockquote>
+<p>与嵌入式操作系统配套的开发环境<br>与处理器芯片配套的开发环境<br>与具体应用平台配套的开发环境<br>其他类的开发环境</p>
+</blockquote>
+<p>（9）设计模型</p>
+<p>① 状态机模型</p>
+<blockquote>
+<p>用一组可能的状态来描述系统的行为，系统在任何时刻只能处于其中一个状态，也可以描述由输入确定的状态转移，最后可以描述在某个状态下或状态转移期间可能发生的操作</p>
+</blockquote>
+<p>② 数据流模型</p>
+<blockquote>
+<p>并发多任务模型派生出的一种模型，该模型将系统的行为描述为一组结点和边，其中结点表示变换，边表示从一个结点到另一个结点的数据流向。每个结点使用来自其输入边的数据，执行变换并在其输出边上产生数据</p>
+</blockquote>
+<p>③ 并发进程模型</p>
+<blockquote>
+<p>由一组进程构成，每个进程是一个顺序执行的过程，各进程间可以并发执行。并发进程模型提供创建、终止、暂停、恢复和连接进程的操作。进程在执行中可以相互通信，交换数据。进程间通信可以采用两种方式：共享变量和消息传递。信号量、临界区、管程和路径表达式等用来对并发进程的操作进行同步</p>
+</blockquote>
+<p>④ 面向对象模型</p>
+<blockquote>
+<p>一个对象向另一个对象发送消息后，若不需要或不立即需要消息的处理结果，前者不必等待后者处理消息，消息发送者和消息接受者可以并发执行。对象不都是处于被动的提供服务状态，它们中的一些除了能通过接收消息向外提供服务外，还可以有自己的事务处理。一个对象往往可以同时处理多个消息</p>
+</blockquote>
+<p>并发与对象结合的两条途径：</p>
+<blockquote>
+<p>在面向对象模型中引进并发机制，充分利用面向对象技术刻画客观世界的良好模<br>型能力和面向对象的各个重要特性，同时把其潜在的并发能力描述出来，使其适合于描述并<br>发计算<br>在传统并发模型中引进面向对象思想</p>
+</blockquote>
+<p>面向对象的并发模型的两种类型：</p>
+<blockquote>
+<p>隐式并发模型：推迟并发设计，将对象建模作为建模基础<br>显式并发模型：首先考虑并发，应先把并发概念和对象概念分开</p>
+</blockquote>
+<p>（10）需求分析</p>
+<blockquote>
+<p>功能性需求：说明这个系统必须做什么，而非功能性需求说明系统的其他属性<br>非功能性需求</p>
+</blockquote>
+<p>（11）系统设计</p>
+<p>① 类别：</p>
+<blockquote>
+<p>协同合成工具： POLIS、COSYMA和Chinook<br>协同模拟工具：PTOLEMY、TSS</p>
+</blockquote>
+<p>② 系统架构设计（先考虑软件架构再考虑硬件架构）</p>
+<blockquote>
+<p>原始框图<br>软件系统架构<br>硬件系统架构</p>
+</blockquote>
+<p>③ 硬件子系统设计</p>
+<p>开发环境组成：</p>
+<blockquote>
+<p>目标硬件平台<br>嵌入式操作系统<br>编程语言<br>开发工具</p>
+</blockquote>
+<p>考虑因素：</p>
+<blockquote>
+<p>选择处理器技术<br>通用嵌入式处理器的选择<br>硬件设计的注意事项</p>
+</blockquote>
+<p>④ 软件子系统设计（按软件设计的方式即可）</p>
+<p>考虑因素：</p>
+<blockquote>
+<p>操作系统的选择<br>编程语言的选择<br>软件开发过程<br>软件开发文档</p>
+</blockquote>
+<p>（12）系统集成与测试</p>
+<blockquote>
+<p>软件测试<br>硬件测试<br>单元测试</p>
+</blockquote>
+
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <hr>
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-06-24T17:13:28+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>最后更新于 2019年6月24日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/软考/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>软考</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/架构师/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>架构师</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.yiyuclub.club/2019/06/03/（软考架构师笔记十二）嵌入式系统设计/&title=（软考架构师笔记十二）嵌入式系统设计 | 易语的博客&summary=（软考架构师笔记十二）嵌入式系统设计"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.yiyuclub.club/2019/06/03/（软考架构师笔记十二）嵌入式系统设计/&title=（软考架构师笔记十二）嵌入式系统设计 | 易语的博客&summary=（软考架构师笔记十二）嵌入式系统设计"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=http://www.yiyuclub.club/2019/06/03/（软考架构师笔记十二）嵌入式系统设计/&title=（软考架构师笔记十二）嵌入式系统设计 | 易语的博客&summary=（软考架构师笔记十二）嵌入式系统设计"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+            <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                            <h4>
+                                <a href="/2019/06/04/（软考架构师笔记十三）开发管理/" rel="prev" title="（软考架构师笔记十三）开发管理">
+                                  
+                                      （软考架构师笔记十三）开发管理
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/软考/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>软考</a> <a class="tag" href="/tags/架构师/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>架构师</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2019/05/31/（软考架构师笔记十一）测试评审方法/" rel="prev" title="（软考架构师笔记十一）测试评审方法">
+                                    
+                                        （软考架构师笔记十一）测试评审方法
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/软考/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>软考</a> <a class="tag" href="/tags/架构师/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>架构师</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '（软考架构师笔记十二）嵌入式系统设计',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              <section class='widget grid'>
+  
+<header class='pure'>
+  <div><i class="fas fa-map-signs fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;站内导航</div>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="grid navgation">
+      
+        <li><a class="flat-box" title="/" href="/"
+          
+          
+          id="home">
+          
+            <i class="fas fa-clock fa-fw" aria-hidden="true"></i>
+          
+          近期发布
+        </a></li>
+      
+        <li><a class="flat-box" title="/archives/" href="/archives/"
+          
+            rel="nofollow"
+          
+          
+          id="archives">
+          
+            <i class="fas fa-archive fa-fw" aria-hidden="true"></i>
+          
+          全部文章
+        </a></li>
+      
+        <li><a class="flat-box" title="/projects/" href="/projects/"
+          
+          
+          id="projects">
+          
+            <i class="fas fa-code-branch fa-fw" aria-hidden="true"></i>
+          
+          我的项目
+        </a></li>
+      
+        <li><a class="flat-box" title="/friends/" href="/friends/"
+          
+            rel="nofollow"
+          
+          
+          id="friends">
+          
+            <i class="fas fa-link fa-fw" aria-hidden="true"></i>
+          
+          我的友链
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/material-x/" href="https://xaoxuu.com/wiki/material-x/"
+          
+            rel="nofollow"
+          
+          
+          id="https:xaoxuu.comwikimaterial-x">
+          
+            <i class="fas fa-book fa-fw" aria-hidden="true"></i>
+          
+          常用代码
+        </a></li>
+      
+        <li><a class="flat-box" title="/about/" href="/about/"
+          
+            rel="nofollow"
+          
+          
+          id="about">
+          
+            <i class="fas fa-info-circle fa-fw" aria-hidden="true"></i>
+          
+          与我相关
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-概念"><span class="toc-text">1.概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-组成"><span class="toc-text">2.组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-硬件架构"><span class="toc-text">2.硬件架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-嵌入式软件架构"><span class="toc-text">3.嵌入式软件架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-嵌入式开发平台与调试环境"><span class="toc-text">4.嵌入式开发平台与调试环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-嵌入式网络系统"><span class="toc-text">5.嵌入式网络系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-嵌入式数据库管理系统"><span class="toc-text">6.嵌入式数据库管理系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-实时系统与嵌入式操作系统"><span class="toc-text">7.实时系统与嵌入式操作系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#嵌入式系统的开发设计"><span class="toc-text">.嵌入式系统的开发设计</span></a></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml"
+            class="social fas fa-rss flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://mail.qq.com"
+            class="social fas fa-envelope flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/hhsyy"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="http://music.163.com"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>
+    本站使用
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">易语的博客</a>
+    作为主题
+    
+      ，
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+    。
+  </div>
+ <div>
+ <i class="fas fa-chart-area"></i><span class="post-count">字数统计：78.6k</span>
+ </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["https://img.vim-cn.com/f6/78aed21213230b9220f310f9ea6c822b011846.jpg", "https://img.vim-cn.com/d5/b004c81a13aea401375d03b1258ecadbfcbaa7.jpg", "https://img.vim-cn.com/4c/8e7294998989454b2dcd2624373d5a699c4414.jpg"],
+          {
+            duration: "6000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+          ["https://img.vim-cn.com/f6/78aed21213230b9220f310f9ea6c822b011846.jpg", "https://img.vim-cn.com/d5/b004c81a13aea401375d03b1258ecadbfcbaa7.jpg", "https://img.vim-cn.com/4c/8e7294998989454b2dcd2624373d5a699c4414.jpg"],
+          {
+            duration: "6000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+    
+      <script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js"></script>
+    
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'false' == true;
+  var verify = 'false' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "5lQzNxqx4MqwUJkUl8p8gMDn-gzGzoHsz",
+    appKey: "YXL8AD7S2KBv7efGilMYDOJl",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'mp',
+    lang:'zh-cn',
+    highlight:'false'
+  })
+  </script>
+
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/js/app.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/js/search.js"></script>
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

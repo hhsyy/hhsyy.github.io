@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>MYSQL知识整理（MYSQL基础--DQL数据查询语言） | 易语的博客</title>
+  
+  
+  <meta name="description" content="这是易语的博客">
+  
+
+  
+  <link rel="alternate" href="/atom.xml" title="易语的博客">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/css/style.css">
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>yiyu's blog</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/"
+            
+            
+            id="home">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;最新文章
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/projects/"
+            
+            
+            id="projects">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;我的项目
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/friends/"
+            
+              rel="nofollow"
+            
+            
+            id="friends">
+            <i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/about/"
+            
+              rel="nofollow"
+            
+            
+            id="about">
+            <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于相关
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          易语的博客
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/"
+                  
+                  
+                  id="home">
+									<i class='fas fa-grin fa-fw'></i>&nbsp;最新文章
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="categories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;文章分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/tags/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="tags">
+									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签汇总
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="archives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;全部文章
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;最新文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/archives/"
+                
+                  rel="nofollow"
+                
+                
+                id="archives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;全部文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/projects/"
+                
+                
+                id="projects">
+								<i class='fas fa-code-branch fa-fw'></i>&nbsp;我的项目
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/friends/"
+                
+                  rel="nofollow"
+                
+                
+                id="friends">
+								<i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="https://xaoxuu.com/wiki/material-x/"
+                
+                  rel="nofollow"
+                
+                
+                id="https:xaoxuu.comwikimaterial-x">
+								<i class='fas fa-book fa-fw'></i>&nbsp;主题文档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2019/06/19/MYSQL知识整理（MYSQL基础-DQL数据查询语言）/">
+        MYSQL知识整理（MYSQL基础--DQL数据查询语言）
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    <a href="http://www.yiyuclub.club" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>易语</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-06-19</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/MYSQL/MYSQL基础/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>MYSQL&nbsp;/&nbsp;MYSQL基础</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          <p>MYSQL知识整理（MYSQL基础–DQL数据查询语言）<br><a id="more"></a></p>
+<h2 id="1-基础查询"><a href="#1-基础查询" class="headerlink" title="1.基础查询"></a>1.基础查询</h2><p>查询语句：</p>
+<pre><code>select * from tablename
+</code></pre><h2 id="2-条件查询"><a href="#2-条件查询" class="headerlink" title="2.条件查询"></a>2.条件查询</h2><p>查询语句：</p>
+<pre><code>select * from tablename where filed = &apos;condiction&apos;
+</code></pre><p>符号：</p>
+<pre><code>&gt;、 &lt;、 &lt;=、 &gt;=、 =、 &lt;&gt;
+BETWEEN...AND
+in，如in(数据1，数据2)
+like（通配符%、_）
+is null
+and 或 &amp;&amp;、or 或 || not 或 ! 
+</code></pre><h2 id="3-排序查询"><a href="#3-排序查询" class="headerlink" title="3.排序查询"></a>3.排序查询</h2><p>查询语句：</p>
+<pre><code>select * from tablename order by filed1 ASC，filed2 desc
+</code></pre><p>符号：</p>
+<pre><code>asc 默认，升序
+desc 降序
+</code></pre><h2 id="4-常见函数"><a href="#4-常见函数" class="headerlink" title="4.常见函数"></a>4.常见函数</h2><h3 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h3><blockquote>
+<p>count()： 统计不为null的列<br>max()：计算列最大值，如为字符串，使用字符串排序<br>min()：计算列最小值，如为字符串，使用字符串排序<br>sum()：计算列的和，如该列不为数字，其为0<br>avg()：计算列平均值，如该列不为数字，其为0</p>
+</blockquote>
+<h3 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h3><blockquote>
+<p> PI()：计算圆的面积<br> CEIL(-12.3)：向上取整,大于这个数的最小的整数，12<br> FLOOR(-12.3)：向下取整,小于这个数的最大整数，13<br> ROUND(12.54,-1)：四舍五入,第二个参数代表从小数点的第几位开始四舍五入,-1代表小数点前一位<br> ROUND(12.54)：小数点大于等于5，向上取整，13<br> ROUND(12.54,1)：#保留小数点后一位数，4小于5,向下取，12.5<br> ABS(-10)：取绝对值，10<br> RAND()：0-1左闭右开<br> POW(2,3)：幂运算，8<br> SQRT(25)：开方</p>
+</blockquote>
+<h3 id="字符串函数"><a href="#字符串函数" class="headerlink" title="字符串函数"></a>字符串函数</h3><blockquote>
+<p> LOWER(filed):转成小写<br> UPPER(filed):转成大写<br> CONCAT(‘e-‘,filed)：#拼接字符串<br> SUBSTR(‘yiyu’,1,3)：取子串,这里的1为初始位置,3是代表长度，yiy<br> REPLACE(‘yiyuhaha’,’haha’,’niubi’)：替换<br> TRIM(‘    a   a  ‘)：清除前后空格<br> LENGTH(‘aa’)：长度<br> LPAD(‘abc’,10,’<em>‘):左填充至第二个参数长度,用</em><br> RPAD(‘abc’,10,’<em>‘):左填充至第二个参数长度,用</em></p>
+</blockquote>
+<h3 id="日期函数"><a href="#日期函数" class="headerlink" title="日期函数"></a>日期函数</h3><blockquote>
+<p> NOW()：获取当前日期时间<br> SYSDATE()：获取当前系统日期时间<br> CURRENT_TIMESTAMP()：获取当前时间戳<br> CURRENT_TIME()：获取当前时间,时分秒<br> CURRENT_DATE()：获取当前日期:年月日<br> YEAR(NOW())：获取年<br> MONTH(date)：获取月<br> DAY(date)：获取得日<br> DATE_ADD(NOW(),interval 2 MONTH)：第一个参数日期的后2个月的时间<br> LAST_DAY(NOW())：传入时间的月份的最后一天</p>
+</blockquote>
+<h3 id="加密函数"><a href="#加密函数" class="headerlink" title="加密函数"></a>加密函数</h3><blockquote>
+<p>MD5(‘yiyu’):无法逆转<br>SHA(‘yiyu’)<br>PASSWORD(‘yiyu’)</p>
+</blockquote>
+<h2 id="5-分组查询"><a href="#5-分组查询" class="headerlink" title="5.分组查询"></a>5.分组查询</h2><p>查询语句：</p>
+<pre><code>select username,count(userclass) from username group by username having count(userclass)&gt;5
+</code></pre><p>符号：</p>
+<blockquote>
+<p>group by：分组字段<br>having ：分组条件</p>
+</blockquote>
+<h2 id="6-连接查询（多表查询）"><a href="#6-连接查询（多表查询）" class="headerlink" title="6.连接查询（多表查询）"></a>6.连接查询（多表查询）</h2><p>定义：如果查询涉及两个以上的表需连接查询</p>
+<h3 id="一-内连接"><a href="#一-内连接" class="headerlink" title="一 内连接"></a>一 内连接</h3><p>基本语句：</p>
+<pre><code>select 查询列表 from 表1 别名 inner join 表2 别名 on 连接条件;
+</code></pre><p>解释：</p>
+<blockquote>
+<p>可把 inner join on 省略 ，写成多表以英文逗号隔开</p>
+</blockquote>
+<h4 id="等值连接"><a href="#等值连接" class="headerlink" title="等值连接"></a>等值连接</h4><p>查询语句：</p>
+<pre><code>select a.username,b.personname from userInfo a,personInfo b where a.userid=b.userid
+</code></pre><p>解释：</p>
+<blockquote>
+<p>多表等值关联（交集）<br>多表中无顺序可言<br>为每个表起别名（默认该表名称为其别名）</p>
+</blockquote>
+<h4 id="非等值连接"><a href="#非等值连接" class="headerlink" title="非等值连接"></a>非等值连接</h4><p>查询语句：</p>
+<pre><code>select a.username,a.userid from userInfo a,personInfo b where a.userid BETWEEN  b.low AND b.high
+</code></pre><p>解释：</p>
+<blockquote>
+<p>条件为非等号<br>where 列名 BETWEEN … AND ….<br>根据 personInfo 的条件查询 userInfo 的数据</p>
+</blockquote>
+<h4 id="自连接（特殊等值连接）"><a href="#自连接（特殊等值连接）" class="headerlink" title="自连接（特殊等值连接）"></a>自连接（特殊等值连接）</h4><p>查询语句：</p>
+<pre><code>select a.username,b.username from userInfo a,userInfo b where a.userid=b.userid
+</code></pre><p>解释：</p>
+<blockquote>
+<p>自己与自己连接（该表与该表的副本连接）<br>解决同一个表，列与副本同一列逻辑关系的问题</p>
+</blockquote>
+<h3 id="二-外连接"><a href="#二-外连接" class="headerlink" title="二 外连接"></a>二 外连接</h3><p>定义： 分为主、从表，不管从表是否匹配，主表必显示（即显示主表所有数据，从表无，置null）</p>
+<h4 id="左外链接"><a href="#左外链接" class="headerlink" title="左外链接"></a>左外链接</h4><p>查询语句：</p>
+<pre><code>select a.username,b.personname from userInfo a left out join  personInfo b on a.userid=b.userid
+</code></pre><p>解释：</p>
+<blockquote>
+<p>主表为userInfo，会显示所有此数据<br>从表为personInfo,显示与主表关联的数据，如没有，显示null</p>
+</blockquote>
+<h4 id="右外链接"><a href="#右外链接" class="headerlink" title="右外链接"></a>右外链接</h4><p>查询语句：</p>
+<pre><code>select a.username,b.personname from userInfo a right out join  personInfo b on a.userid=b.userid
+</code></pre><p>解释：</p>
+<blockquote>
+<p>主表为personInfo，会显示所有此数据<br>从表为userInfo,显示与主表关联的数据，如没有，显示null</p>
+</blockquote>
+<h4 id="全外链接"><a href="#全外链接" class="headerlink" title="全外链接"></a>全外链接</h4><p>查询语句：</p>
+<pre><code>select a.username,b.personname from userInfo a full out join  personInfo b on a.userid=b.userid
+</code></pre><p>解释：</p>
+<blockquote>
+<p>无主从表，表之间互围主从表<br>会显示所有表的数据，如无关联，其两表相应部分设为null<br>mysql不支持此操作</p>
+</blockquote>
+<h3 id="三-交叉查询"><a href="#三-交叉查询" class="headerlink" title="三 交叉查询"></a>三 交叉查询</h3><p>查询语句：</p>
+<pre><code>SELECT a.username,b.username FROM useInfo a,personInfo b;
+</code></pre><p>解释：</p>
+<blockquote>
+<p>与表关系无关<br>显示多表的笛卡尔积</p>
+</blockquote>
+<h2 id="7-子查询"><a href="#7-子查询" class="headerlink" title="7.子查询"></a>7.子查询</h2><p>定义：一个查询是另一个查询的条件（可用于增、删、查、改）</p>
+<p>列举select子查询：</p>
+<p>select * from userInfo where userID in<br>（select userID from personInfo where personname=’yiyu’）</p>
+<p>解释：</p>
+<blockquote>
+<p> 根据 personInfo 的条件查询关联的userInfo信息<br> in表示符合子查询的条件，not in为不符合（或等号皆可）</p>
+</blockquote>
+<h2 id="8-分页查询"><a href="#8-分页查询" class="headerlink" title="8.分页查询"></a>8.分页查询</h2><p>定义：根据限制查询对应数量的数据</p>
+<p>基本语句：</p>
+<pre><code>SELECT * FROM table LIMIT [offset,] rows | rows OFFSET offset
+</code></pre><p>解释：</p>
+<blockquote>
+<p>offset为偏移量，表示从哪开始截取数据（不包含该值）<br>row表示截取多少行数据</p>
+</blockquote>
+<p>例子：截取1001-1010的数据</p>
+<pre><code>select * from orders where limit 1000,10;
+</code></pre><h2 id="9-联合查询"><a href="#9-联合查询" class="headerlink" title="9.联合查询"></a>9.联合查询</h2><p>定义：要查询的结果来自多个表，且多个表没有直接的连接关系，但查询的信息一致</p>
+<p>基本语句：</p>
+<pre><code>select * from userInfo
+union（all）
+select * from personInfo
+</code></pre><p>解释：</p>
+<blockquote>
+<p>多条查询语句的查询列数要一致<br>多条查询语句的查询的每一列的类型和顺序要保持一致<br>union 去重<br>union all 包含重复项</p>
+</blockquote>
+<p>注意：MYSQL 不支持intersect（交集）与minus（差集）</p>
+
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <hr>
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-06-24T17:13:28+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>最后更新于 2019年6月24日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/数据库/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>数据库</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/MYSQL/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>MYSQL</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.yiyuclub.club/2019/06/19/MYSQL知识整理（MYSQL基础-DQL数据查询语言）/&title=MYSQL知识整理（MYSQL基础--DQL数据查询语言） | 易语的博客&summary=MYSQL知识整理（MYSQL基础–DQL数据查询语言）"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.yiyuclub.club/2019/06/19/MYSQL知识整理（MYSQL基础-DQL数据查询语言）/&title=MYSQL知识整理（MYSQL基础--DQL数据查询语言） | 易语的博客&summary=MYSQL知识整理（MYSQL基础–DQL数据查询语言）"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=http://www.yiyuclub.club/2019/06/19/MYSQL知识整理（MYSQL基础-DQL数据查询语言）/&title=MYSQL知识整理（MYSQL基础--DQL数据查询语言） | 易语的博客&summary=MYSQL知识整理（MYSQL基础–DQL数据查询语言）"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+            <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                            <h4>
+                                <a href="/2019/06/20/MYSQL知识整理（MYSQL基础-DML数据操作语言）/" rel="prev" title="MYSQL知识整理（MYSQL基础--DML数据操作语言）">
+                                  
+                                      MYSQL知识整理（MYSQL基础--DML数据操作语言）
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/数据库/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>数据库</a> <a class="tag" href="/tags/MYSQL/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>MYSQL</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2019/06/18/MYSQL知识整理（MYSQL基础-基础内容）/" rel="prev" title="MYSQL知识整理（MYSQL基础--基础内容）">
+                                    
+                                        MYSQL知识整理（MYSQL基础--基础内容）
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/数据库/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>数据库</a> <a class="tag" href="/tags/MYSQL/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>MYSQL</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'MYSQL知识整理（MYSQL基础--DQL数据查询语言）',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              <section class='widget grid'>
+  
+<header class='pure'>
+  <div><i class="fas fa-map-signs fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;站内导航</div>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="grid navgation">
+      
+        <li><a class="flat-box" title="/" href="/"
+          
+          
+          id="home">
+          
+            <i class="fas fa-clock fa-fw" aria-hidden="true"></i>
+          
+          近期发布
+        </a></li>
+      
+        <li><a class="flat-box" title="/archives/" href="/archives/"
+          
+            rel="nofollow"
+          
+          
+          id="archives">
+          
+            <i class="fas fa-archive fa-fw" aria-hidden="true"></i>
+          
+          全部文章
+        </a></li>
+      
+        <li><a class="flat-box" title="/projects/" href="/projects/"
+          
+          
+          id="projects">
+          
+            <i class="fas fa-code-branch fa-fw" aria-hidden="true"></i>
+          
+          我的项目
+        </a></li>
+      
+        <li><a class="flat-box" title="/friends/" href="/friends/"
+          
+            rel="nofollow"
+          
+          
+          id="friends">
+          
+            <i class="fas fa-link fa-fw" aria-hidden="true"></i>
+          
+          我的友链
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/material-x/" href="https://xaoxuu.com/wiki/material-x/"
+          
+            rel="nofollow"
+          
+          
+          id="https:xaoxuu.comwikimaterial-x">
+          
+            <i class="fas fa-book fa-fw" aria-hidden="true"></i>
+          
+          常用代码
+        </a></li>
+      
+        <li><a class="flat-box" title="/about/" href="/about/"
+          
+            rel="nofollow"
+          
+          
+          id="about">
+          
+            <i class="fas fa-info-circle fa-fw" aria-hidden="true"></i>
+          
+          与我相关
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-基础查询"><span class="toc-text">1.基础查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-条件查询"><span class="toc-text">2.条件查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-排序查询"><span class="toc-text">3.排序查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-常见函数"><span class="toc-text">4.常见函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#聚合函数"><span class="toc-text">聚合函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数学函数"><span class="toc-text">数学函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串函数"><span class="toc-text">字符串函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#日期函数"><span class="toc-text">日期函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加密函数"><span class="toc-text">加密函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-分组查询"><span class="toc-text">5.分组查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-连接查询（多表查询）"><span class="toc-text">6.连接查询（多表查询）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一-内连接"><span class="toc-text">一 内连接</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#等值连接"><span class="toc-text">等值连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#非等值连接"><span class="toc-text">非等值连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#自连接（特殊等值连接）"><span class="toc-text">自连接（特殊等值连接）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二-外连接"><span class="toc-text">二 外连接</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#左外链接"><span class="toc-text">左外链接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#右外链接"><span class="toc-text">右外链接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#全外链接"><span class="toc-text">全外链接</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三-交叉查询"><span class="toc-text">三 交叉查询</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-子查询"><span class="toc-text">7.子查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-分页查询"><span class="toc-text">8.分页查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-联合查询"><span class="toc-text">9.联合查询</span></a></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml"
+            class="social fas fa-rss flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://mail.qq.com"
+            class="social fas fa-envelope flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/hhsyy"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="http://music.163.com"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>
+    本站使用
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">易语的博客</a>
+    作为主题
+    
+      ，
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+    。
+  </div>
+ <div>
+ <i class="fas fa-chart-area"></i><span class="post-count">字数统计：78.6k</span>
+ </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["https://img.vim-cn.com/f6/78aed21213230b9220f310f9ea6c822b011846.jpg", "https://img.vim-cn.com/d5/b004c81a13aea401375d03b1258ecadbfcbaa7.jpg", "https://img.vim-cn.com/4c/8e7294998989454b2dcd2624373d5a699c4414.jpg"],
+          {
+            duration: "6000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+          ["https://img.vim-cn.com/f6/78aed21213230b9220f310f9ea6c822b011846.jpg", "https://img.vim-cn.com/d5/b004c81a13aea401375d03b1258ecadbfcbaa7.jpg", "https://img.vim-cn.com/4c/8e7294998989454b2dcd2624373d5a699c4414.jpg"],
+          {
+            duration: "6000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+    
+      <script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js"></script>
+    
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'false' == true;
+  var verify = 'false' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "5lQzNxqx4MqwUJkUl8p8gMDn-gzGzoHsz",
+    appKey: "YXL8AD7S2KBv7efGilMYDOJl",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'mp',
+    lang:'zh-cn',
+    highlight:'false'
+  })
+  </script>
+
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/js/app.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/js/search.js"></script>
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

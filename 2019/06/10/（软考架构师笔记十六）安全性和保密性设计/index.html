@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>（软考架构师笔记十六）安全性和保密性设计 | 易语的博客</title>
+  
+  
+  <meta name="description" content="这是易语的博客">
+  
+
+  
+  <link rel="alternate" href="/atom.xml" title="易语的博客">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/css/style.css">
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>yiyu's blog</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/"
+            
+            
+            id="home">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;最新文章
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/projects/"
+            
+            
+            id="projects">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;我的项目
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/friends/"
+            
+              rel="nofollow"
+            
+            
+            id="friends">
+            <i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/about/"
+            
+              rel="nofollow"
+            
+            
+            id="about">
+            <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于相关
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          易语的博客
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/"
+                  
+                  
+                  id="home">
+									<i class='fas fa-grin fa-fw'></i>&nbsp;最新文章
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="categories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;文章分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/tags/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="tags">
+									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签汇总
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="archives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;全部文章
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;最新文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/archives/"
+                
+                  rel="nofollow"
+                
+                
+                id="archives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;全部文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/projects/"
+                
+                
+                id="projects">
+								<i class='fas fa-code-branch fa-fw'></i>&nbsp;我的项目
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/friends/"
+                
+                  rel="nofollow"
+                
+                
+                id="friends">
+								<i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="https://xaoxuu.com/wiki/material-x/"
+                
+                  rel="nofollow"
+                
+                
+                id="https:xaoxuu.comwikimaterial-x">
+								<i class='fas fa-book fa-fw'></i>&nbsp;主题文档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2019/06/10/（软考架构师笔记十六）安全性和保密性设计/">
+        （软考架构师笔记十六）安全性和保密性设计
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    <a href="http://www.yiyuclub.club" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>易语</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-06-10</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/学习笔记/软考架构师/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>学习笔记&nbsp;/&nbsp;软考架构师</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          <p>（软考架构师笔记十六）安全性和保密性设计<br><a id="more"></a></p>
+<h2 id="1-安全性和保密性设计"><a href="#1-安全性和保密性设计" class="headerlink" title="1.安全性和保密性设计"></a>1.安全性和保密性设计</h2><p>（1）信息安全</p>
+<blockquote>
+<p>保证信息的保密性、完整性、真实性、占有性</p>
+</blockquote>
+<p>（2）保密性</p>
+<blockquote>
+<p>系统中的信息必须按照该信息拥有者的要求保证一定的秘密性，不会被未经许可的第三方非法获取</p>
+</blockquote>
+<p>（3）完整性</p>
+<blockquote>
+<p>系统中的信息应当安全、准确、有效，要求数据不能被非法改动或删除（数字签名、加密）</p>
+</blockquote>
+<p>（4）真实性</p>
+<blockquote>
+<p>对信息的发送者身份的确认或系统中有关主体的身份确认，这样可以保证信息的可信度（数字签名，公钥加密）</p>
+</blockquote>
+<p>（5）占有性</p>
+<blockquote>
+<p>保护信息赖以存储的节点、介质、载体等不被盗用或窃取（使用版权、专利、商业秘密性，提供物理的或逻辑的存取限制方法，维护和检查有关窃取文件的记录）</p>
+</blockquote>
+<h2 id="2-加密和解密"><a href="#2-加密和解密" class="headerlink" title="2.加密和解密"></a>2.加密和解密</h2><p>（1）定义：</p>
+<blockquote>
+<p>明文：信息的发送方准备好要发送信息的原始形式<br>密文：对明文经过一系列变换后形成信息的另一种不能直接体现明文含义的形式<br>加密：由明文转换为密文的过程<br>加密算法：加密时所采用的一组规则或方法<br>解密：再把密文还原成明文，以获得信息的具体内容<br>解密算法：运用一系列与加密算法相对应的方法或规则<br>密钥：加密、解密过程中，由通信双方掌握的参数信息控制具体的加密和解密过程</p>
+</blockquote>
+<p>（2）对称密钥加密算法</p>
+<p>① 定义：</p>
+<blockquote>
+<p>加密密钥与解密密钥相同，或者从一个很容易计算出另一个</p>
+</blockquote>
+<p>② 加密算法：</p>
+<p>DES(对称加密算法):</p>
+<blockquote>
+<p>把要加密的明文分成 64 位的数据段作为输入，再使用根据 64 位密钥变化生成的 52 个子密钥，对输入的数据段依次进行初始置换、16 轮迭代、逆初始置换，然后得到 64 位密文</p>
+</blockquote>
+<p>IDEA（国际数据加密算法）：</p>
+<blockquote>
+<p>以 64 位为单位的，在加密前把要加密的明文按每 64 位作为一个数据段进行分割然后分别加密</p>
+</blockquote>
+<p>还有Skipjack、3DES、GDES、 NewDES、Lucifer、FEAL N、LOKI 91、RC4、RC5 </p>
+<p>（3）非对称加密算法（双钥加密方法）：</p>
+<p>① 定义：</p>
+<blockquote>
+<p>加密和解密的密钥并不相同，或者从一个很难计算出另外一个</p>
+</blockquote>
+<p>② 问题：</p>
+<blockquote>
+<p>密钥的生成、导入、存储、管理、分发等过程比较复杂</p>
+</blockquote>
+<p>③ 私钥：</p>
+<blockquote>
+<p>在运算中，先产生一对密钥，其中之一是保密密钥，由用户自己保存，不能向外界泄漏</p>
+</blockquote>
+<p>④ 公钥：</p>
+<blockquote>
+<p>可对外公开，甚至可在公共目录中列示</p>
+</blockquote>
+<p>只有使用私钥才能解密用公钥加密的数据，同时使用私钥加密的数据只能用公钥解密</p>
+<p>⑤ 算法：</p>
+<p>RSA：</p>
+<blockquote>
+<p>首先把需要加密的明文按比特位分成等长的数据段，使得每个数据段对应的十进制数小于 N，即数据段的长度小于 log2N。然后依次对每个明文数据段 m 做加密运算可以得到密文 c∶c = me mod N。相应的，解密时对密文数据段做解密运算就可以得到明文 m∶m = ce mod N</p>
+</blockquote>
+<p>还有背包密码、McEliece、Diffe Hellman、Rabin、Ong Fiat Shamir、零知识证明的算法、椭圆曲线、EIGamal 等</p>
+<p><br></p>
+<h2 id="3-数字签名与数字水印"><a href="#3-数字签名与数字水印" class="headerlink" title="3. 数字签名与数字水印"></a>3. 数字签名与数字水印</h2><p>（1）散列函数</p>
+<blockquote>
+<p>报文：散列函数运算的输入信息<br>消息摘要（散列码）：散列函数运算后所得到的结果</p>
+</blockquote>
+<p>其特点：</p>
+<blockquote>
+<p>不同内容的报文具有不同的散列码，而一旦原始报文有任何改变，哪怕改变一位信息，则通过散列函数计算后得到的散列码也将完全不同<br>散列函数是单向的，即求解某一个报文的散列码非常容易，但是根据散列码来倒推原始报文是非常困难的<br>对于任何一个报文，无法预知它的散列码<br>散列码具有固定的长度，不管原始报文的长度如何，通过散列函数运算后的散列码都具有一样的长度</p>
+</blockquote>
+<p>算法：MD5、SHA、HMAC</p>
+<p>（2）数字签名</p>
+<p>① 组成：签名算法和验证算法（签名算法和验证算法。通过使用签名算法签名一个消息，所得到的签名能够通过一个验证算法来验证签名的真实性和有效性）;通过数字签名可以有效地保证数据的完整性，防止第三方伪造或发送方的抵赖</p>
+<p>② 过程：</p>
+<blockquote>
+<p>信息的发送方对信息利用自己的私钥进行签名，接着发送方把这个签名和信息一起发送给接收方。接收方收到信息后利用发送方的公钥来对其中的数字签名进行验证，确认其合法性</p>
+</blockquote>
+<p>③ 算法：</p>
+<p>RSA 结合 MD5 数字签名：</p>
+<blockquote>
+<p>信息的发送方通过对信息进行散列运算生成一个消息摘要，接着发送方用自己的私钥对这个消息摘要进行加密，就形成发送方的数字签名。然后，把这个数字签名作为信息的附件和信息一起发送给信息的接收方。接收方收到信息后，首先对收到的信息进行与发送者相同的散列运算得到一个消息摘要，接着再用发送方的公钥来对信息中附加的数字签名进行解密得到发送方计算出的散列码。如果两个散列码相同，那么接收方就能确认该信息和数字签名是由发送方发出的</p>
+</blockquote>
+<p>数字签名标准（DSS）：</p>
+<blockquote>
+<p>收方在收到消息摘要和签名后将其作为验证函数的输入。验证函数还依赖于全局公钥和与发送方的私钥相匹配的公钥 PK，这样只有发送方用其自己的私钥才能产生有效的签名</p>
+</blockquote>
+<p>还有EI Gamal、Fiat-Shamir、Guillon-Oucsquerrter、igital SignatureAlgorithm，数字签名算法）、椭圆曲线</p>
+<p>（3）数字信封</p>
+<p>① 定义：</p>
+<blockquote>
+<p>用加密技术来保证只有规定的特定收信人才能阅读通信的内容</p>
+</blockquote>
+<p>② 过程：</p>
+<blockquote>
+<p>信息发送方采用对称密钥来加密信息内容，然后将此对称密钥用接收方的公开密钥来加密（这部分称数字信封），之后，将它和加密后的信息一起发送给接收方，接收方先用相应的私有密钥打开数字信封，得到对称密钥，然后使用对称密钥解开加密信息</p>
+</blockquote>
+<p><br></p>
+<h2 id="4-数字证书与密钥管理"><a href="#4-数字证书与密钥管理" class="headerlink" title="4.数字证书与密钥管理"></a>4.数字证书与密钥管理</h2><p>（1）密钥分配中心（KDC）：</p>
+<blockquote>
+<p>每一个用户都只保存自己的私钥 SK 和 KDC 的公钥 PKKDC，而在通信时再经由 KDC 获得其他用户的公钥 PK 或者仅仅在某一次通信中可以使用的对称密钥加密算法的临时密钥 K</p>
+</blockquote>
+<p>（2）数字证书和公开密钥基础设施</p>
+<p>① 数字证书：</p>
+<p>定义：</p>
+<blockquote>
+<p>利用一对互相匹配的密钥进行加密、解密。每个用户自己保存私钥，用它进行解密和签名；同时设定一个公钥，并由本人公开，为一组用户所共享，用于加密和验证签名</p>
+</blockquote>
+<p>内容：</p>
+<blockquote>
+<p>唯一标识证书所有者的名称<br>唯一标识证书签发者的名称<br>证书所有者的公开密钥<br>证书签发者的数字签名<br>证书的有效期<br>证书的序列号</p>
+</blockquote>
+<p>② 公开密钥基础设施（PKI）</p>
+<p>定义：</p>
+<blockquote>
+<p>由数字证书、证书颁发机构（Certificate Authority，CA），以及对电子交易、通信等所涉及的各方的合法性进行检查和验证的其他注册机构组成的一套系统</p>
+</blockquote>
+<p>目标：向广大的信息系统用户和应用程序提供公开密钥的管理服务</p>
+<p>有效期控制机制：</p>
+<blockquote>
+<p>数字证书的有效期<br>证书撤销列表（Certificate Revocation List，CRL）</p>
+</blockquote>
+<p>结构模型：</p>
+<blockquote>
+<p>管理实体：PKI 服务的提供者<br>端实体：PKI 服务的使用者<br>证书库：一个分布式数据库，用于证书和 CRL 的存放和检索</p>
+</blockquote>
+<p>CA：</p>
+<blockquote>
+<p>是 PKI 框架中唯一能够发布和撤销证书的实体，维护证书的生命周期</p>
+</blockquote>
+<p>RA（注册机构）：</p>
+<blockquote>
+<p>负责处理用户请求，在验证了请求的有效性后，代替用户向 CA 提交</p>
+</blockquote>
+<p>PKI 层次模型：</p>
+<blockquote>
+<p>传输层：向上提供 PKI 报文的可靠传输，它可以是传输层协议或应用层协议<br>密码服务层：向上提供加密、解密、数字签名、消息摘要等基本密码学服务，可由 RSA、MD5 等方法实现<br>证书服务层：使用前面两层提供的加密和传输服务，向用户提供证书的请求、签发、发布、撤销和更新等服务</p>
+</blockquote>
+<p>③ 公钥加密体制：解决对称密钥加密体制中的密钥分配难以保密的问题而提出的</p>
+<p>（3）X.509证书特点：</p>
+<blockquote>
+<p>支持多种算法<br>支持多种命名机制<br>可以限制证书（公开密钥）的用途<br>定义证书遵循的策略<br>控制信任关系的传递</p>
+</blockquote>
+<p>（4）X.509v3证书特点：</p>
+<blockquote>
+<p>版本号<br>序列号<br>签名算法识别符<br>发行者名称<br>有效期<br>主体名称<br>主体的公开密钥信息<br>发行者唯一识别符<br>主体唯一标识符<br>扩充域<br>签名</p>
+</blockquote>
+<p><br></p>
+<h2 id="4-安全协议"><a href="#4-安全协议" class="headerlink" title="4.安全协议"></a>4.安全协议</h2><p>（1）IPSec协议</p>
+<p>① 之前问题：在 TCP/IP 协议中，对 IP 数据包没有提供任何安全保护，攻击者可以通过网络嗅探、IP欺骗、连接截获等方法来攻击正常的 TCP/IP 通信</p>
+<p>② 定义：</p>
+<blockquote>
+<p>该协议把密码技术应用在网络层，以向信息的发送方和接收方提供源地址验证、数据传输的完整性、存取控制、保密性等安全服务，保护通信免遭窃听、抵御网络攻击，而且更高层的应用层协议也可以直接或间接地使用这些安全服务，为其上层协议如TCP、UDP 等提供透明的安全保护服务，在 Internet 这样不安全的网络中为通信提供安全保证</p>
+</blockquote>
+<p>③ 原理：</p>
+<blockquote>
+<p>发送方在发送数据前对数据实施加密，然后把密文数据发送到网络中去，开始传输。在整个传输过程中，数据都是以密文方式传输的，直到数据到达目的节点，才由接收方对密文进行解密，提取明文信息</p>
+</blockquote>
+<p>④ 安全关联（SA）</p>
+<blockquote>
+<p>指提供通信安全服务的发送方和接收方之间的一种单向关系<br>是构成 IPSec 的基础，它是进行通信的双方经协商建立起来的一种协定<br>定义了两个 IPSec 系统之间的安全通信特征，并决定在该通信中为数据包提供的安全服务</p>
+</blockquote>
+<p>⑤ 安全策略（AH）</p>
+<blockquote>
+<p>先将数据进行校验和加密，然后封装为 IP 包，从而实现无连接通信的数据完整性、数据源认证和防止重放攻击</p>
+</blockquote>
+<p>⑥ ESP</p>
+<blockquote>
+<p>通过对数据包的数据进行加密来提供传输信息的保密性，从而实现了数据完整性、数据源认证、数据保密性的安全服务</p>
+</blockquote>
+<p>⑦ IP密钥交换（IKE）</p>
+<blockquote>
+<p>它使用了 Internet 安全关联和密钥管理协议（Internet SecurityAssociation and Key Management Protocol，ISAKMP）、密钥确定协议 Oakley 和描述支持匿名和快速密钥刷新的密钥交换的 SKEME 协议</p>
+</blockquote>
+<p>⑧ IPSec 的工作模式</p>
+<p>传输模式：首先将要传送的数据使用 IPSec 加密封装起来，再把相关的 IPSec 头插入 IP头和被保护的数据之间封装起来，然后从 IPSec 头读取 SPI 值得到相对的 SA，再利用 SA 所定的解密参数解出所<br>加密的数据（通信和处理效率较高）</p>
+<p>隧道模式：首先使用 SA 的相关信息将 IP 的数据包全部加密，接下来在前面加上 ESPHeader，然后把它们作为数据为它们再加上一个新的 IP 头。接收端收到 ESP 封包后，使用 ESP Header 内容中的 SPI 值提供的 SA，然后解出 ESP Header 后的装载数据，就可以取回原始的 IP 头与封包（安全性较高）</p>
+<p>（2）SSL </p>
+<p>① 定义：用于安全传输数据的一种通信协议；采用公钥加密技术、对称密钥加密技术等保护两个应用之间的信息传输的机密性和完整性</p>
+<p>② 问题：不能保证传输信息的不可否认性</p>
+<p>③ 基本安全性：</p>
+<blockquote>
+<p>通道是保密的，经过握手确定密钥之后，所有的消息被加密<br>通道是被认证的，通信中的服务器端总是被认证，客户端可选认证<br>通道是可靠的，用 MAC 对传送的消息进行完整性检查，保证通道上数据的完整性</p>
+</blockquote>
+<p>④ 组成：</p>
+<blockquote>
+<p>SSL 记录协议<br>SSL 握手协议<br>SSL 密码变更说明协议<br>SSL 警告协议</p>
+</blockquote>
+<p>（3）PGP  协议</p>
+<p>① 定义：</p>
+<blockquote>
+<p>一套电子邮件加密方案<br>用来对邮件加密以防止非授权者阅读，还能对邮件加上数字签名而使收信人可以确认邮件确实是由发送方发出的<br>采用 IDEA 算法、对于加密信息采用 RSA 公钥加密算法，还采用了用于数字签名的消息摘要算法，加密前进行压缩处理等技术手段进行邮件加密的一套软件</p>
+</blockquote>
+<p>② 原理</p>
+<p>③ 密钥管理机制</p>
+<p><br></p>
+<h2 id="5-计算机病毒与防治"><a href="#5-计算机病毒与防治" class="headerlink" title="5.计算机病毒与防治"></a>5.计算机病毒与防治</h2><p>（1）定义：</p>
+<blockquote>
+<p>指编制或者在计算机程序中插入的破坏计算机功能或者毁坏数据，影响计算机使用，并能自我复制的一组计算机指令或者程序代码</p>
+</blockquote>
+<p>（2）周期：</p>
+<blockquote>
+<p>潜伏阶段<br>传染阶段<br>触发阶段<br>发作阶段</p>
+</blockquote>
+<p>（3）特征：</p>
+<blockquote>
+<p>传染性：病毒具有把自身复制到其他系统或文件等宿主中去的能力<br>非授权性：病毒程序的执行不需要得到用户的同意<br>潜伏性：病毒潜伏在系统中而不被人们所发觉<br>破坏性：病毒在一定条件下可以自动触发，并对计算机实施破坏</p>
+</blockquote>
+<p>（4）类别</p>
+<blockquote>
+<p>根据系统：攻击 DOS 系统的病毒、攻击 Windows 系统的病毒、攻击Unix/Linux 系统的病毒、攻击 OS/2 系统的病毒、攻击 Macintosh 系统的病毒、攻击手机的病毒、其他操作系统上的病毒</p>
+<p>根据连接方式：源码型病毒、嵌入型病毒、Shell 病毒、宏病毒、脚本型病毒、操作系统型病毒</p>
+<p>根据破坏情况：良性病毒和恶性病毒</p>
+<p>根据传播媒介：单机病毒和网络病毒</p>
+</blockquote>
+<p>（5）组成：</p>
+<blockquote>
+<p>传染模块：负责把计算机病毒从一个系统或文件传播到更多的系统或文件中去<br>触发模块：检查预定触发条件是否满足<br>破坏模块：负责实施病毒的破坏动作<br>主控模块：控制病毒程序的运行</p>
+</blockquote>
+<p>（6）网络环境下的病毒发展新趋势</p>
+<blockquote>
+<p>E-mail 病毒<br>即时通信：MSN、QQ、OICQ<br>局域网共享传播<br>木马程序</p>
+</blockquote>
+<p>（7）计算机病毒的检测与清除</p>
+<blockquote>
+<p>特征码检测<br>校验和检测<br>行为监测<br>启发式扫描<br>虚拟机<br>病毒的清除</p>
+</blockquote>
+<p>（8）计算机病毒的预防</p>
+<blockquote>
+<p>一定要在计算机中安装反病毒软件<br>不要轻易使用来历不明的或者没有经过确认的软件<br>电子邮件的附件应该先检查病毒后再开启，并在发送邮件之前检查病毒<br>定期使用反病毒软件扫描系统<br>确保所使用的反病毒软件的扫描引擎和病毒代码库为最新的<br>系统安装完成后立即制作系统应急启动盘<br>定期进行备份<br>利用安全扫描工具定时扫描系统和主机<br>使用反病毒软件时，最好先查毒，找到了带毒文件后，再确定是否进行杀毒操作<br>建立本单位的计算机病毒防治管理制度</p>
+</blockquote>
+<p><br><br>6.身份认证与访问控制</p>
+<p>（1）身份认证技术</p>
+<p>① 定义：对系统的用户进行有效性、真实性验证</p>
+<p>② 方式：</p>
+<blockquote>
+<p>口令认证方式<br>基于公钥签名的认证方式<br>持卡认证方式<br>基于人体生物特征的认证方式<br>动态口令技术<br>PPP 中的认证协议：还有PAP 和 CHAP，此外还有 EAP<br>RADIUS 协议</p>
+</blockquote>
+<p>（2）访问控制技术</p>
+<p>① 定义：</p>
+<blockquote>
+<p>在身份认证的基础上，根据不同身份的用户对用户的访问请求加以限制<br>主体：发出访问、存取请求的一方<br>客体：被访问的对象和资源<br>访问规则：一套定义主体与客体之间相互关系，确定不同主体对不同客体的访问能力与权限的规则</p>
+</blockquote>
+<p>② 访问控制策略</p>
+<blockquote>
+<p>自主访问控制（DAC）：一个拥有一定权限范围的主体可以直接或者间接地把权限授予其他的主体<br>强制访问控制（MAC）：系统统一采用某种访问权限的授予和撤销的策略，而且强制所有主体都必须服从这种访问权限的分配</p>
+<p>基于角色的访问控制（RBAC）：克服以上两者的缺点的同时，提供一个良好的安全的系统环境</p>
+</blockquote>
+<p>③ 访问许可的授权对访问许可的授权有三种类型：</p>
+<blockquote>
+<p>等级型：把对客体的存取控制权限的修改能力划分成不同的等级，拥有高级别修改能力的主体可以把这种权限分配给比其级别低的主体</p>
+<p>拥有型：拥有者具有对所拥有的客体的全部的控制权，并且可以任意修改其拥有的客体的访问控制表，并可对其他主体授予或撤销对其客体的任何一种访问权限。但是拥有者无权将其对客体的访问控制权的分配权授予其他主体</p>
+<p>自由型：一个客体的拥有者可以对任何主体授予对他所拥有的客体的访问权限，同时还可以把这种分配权授予其他主体而不受任何限制</p>
+</blockquote>
+<p>④ 内容：</p>
+<blockquote>
+<p>用户标识与认证<br>逻辑访问控制<br>审计与跟踪<br>公共访问控制</p>
+</blockquote>
+<p><br></p>
+<h2 id="7-网络安全体系"><a href="#7-网络安全体系" class="headerlink" title="7.网络安全体系"></a>7.网络安全体系</h2><p>（1）OSI架构：</p>
+<blockquote>
+<p>是一个面向对象的、多层次的结构，它认为安全的网络应用是由安全的服务实现的，而安全服务又是由安全机制来实现的</p>
+</blockquote>
+<p>（2）OSI安全服务：</p>
+<blockquote>
+<p>对象认证服务<br>访问控制服务<br>数据保密性服务<br>数据完整性服务<br>禁止否认服务</p>
+</blockquote>
+<p>（3）OSI 安全机制</p>
+<blockquote>
+<p>加密机制<br>数字签名机制<br>访问控制机制<br>数据完整性机制<br>鉴别交换机制<br>流量填充机制<br>路由验证机制<br>公正机制</p>
+</blockquote>
+<p>（4）OSI 安全服务与安全机制之间的关系</p>
+<blockquote>
+<p>不是一一对应的关系</p>
+</blockquote>
+<p><img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/ruankao/sixteen/ruankao16-1.png" height="40%" width="100%"></p>
+<p>（5）VPN在网络安全中的应用</p>
+<p>① 定义：</p>
+<blockquote>
+<p>利用不安全的公共网络如 Internet 等作为传输媒介，通过一系列的安全技术处理，实现类似专用网络的安全性能，保证重要信息的安全传输的一种网络技术</p>
+</blockquote>
+<p>② 优点：</p>
+<blockquote>
+<p>网络通信安全<br>方便的扩充性<br>方便的管理<br>节约成本显著</p>
+</blockquote>
+<p>③ VPN的原理：</p>
+<p>安全技术：</p>
+<blockquote>
+<p>安全隧道技术<br>用户认证技术<br>访问控制技术</p>
+</blockquote>
+<p>VPN用户代理:</p>
+<blockquote>
+<p>安全隧道终端功能<br>用户认证功能<br>访问控制功能</p>
+</blockquote>
+<p><br></p>
+<h2 id="8-系统的安全性设计"><a href="#8-系统的安全性设计" class="headerlink" title="8.系统的安全性设计"></a>8.系统的安全性设计</h2><p>（1）物理安全问题与设计</p>
+<blockquote>
+<p>物理设备本身是否安全可靠<br>设备的位置与环境的安全<br>限制物理访问<br>地域因素</p>
+</blockquote>
+<p>（2）防火墙及其在系统安全中的应用</p>
+<blockquote>
+<p>过滤<br>状态检测<br>应用网关</p>
+</blockquote>
+<p>优点：</p>
+<blockquote>
+<p>可以隔离网络，限制安全问题的扩散<br>简化网络安全管理的复杂度<br>能够有效地记录 Internet 上的活动</p>
+</blockquote>
+<p>（3）入侵检测系统</p>
+<p>① 定义：</p>
+<blockquote>
+<p>通过对计算机网络或计算机系统中的若干关键点收集信息并对其进行分析，从中发现网络或系统中是否有违反安全策略的行为和被攻击的迹象</p>
+</blockquote>
+<p>② 功能：</p>
+<blockquote>
+<p>通过检测和记录系统中的安全违规行为，惩罚信息系统攻击，防止入侵事件的发生<br>检测其他安全措施未能阻止的攻击或安全违规行为<br>检测黑客在攻击前的探测行为，预先给管理员发出警报；报告信息系统中存在的安全威胁<br>提供有关攻击的信息，帮助管理员诊断系统中存在的安全弱点，利于其进行修补</p>
+</blockquote>
+<p>③ 周期：</p>
+<blockquote>
+<p>数据采集阶段<br>数据处理及过滤阶段<br>入侵分析及检测阶段<br>报告及响应阶段</p>
+</blockquote>
+<p>④ 类型：</p>
+<blockquote>
+<p>主机型<br>网络型</p>
+</blockquote>
+<p><br></p>
+<h2 id="9-安全性规章"><a href="#9-安全性规章" class="headerlink" title="9.安全性规章"></a>9.安全性规章</h2><p>（1）安全管理制度</p>
+<blockquote>
+<p>机房安全管理制度<br>系统运行管理制度，包括系统启动、关闭、系统状态监控、系统维护等<br>人员管理制度，包括管理人员、设计人员、操作人员、人事变更等<br>软件管理制度<br>数据管理制度<br>密码口令管理制度<br>病毒防治管理制度<br>用户登记和信息管理制度<br>工作记录制度<br>数据备份制度<br>审计制度<br>安全培训制度</p>
+</blockquote>
+<p>（2）计算机犯罪与相关法规</p>
+<p>① 计算机犯罪</p>
+<p>定义：</p>
+<blockquote>
+<p>指针对和利用计算机系统，通过非法操作或者以其他手段，对计算机系统的完整性或正常运行造成危害的行为</p>
+</blockquote>
+<p>犯罪对象：计算机系统或其中的数据（计算机设备、系统程序、文本资料、运算数据、图形表格）</p>
+<p>特点：</p>
+<blockquote>
+<p>呈现国际化趋势<br>向全社会各单位和个人蔓延<br>由个人犯罪向群体犯罪、组织犯罪发展；由单一目的犯罪向综合性犯罪发展<br>涉及人员范围越来越广泛，并呈现低龄化趋势<br>从危害程度看，后果越来越严重<br>通过网络窃取机密信息将成为间谍活动的主要形式之一</p>
+</blockquote>
+<p>我国的相关法律、法规:</p>
+<blockquote>
+<p>直接以计算机信息系统为犯罪对象的犯罪<br>以计算机为犯罪工具实施其他犯罪</p>
+</blockquote>
+
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <hr>
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-06-24T17:13:28+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>最后更新于 2019年6月24日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/软考/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>软考</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/架构师/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>架构师</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.yiyuclub.club/2019/06/10/（软考架构师笔记十六）安全性和保密性设计/&title=（软考架构师笔记十六）安全性和保密性设计 | 易语的博客&summary=（软考架构师笔记十六）安全性和保密性设计"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.yiyuclub.club/2019/06/10/（软考架构师笔记十六）安全性和保密性设计/&title=（软考架构师笔记十六）安全性和保密性设计 | 易语的博客&summary=（软考架构师笔记十六）安全性和保密性设计"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=http://www.yiyuclub.club/2019/06/10/（软考架构师笔记十六）安全性和保密性设计/&title=（软考架构师笔记十六）安全性和保密性设计 | 易语的博客&summary=（软考架构师笔记十六）安全性和保密性设计"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+            <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                            <h4>
+                                <a href="/2019/06/10/redis知识汇总-初级-数据类型（String）/" rel="prev" title="redis知识汇总[初级]--数据类型（String）">
+                                  
+                                      redis知识汇总[初级]--数据类型（String）
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/redis/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>redis</a> <a class="tag" href="/tags/框架/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>框架</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2019/06/06/（软考架构师笔记十五）基于中间件的开发/" rel="prev" title="（软考架构师笔记十五）基于中间件的开发">
+                                    
+                                        （软考架构师笔记十五）基于中间件的开发
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/软考/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>软考</a> <a class="tag" href="/tags/架构师/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>架构师</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '（软考架构师笔记十六）安全性和保密性设计',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              <section class='widget grid'>
+  
+<header class='pure'>
+  <div><i class="fas fa-map-signs fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;站内导航</div>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="grid navgation">
+      
+        <li><a class="flat-box" title="/" href="/"
+          
+          
+          id="home">
+          
+            <i class="fas fa-clock fa-fw" aria-hidden="true"></i>
+          
+          近期发布
+        </a></li>
+      
+        <li><a class="flat-box" title="/archives/" href="/archives/"
+          
+            rel="nofollow"
+          
+          
+          id="archives">
+          
+            <i class="fas fa-archive fa-fw" aria-hidden="true"></i>
+          
+          全部文章
+        </a></li>
+      
+        <li><a class="flat-box" title="/projects/" href="/projects/"
+          
+          
+          id="projects">
+          
+            <i class="fas fa-code-branch fa-fw" aria-hidden="true"></i>
+          
+          我的项目
+        </a></li>
+      
+        <li><a class="flat-box" title="/friends/" href="/friends/"
+          
+            rel="nofollow"
+          
+          
+          id="friends">
+          
+            <i class="fas fa-link fa-fw" aria-hidden="true"></i>
+          
+          我的友链
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/material-x/" href="https://xaoxuu.com/wiki/material-x/"
+          
+            rel="nofollow"
+          
+          
+          id="https:xaoxuu.comwikimaterial-x">
+          
+            <i class="fas fa-book fa-fw" aria-hidden="true"></i>
+          
+          常用代码
+        </a></li>
+      
+        <li><a class="flat-box" title="/about/" href="/about/"
+          
+            rel="nofollow"
+          
+          
+          id="about">
+          
+            <i class="fas fa-info-circle fa-fw" aria-hidden="true"></i>
+          
+          与我相关
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-安全性和保密性设计"><span class="toc-text">1.安全性和保密性设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-加密和解密"><span class="toc-text">2.加密和解密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-数字签名与数字水印"><span class="toc-text">3. 数字签名与数字水印</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-数字证书与密钥管理"><span class="toc-text">4.数字证书与密钥管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-安全协议"><span class="toc-text">4.安全协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-计算机病毒与防治"><span class="toc-text">5.计算机病毒与防治</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-网络安全体系"><span class="toc-text">7.网络安全体系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-系统的安全性设计"><span class="toc-text">8.系统的安全性设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-安全性规章"><span class="toc-text">9.安全性规章</span></a></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml"
+            class="social fas fa-rss flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://mail.qq.com"
+            class="social fas fa-envelope flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/hhsyy"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="http://music.163.com"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>
+    本站使用
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">易语的博客</a>
+    作为主题
+    
+      ，
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+    。
+  </div>
+ <div>
+ <i class="fas fa-chart-area"></i><span class="post-count">字数统计：78.6k</span>
+ </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["https://img.vim-cn.com/f6/78aed21213230b9220f310f9ea6c822b011846.jpg", "https://img.vim-cn.com/d5/b004c81a13aea401375d03b1258ecadbfcbaa7.jpg", "https://img.vim-cn.com/4c/8e7294998989454b2dcd2624373d5a699c4414.jpg"],
+          {
+            duration: "6000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+          ["https://img.vim-cn.com/f6/78aed21213230b9220f310f9ea6c822b011846.jpg", "https://img.vim-cn.com/d5/b004c81a13aea401375d03b1258ecadbfcbaa7.jpg", "https://img.vim-cn.com/4c/8e7294998989454b2dcd2624373d5a699c4414.jpg"],
+          {
+            duration: "6000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+    
+      <script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js"></script>
+    
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'false' == true;
+  var verify = 'false' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "5lQzNxqx4MqwUJkUl8p8gMDn-gzGzoHsz",
+    appKey: "YXL8AD7S2KBv7efGilMYDOJl",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'mp',
+    lang:'zh-cn',
+    highlight:'false'
+  })
+  </script>
+
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/js/app.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/js/search.js"></script>
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

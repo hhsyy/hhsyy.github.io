@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>（软考架构师笔记十四）信息系统基础知识 | 易语的博客</title>
+  
+  
+  <meta name="description" content="这是易语的博客">
+  
+
+  
+  <link rel="alternate" href="/atom.xml" title="易语的博客">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/css/style.css">
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>yiyu's blog</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/"
+            
+            
+            id="home">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;最新文章
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/projects/"
+            
+            
+            id="projects">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;我的项目
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/friends/"
+            
+              rel="nofollow"
+            
+            
+            id="friends">
+            <i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/about/"
+            
+              rel="nofollow"
+            
+            
+            id="about">
+            <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于相关
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          易语的博客
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/"
+                  
+                  
+                  id="home">
+									<i class='fas fa-grin fa-fw'></i>&nbsp;最新文章
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="categories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;文章分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/tags/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="tags">
+									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签汇总
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="archives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;全部文章
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;最新文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/archives/"
+                
+                  rel="nofollow"
+                
+                
+                id="archives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;全部文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/projects/"
+                
+                
+                id="projects">
+								<i class='fas fa-code-branch fa-fw'></i>&nbsp;我的项目
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/friends/"
+                
+                  rel="nofollow"
+                
+                
+                id="friends">
+								<i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="https://xaoxuu.com/wiki/material-x/"
+                
+                  rel="nofollow"
+                
+                
+                id="https:xaoxuu.comwikimaterial-x">
+								<i class='fas fa-book fa-fw'></i>&nbsp;主题文档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2019/06/05/（软考架构师笔记十四）信息系统基础知识/">
+        （软考架构师笔记十四）信息系统基础知识
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    <a href="http://www.yiyuclub.club" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>易语</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-06-05</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/学习笔记/软考架构师/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>学习笔记&nbsp;/&nbsp;软考架构师</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          <p>（软考架构师笔记十四）信息系统基础知识<br><a id="more"></a></p>
+<h2 id="1-概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h2><p>（1）定义：</p>
+<blockquote>
+<p>泛指收集、存储、处理和传播各种信息的具有完整功能的集合体。在这里，信息系统并没有强调收集、存储、处理和传播信息所用的工具</p>
+</blockquote>
+<p>（2）三要素：系统的观点、数学的方法和计算机应用</p>
+<p><br></p>
+<h2 id="2-信息系统组成"><a href="#2-信息系统组成" class="headerlink" title="2.信息系统组成"></a>2.信息系统组成</h2><p>（1）数据环境：</p>
+<blockquote>
+<p>数据文件:没有使用数据库管理系统，根据大多数的应用需要，由系统分析师和程序员分散地设计各种数据文件<br>应用数据库:使用了数据库，但共享程度低<br>主题数据库：经过严格的数据分析，建立应用模型，虽然设计开发需要花费较长的时间，但其后的维护费用很低<br>信息检索系统：数据库经过组织能保证信息检索和快速查询的需要，而不是大量的事务管理</p>
+</blockquote>
+<p>（2）应用层次</p>
+<blockquote>
+<p>战略级信息系统：有者和使用者都是企业的最高管理层<br>战术级信息系统：使用者一般是企业的中层经理及其管理的部门<br>操作级信息系统：使用者一般是服务型企业的业务部门<br>事务级信息系统：使用者一般是企业的管理业务人员</p>
+</blockquote>
+<p>（3）生命周期</p>
+<p>① 产生阶段：概念的产生过程、需求分析过程</p>
+<p>② 开发阶段信息：总体规划、系统分析、系统设计、系统实施和系统验收阶段</p>
+<p>③ 运行阶段：排错性维护、适应性维护、完善性维护和预防性维护</p>
+<p>④ 消亡阶段</p>
+<p>（4）建设原则</p>
+<p>① 高层管理人员介入原则</p>
+<p>② 用户参与开发原则</p>
+<p>③ 自顶向下规划原则</p>
+<p>③ 工程化原则</p>
+<p>⑤ 其他原则</p>
+<blockquote>
+<p>创新性原则，用来体现信息系统的先进性<br>整体性原则，用来体现信息系统的完整性<br>发展性原则，用来体现信息系统的超前性<br>经济性原则，用来体现信息系统的实用性</p>
+</blockquote>
+<p>（5）开发方法</p>
+<p>① 结构化方法</p>
+<p>定义：由结构化系统分析和设计组成，将系统的生命周期划分为系统调查、系统分析、系统设计、系统实施、系统维护等阶段，按照事先设计好的程序和步骤，使用一定的开发工具，完成规定的文档，在结构化和模块化的基础上进行信息系统的开发工作</p>
+<p>特点：</p>
+<blockquote>
+<p>开发目标清晰化<br>工作阶段程式化<br>开发文档规范化<br>设计方法结构化</p>
+</blockquote>
+<p>② 原型法</p>
+<p>定义：根据用户需求，利用系统开发工具，快速地建立一个系统模型展示给用户，在此基础上与用户交流，最终实现用户需求的信息系统快速开发的方法</p>
+<p>特点：开发周期短、见效快、与业务人员交流方便</p>
+<p>③ 面向对象方法面</p>
+<p>定义：利用面向对象的信息建模概念，如实体、关系、属性等，同时运用封装、继承、多态等机制来构造模拟现实系统的方法</p>
+<p>④ 面向服务</p>
+<p><br></p>
+<h2 id="2-信息系统工程"><a href="#2-信息系统工程" class="headerlink" title="2.信息系统工程"></a>2.信息系统工程</h2><p>（1）定义：由相互作用和相互依赖的若干部分，按一定规律结合成的、具有特定功能的有机整体.把自然科学和社会科学的某些思想、理论、方法、策略和手段等根据总体协调的需要，有机地联系起来，应用定量和定性分析相结合的方法和计算机等技术工具，对系统的构成要素、组织结构、信息交换和反馈控制等功能进行分析、设计、制造和服务，从而达到最优设计、最优控制和最优管理的目的.</p>
+<p>（2）特点：</p>
+<blockquote>
+<p>集合性<br>相关性<br>目的性<br>层次性<br>环境适应性</p>
+</blockquote>
+<p>（3）系统分类</p>
+<blockquote>
+<p>按照系统功能划分：工业控制系统、信息管理系统、军事系统和经济系统等<br>按照系统与外界的关系划分：封闭系统和开放系统<br>按照系统的内部结构划分：开环系统和闭环系统等<br>按照抽象程度将系统分为：概念系统（描述系统的主要特征和大致轮廓）、逻辑系统（脱离实现细节的合理系统）和物理系统（实际存在的系统）</p>
+</blockquote>
+<p>（4）内容</p>
+<p>① 体系：</p>
+<blockquote>
+<p>信息网络系统是指以信息技术为主要手段建立的信息处理、传输、交换和分发的计算机网络系统<br>信息资源系统是指以信息技术为主要技术手段建立的信息资源采集、存储、处理的资源系统<br>信息应用系统是指以信息技术为主要手段建立的各类业务管理的应用系统</p>
+</blockquote>
+<p>② 技术:方法、工具和过程</p>
+<p>③ 管理： 处理好组织内各流程之间的关系，合理地在各流程之间分配资源</p>
+<blockquote>
+<p>建立流程管理机构，这一机构可归入管理流程之中<br>配备强有力的领导来负责内部的流程管理工作。<br>制定各流程之间的动态关系规则。通过实施流程管理模式，传统组织中的组织图将不复存在，取代它的是流程管理图</p>
+</blockquote>
+<p>（5）总体规划</p>
+<p>① 目的：明确系统整个生命周期内的发展方向、系统规模和开发计划</p>
+<p>② 建设存在问题：</p>
+<blockquote>
+<p>系统建设与组织发展的目标和战略不匹配<br>已建成的系统解决问题的有效性低，即系统建成后对管理并无显著改善<br>不能适应环境变化和组织变革的需要<br>组织结构陈旧，管理落后<br>系统使用人员的素质较低<br>系统开发环境落后，技术方案不合理<br>系统开发及运行维护的标准、规范混乱<br>资源短缺，投入太少，而对系统的期望又过高。</p>
+</blockquote>
+<p>③ 主要任务：</p>
+<blockquote>
+<p>制定信息系统工程的发展战略。主要是使信息系统工程的战略与整个组织的战略和目标协调一致<br>确定组织的主要信息需求，形成信息系统工程的总体结构方案，安排项目开发计划<br>制定系统建设的资源分配计划，即制定为实现开发计划而需要的硬软件资源、数据通信设备、人员、技术、服务和资金等计划，提出整个系统的建设概算</p>
+</blockquote>
+<p>④ 主要步骤：</p>
+<blockquote>
+<p>对当前系统进行初步的调查<br>分析和确定系统目标<br>分析子系统的组成及基本功能<br>拟定系统的实施方案<br>进行系统的可行性研究<br>编写可行性报告</p>
+</blockquote>
+<p>⑤ 意义：是进行具体开发工作的必要准备和基本依据</p>
+<p>⑥ 功能：</p>
+<p>两原则：</p>
+<blockquote>
+<p>一是从组织的战略出发，而不是从系统的需求出发，这样就可以避免脱离组织宗旨和战略目标，走入为建设而建设的困境<br>二是从业务的变革出发，而不是从技术的变革出发，这样有利于充分利用组织的现有资源来满足关键需求，从而避免信息系统工程无法有效地支持组织决策。</p>
+</blockquote>
+<p>在建设信息系统工程过程中，应当全面分析组织所处的环境、战略目标、组织结构、标准作业过程甚至它的文化，并从中找到所要建设的信息系统与组织的关系及其应当起的作用</p>
+<p>⑦ 分析过程</p>
+<blockquote>
+<p>确定组织的总体目标<br>确定信息系统工程规划的总体目标</p>
+</blockquote>
+<p>⑧ 规划范围：</p>
+<blockquote>
+<p>信息战略规划<br>信息资源规划<br>信息系统工程建设规划<br>企业资源规划</p>
+</blockquote>
+<p>⑨ 任务：</p>
+<blockquote>
+<p>明确组织远景和使命<br>确立组织发展战略和目标明晰<br>组织业务及管理变革策略<br>识别组织关键成功因素、分析关键性能指标、抽取信息需求<br>建立总体信息工程框架<br>提出可行性报告和总体规划方案。</p>
+</blockquote>
+<p>⑩ 确定功能范围的步骤确定系统的功能范围的步骤：</p>
+<blockquote>
+<p>绘制出系统的总数据流程图<br>根据系统方案的规定和用户的要求，结合现行系统的环境，确定系统的边界范围，并在总信息流程图上圈出<br>有关人员协商讨论<br>确定系统范围，并做出分析说明</p>
+</blockquote>
+<p>⑩-1 投资概算：</p>
+<blockquote>
+<p>计算机系统软、硬件设备投资<br>系统开发费<br>系统安装和维护费用<br>人员培训费</p>
+</blockquote>
+<p>（6）总体规划的方法</p>
+<p>① 业务系统规划法（BSP）：</p>
+<p>定义：它辅助企业信息系统规划，来满足其近期和长期的信息化需求</p>
+<p>内容：</p>
+<blockquote>
+<p>信息系统的战略应当表达出企业的各个管理层次的需求<br>信息系统应该向整个企业提供一致的信息<br>信息系统应该适应组织机构和管理体制的改变<br>信息系统的战略规划</p>
+</blockquote>
+<p>目标（提供信息系统规划，用以支持企业短期的和长期的信息需要）：</p>
+<blockquote>
+<p>为管理者提供一种形式化的、客观的方法，明确建立信息系统的优先顺序，而不考虑部门的狭隘利益，并避免主观性<br>为具有较长生命周期系统的建设和投资提供保障。由于系统是基于业务过程的，因而不因机构变化而失效<br>为了以最高效率支持企业目标，BSP 提供数据处理和资源管理<br>增加负责人的信心，使其坚信高效的信息系统能够被实施<br>通过提供信息系统对用户需求的快速响应，从而改善信息系统管理部门和用户之间的关系。<br>应将数据作为一种企业资源加以确定，为使每个用户更有效地使用这些数据，要对这些数据进行统一规划、管理和控制。</p>
+</blockquote>
+<p>实施步骤：</p>
+<blockquote>
+<p>确立项目<br>工作准备<br>主要活动</p>
+</blockquote>
+<p>② 关键成功因素法（CSF）<br>定义：能够帮助组织找到影响系统成功的关键因素，进行分析以确定组织的信息需求，从而为管理部门控制信息技术及其处理过程提供实施指南</p>
+<p>特征：</p>
+<blockquote>
+<p>内部 CSF：针对机构的内部活动<br>外部 CSF：与机构的对外活动有关<br>监控型 CSF：对现有业务流程等进行监控<br>建设型 CSF：适应组织未来变化的有关活动</p>
+</blockquote>
+<p>层次：</p>
+<blockquote>
+<p>行业的 CSF<br>组织的 CSF<br>部门的 CSF<br>管理者的 CSF</p>
+</blockquote>
+<p>实施步骤:<br>通过集成高层管理者的目标而确定成功因素，通过个人的成功因素的汇总，导出组织整体的决定性成功因素，然后据此建立能够提供与这些成功因素相关的信息系统</p>
+<blockquote>
+<p>了解组织的战略目标<br>确定关键成功因素。对所有成功因素进行评价，根据组织的现状和目标确定关键成功因素<br>识别绩效指标和标准，以及测量绩效的数据</p>
+</blockquote>
+<p>③ 战略目标集合转化法（SST）</p>
+<p>定义：把组织的战略集合转化为信息系统的战略集合，而后者由信息系统的系统目标、环境约束和战略规划组成</p>
+<p>步骤：</p>
+<blockquote>
+<p>识别和阐明组织的战略集合(描绘出组织各类人员结构-&gt;识别每类人员的目标-&gt;对于每类人员识别其使命及战略)<br>将组织的战略集合转化为信息系统战略集合</p>
+</blockquote>
+<p><br></p>
+<h2 id="3-政府信息化与电子政务"><a href="#3-政府信息化与电子政务" class="headerlink" title="3.政府信息化与电子政务"></a>3.政府信息化与电子政务</h2><p>（1）政府信息化定义：</p>
+<blockquote>
+<p>应用现代信息技术、网络技术和通信技术，通过信息资源的开发和利用来集成管理和服务，从而提高政府的工作效率、决策质量、调控能力，并节约开支，改进政府的组织结构、业务流程和工作方式，全方位地向社会提供优质、规范、透明的管理和服务<br>第一，政府信息化必须借助于信息技术和网络技术，离不开信息基础设施和软件产品<br>第二，政府信息化是一个系统工程，它不仅是与行政有关部门的信息化，还包括立法、司法部门及其他一些公共组织的信息化<br>第三，政府信息化并不是简单地将传统的政府管理事务原封不动地搬到互联网上，而是要对已有的组织结构和业务流程进行重组或再造</p>
+</blockquote>
+<p>（2）政府与政府（Government To Government）</p>
+<blockquote>
+<p>首脑机关与中央和地方政府组成部门<br>中央政府与各级地方政府之间<br>政府的各个部门之间<br>政府与公务员其他政府工作人员</p>
+</blockquote>
+<p>（3）政府对企业（Government To Business）</p>
+<blockquote>
+<p>政府向企（事）业单位发布的各种方针、政策、法规、行政规定<br>政府向企（事）业单位颁发的各种营业执照、许可证、合格证、质量认证</p>
+</blockquote>
+<p>（4）政府对公民</p>
+<blockquote>
+<p>政府面向公民所提供的服务</p>
+</blockquote>
+<p>（5）企业对政府</p>
+<blockquote>
+<p>企业应向政府缴纳的各种税款，各种统计信息和报表，参加政府各项工程的竞、投标，各种商品和服务，以及就政府如何创造良好的投资和经营环境</p>
+</blockquote>
+<p>（6）公民对政府</p>
+<blockquote>
+<p>个人应向政府缴纳的各种税款和费用（填报的各种信息和表格，以及缴纳各种罚款）<br>开辟公民参政、议政的渠道</p>
+</blockquote>
+<p>（7）政府对公务员</p>
+<blockquote>
+<p>政府机构通过网络技术实现内部电子化管理的重要形式</p>
+</blockquote>
+<p>（8）电子政务建设的过程模式</p>
+<blockquote>
+<p>以用户为中心<br>引进“客户关系管理”技术<br>政府门户</p>
+</blockquote>
+<p>（9）电子政务的技术模式</p>
+<p>① 网络管理模式</p>
+<blockquote>
+<p>政府专网<br>通用网络</p>
+</blockquote>
+<p>其还分为专用网络（政府部门之间的网络）、内部网络（政府内部的办公网络）和外部网络（对于为公众提供的信息及其他可公开的信息）</p>
+<p>② 信息资源管理模式</p>
+<p>内容：</p>
+<blockquote>
+<p>来自公文系统的文档型信息<br>来自数据处理系统的结构化信息</p>
+</blockquote>
+<p>模式：</p>
+<blockquote>
+<p>元数据管理模式：该模式可以为不同部门、不同级别的机构提供统一的数据管理和交换模式，为跨部门、跨行业的信息资源整合提供技术基础(分数是存储数据)<br>XML数据管理模式：在数据交换和共享的层面上，基于 XML 数据管理模式，建立统一的信息技术平台，实现不同系统的互联</p>
+</blockquote>
+<p>（10）应用开发模式</p>
+<blockquote>
+<p>政府与公务员（Government To Employee，G2E）<br>政府对经济活动（Government ToBusiness，G2B）<br>政府对公民服务（Government ToCitizen，G2C）</p>
+</blockquote>
+<p>（11）电子政务的安全体系</p>
+<blockquote>
+<p>物理安全<br>网络安全<br>信息安全<br>安全管理</p>
+</blockquote>
+<p>（12）《国家电子政务标准化指南》</p>
+<blockquote>
+<p>第一部分：总则。概括描述电子政务标准体系及标准化的机制<br>第二部分：工程管理。概括描述电子政务工程管理须遵循或参考的技术要求、标准和管理规定<br>第三部分：网络建设。概括描述网络建设须遵循或参考的技术要求、标准和管理规定<br>第四部分：信息共享。概括描述信息共享须遵循或参考的技术要求、标准和管理规定<br>第五部分：支撑技术。概括描述支撑技术须遵循或参考的技术要求、标准和管理规定<br>第六部分：信息安全。概括描述保障信息安全须遵循或参考的技术要求、标准和管理规定</p>
+</blockquote>
+<p>（14）六项电子政务标准</p>
+<blockquote>
+<p>① 基于 XML 电子公文格式规范第一部分：总则，第二部分：公文体<br>② XML 在电子政务中的应用指南<br>③ 电子政务业务流程设计方法通用规范<br>④ 信息化工程监理规范<br>⑤ 电子政务数据元第一部分：设计和管理规范<br>⑥ 电子政务主题词表编制规则</p>
+</blockquote>
+<p><br></p>
+<h2 id="4-企业信息化与电子商务"><a href="#4-企业信息化与电子商务" class="headerlink" title="4.企业信息化与电子商务"></a>4.企业信息化与电子商务</h2><p>（1）定义：</p>
+<blockquote>
+<p>企业以业务流程的优化和重构为基础，在一定的深度和广度上利用计算机技术、网络技术和数据库技术，控制和集成化管理企业生产经营活动中的各种信息，实现企业内外部信息的共享和有效利用，以提高企业的经济效益和市场竞争力</p>
+</blockquote>
+<p>（2）目的：</p>
+<blockquote>
+<p>要建立一个整体上相当于人的神经系统的数字神经系统</p>
+</blockquote>
+<p>（3）企业信息化层次分析：</p>
+<blockquote>
+<p>企业战略的层面 ：在规划中必须对企业目前的业务策略和未来的发展方向作深入<br>业务运作层面：针对企业所确定的业务战略，通过分析获得实现这些目标的关键业务驱动力和实现这些目标的关键流程<br>管理运作层面：虽然这一层面从价值链的角度上来说，属于辅助流程，但它对企业日常管理的科学性、高效性是非常重要的</p>
+</blockquote>
+<p>（4）企业信息化方法</p>
+<blockquote>
+<p>业务流程重构方法<br>核心业务应用方法<br>信息系统建设方法<br>主题数据库方法<br>资源管理方法<br>人力资本投资方法</p>
+</blockquote>
+<p><br></p>
+<h2 id="5-企业资源规划（ERP）"><a href="#5-企业资源规划（ERP）" class="headerlink" title="5.企业资源规划（ERP）"></a>5.企业资源规划（ERP）</h2><p>（1）定义：</p>
+<blockquote>
+<p> 是一种融合了企业最佳实践和先进信息技术的新型管理工具。它扩充了 MIS、MRPⅡ（Manufacturing Resources Planning，制造资源计划）的管理范围，将供应商和企业内部的采购、生产、销售及客户紧密联系起来，可对供应链上的所有环节进行有效管理，实现对企业的动态控制和各种资源的集成和优化，提升基础管理水平，追求企业资源的合理高效利用</p>
+</blockquote>
+<p>（2）ERP结构</p>
+<p> ① 管理思想：</p>
+<blockquote>
+<p>将企业的业务流程看作一个紧密连接的供应链，将企业内部划分成几个相互协同作业的支持子系统，如财务、市场营销、生产制造、质量控制、服务维护、工程技术等</p>
+</blockquote>
+<p>② 软件产品：</p>
+<blockquote>
+<p>随着技术和时代的进步，为企业提供更多更好的功能，帮助企业实现管理信息化和现代化，因而使得企业市场竞争力和综合实力得到提高</p>
+</blockquote>
+<p>③ 管理系统：</p>
+<blockquote>
+<p>ERP 是一个集成的信息系统，ERP 承诺建立跨越企业各个部门、各种生产要素和环境的单一应用原则下处理所有的事务，即意味着集成。这种集成应该包括人力资源、财务、销售、制造、任务分派和企业供应链等的各项管理业务</p>
+</blockquote>
+<p>④ 六大功能目标：</p>
+<blockquote>
+<p>支持企业整体发展战略经营系统</p>
+<p>实现全球大市场营销战略与集成化市场营销，也就是实现在预测、市场规模、广告策略、价格策略、服务、分销等各方面进行信息集成和管理集成</p>
+</blockquote>
+<blockquote>
+<p>完善企业成本管理机制</p>
+<p>研究开发管理系统，保证能够迅速地开发适应市场要求的新的产品，构筑企业的核心技术体系，保持企业的竞争优势</p>
+</blockquote>
+<blockquote>
+<p>建立敏捷的后勤管理系统，强调通过动态联盟模式把优势互补的企业联合在一起，用最有效和最经济的方式参加竞争，迅速响应市场瞬息万变的需求</p>
+</blockquote>
+<blockquote>
+<p>实施准时生产方式，把客户纳入产品开发过程，把销售代理商和供应商、协作单位纳入生产体系，按照客户不断变化的需求同步组织生产，时刻保持产品的高质量、多样性和灵活性</p>
+</blockquote>
+<p>（3）ERP功能</p>
+<blockquote>
+<p>支持决策的功能<br>为处于不同行业的企业提供有针对性的 IT 解决方案<br>从企业内部的供应链发展为全行业和跨行业的供应链</p>
+</blockquote>
+<p>（4）主要功能模块</p>
+<blockquote>
+<p>生产控制（计划、制造）<br>物流管理（分销、采购、库存管理）<br>财务管理（会计核算、财务管理）</p>
+</blockquote>
+<p><br></p>
+<h2 id="6-客户关系管理（CRM）"><a href="#6-客户关系管理（CRM）" class="headerlink" title="6.客户关系管理（CRM）"></a>6.客户关系管理（CRM）</h2><p>（1）定义：</p>
+<blockquote>
+<p>改善企业与客户之间关系的新型管理机制。它通过提供更快速、更周到的优质服务来吸引或保持更多的客户，集成了信息系统和办公系统等的一整套应用系统，从而确保了客户满意度的提高，以及通过对业务流程的全面管理来降低企业成本，重构包括市场营销和客户服务等业务流程</p>
+</blockquote>
+<p>（2）CRM内容：</p>
+<blockquote>
+<p>客户服务<br>市场营销<br>共享的客户资料库<br>分析能力</p>
+</blockquote>
+<p>（3）解决方案和实施过程</p>
+<blockquote>
+<p>畅通有效的客户交流渠道（触发中心）<br>对所获信息进行有效分析（挖掘中心）<br>CRM 必须能与 ERP 很好地集成</p>
+</blockquote>
+<p><br></p>
+<h2 id="7-产品数据管理（PDM）"><a href="#7-产品数据管理（PDM）" class="headerlink" title="7.产品数据管理（PDM）"></a>7.产品数据管理（PDM）</h2><p>（1）定义：</p>
+<blockquote>
+<p>是工程数据管理、文档管理、产品信息管理、技术数据管理、技术信息管理、图像管理，以及其他产品定义信息管理的集成管理框架技术<br>用来管理所有与产品相关信息（包括零件信息、配置、文档、计算机辅助设计文件、结构、权限信息等）和所有与产品相关过程（包括过程定义和管理）的技术;为企业设计和生产构筑一个并行产品开发环境（由供应、工程设计、制造、采购、销售与市场、客户构成）的关键技术<br>帮助产品设计师、制造工程师及其他人员有效管理产品数据及产品开发过程的工具，目标是跟踪、组织、访问和管理产品设计、开发、修改和生产，甚至维修全过程中的所有数据和信息</p>
+</blockquote>
+<p>（2）类别：</p>
+<blockquote>
+<p>信息的使用者<br>数据的创造者<br>系统管理员</p>
+</blockquote>
+<p>（3）发展三阶段：</p>
+<blockquote>
+<p>配合 CAD（Computer Aided Design，计算机辅助设计）使用的早期简单的 PDM 系统<br>产品数据管理<br>产品协同商务（Collaborative Product Commerce，CPC）或 PDM 标准化</p>
+</blockquote>
+<p>（4）主要功能模块和内容</p>
+<blockquote>
+<p>数据基库<br>产品配置管理<br>工作流管理<br>分类及检索功能<br>项目管理</p>
+</blockquote>
+<p><br></p>
+<h2 id="8-企业门户"><a href="#8-企业门户" class="headerlink" title="8.企业门户"></a>8.企业门户</h2><p>（1）定义：</p>
+<blockquote>
+<p>为企业优化业务模式、扩展市场渠道、改善客户服务，以及提升企业形象和凝聚力的强有力手段</p>
+</blockquote>
+<p>（2）主要功能：</p>
+<blockquote>
+<p>能够将一个机构现有的互联网址和服务完全合并而且相互兼容。<br>能够支持开放标准和应用编程接口，让平台得以轻易容纳新的应用程序。<br>能够接入一个由支持企业门户网站架构的伙伴和专业服务公司所组成的网络。<br>能够多渠道接入网站。<br>能够以统一的服务作为企业门户网站各种服务的基础，让用户享有多种便利</p>
+</blockquote>
+<p>（3）类别：</p>
+<blockquote>
+<p>企业信息门户：为人们提供企业信息<br>企业知识门户：企业员工日常工作所涉及相关主题内容的“总店”<br>企业应用门户：对企业业务流程的集成</p>
+</blockquote>
+<p>（4）基本要素：</p>
+<blockquote>
+<p>战略性思维<br>为用户所需要的不同类型门户网站建立一个门户网站架构<br>寻找合适的技术供货商<br>确定所要建立的门户网站类型<br>首先小规模地试办项目，确保有一个可行的工作环境</p>
+</blockquote>
+<p><br></p>
+<h2 id="9-企业应用集成（EAI）"><a href="#9-企业应用集成（EAI）" class="headerlink" title="9.企业应用集成（EAI）"></a>9.企业应用集成（EAI）</h2><p>（1）定义：</p>
+<blockquote>
+<p>将进程、软件、标准和硬件联合起来，在两个或更多的企业信息系统之间实现无缝集成，使它们就像一个整体一样</p>
+</blockquote>
+<p>（2）内容：</p>
+<p>① 企业内部应用集成：</p>
+<blockquote>
+<p>界面集成<br>平台集成<br>数据集成<br>过程集成</p>
+</blockquote>
+<p>② 企业间应用集成：</p>
+<blockquote>
+<p>通过集成供应链内的所有应用和数据库实现信息共享</p>
+</blockquote>
+<p>（3）主流集成模式：</p>
+<blockquote>
+<p>面向信息的集成技术<br>面向过程的集成技术<br>面向服务的集成技术</p>
+</blockquote>
+<p><br></p>
+<h2 id="10-供应链管理"><a href="#10-供应链管理" class="headerlink" title="10.供应链管理"></a>10.供应链管理</h2><p>（1）定义：</p>
+<blockquote>
+<p>从源头供应商到最终消费者的集成业务流程,利用计算机网络技术全面规划供应链中的商流、物流、信息流、资金流等并进行计划、组织、协调和控制</p>
+</blockquote>
+<p>（2）供应链与物流结合</p>
+<p>（3）运作模式</p>
+<blockquote>
+<p>需求信息流:从需方向供方流动时，便引发物流<br>供应信息流:同物料一起沿着供应链从供方向需方流动</p>
+</blockquote>
+<p>（4）技术支持体系</p>
+<blockquote>
+<p>由标识代码技术、自动识别与数据采集技术、电子数据交换技术、互联网技术等基础信息技术构成<br>基于信息技术而开发的支持企业生产</p>
+</blockquote>
+<p><br></p>
+<h2 id="11-电子商务"><a href="#11-电子商务" class="headerlink" title="11.电子商务"></a>11.电子商务</h2><p>（1）定义：</p>
+<blockquote>
+<p>买卖双方利用现代开放的 Internet，按照一定的标准所进行的各类商业活动<br>狭义：利用 Web 提供的通信手段在网上买卖产品或提供服务<br>广义：包括狭义以内，企业内部的商务活动；以及企业间的商务活动</p>
+</blockquote>
+<p>（2）三方面：</p>
+<blockquote>
+<p>电子商情广告、电子选购和交易<br>电子交易凭证的交换、电子支付与结算<br>网上售后服务</p>
+</blockquote>
+<p>（3）参与实体:</p>
+<blockquote>
+<p>顾客（个人消费者或集团购买）<br>商户（包括销售商、制造商、储运商）<br>银行（包括发卡行、收单行）<br>认证中心</p>
+</blockquote>
+<p>（4）类别（按交易对象）</p>
+<blockquote>
+<p>企业与消费者之间的电子商务（Business to Customer，B2C）<br>企业与企业之间的电子商务（Business to Business，B2B）<br>消费者与消费者之间的电子商务（Customer to Customer，C2C）<br>O2O 即 Online To Offline（在线离线/线上到线下）</p>
+</blockquote>
+<p><br></p>
+<h2 id="12-知识管理与商业智能"><a href="#12-知识管理与商业智能" class="headerlink" title="12.知识管理与商业智能"></a>12.知识管理与商业智能</h2><p>（1）定义：</p>
+<blockquote>
+<p>在组织中建构一个人文与技术兼备的知识系统，让组织中的信息与知识，通过获得、创造、分享、整合、记录、存取、更新等过程，实现不断创新。同时，这种创新知识又不断回馈到组织之内，从而使得组织的知识不间断地累积和升华，进而转化为企业的智慧资本</p>
+</blockquote>
+<p>（2）知识管理的工具和手段</p>
+<p>① 知识管理工具的范畴：</p>
+<blockquote>
+<p>数据管理工具<br>信息管理工具<br>知识管理工具</p>
+</blockquote>
+<p>② 知识管理工具的分类：</p>
+<blockquote>
+<p>用于知识生成的工具<br>用于知识编码的工具<br>用于知识转移的工具</p>
+</blockquote>
+<p>③ 不足：</p>
+<blockquote>
+<p>功能不完整<br>集成度不高<br>协同性不够<br>可构性差</p>
+</blockquote>
+<p>（3）商业智能</p>
+<p>① 定义：企业对商业数据的搜集、管理和分析的系统过程</p>
+<p>② 目的：使企业的各级决策者获得知识或洞察力，帮助他们做出对企业更有利的决策</p>
+<p>③ 商业智能系统四阶段：</p>
+<blockquote>
+<p>数据预处理：数据的抽取、转换和装载<br>建立数据仓库：处理海量数据的基础<br>数据分析：联机分析处理和数据挖掘<br>数据展现：保障系统分析结果的可视化</p>
+</blockquote>
+<p><br></p>
+<h2 id="13-业务流程重组（BPR）"><a href="#13-业务流程重组（BPR）" class="headerlink" title="13.业务流程重组（BPR）"></a>13.业务流程重组（BPR）</h2><p>（1）定义：</p>
+<blockquote>
+<p>为了完成某一目标或任务而进行的一系列跨越时空的逻辑相关活动的有序集合，过考察业务流程的发生、发展和终结，确定、描述、分析、分解整个业务流程，重构与业务流程相匹配的企业运行机制和组织机构，实现对企业全流程的有效管理和控制，能够使企业真正着眼于流程的结果，消除传统管理中只注重某一环节而无人负责全流程的弊端</p>
+</blockquote>
+<p>（2）4核心内容</p>
+<blockquote>
+<p>根本性：强调要进行根本性的再思考，各方面都要关注流程<br>彻底性：对 BPR 进行追根溯源<br>戏剧性：不是追求稍有改善，而是充分强调结果的满意度<br>流程：建立以流程工作小组为单元的管理模式</p>
+</blockquote>
+<p>（3）作用：</p>
+<blockquote>
+<p>BPR 的实施使企业更贴近市场<br>BPR 使生产成本成倍压缩<br>BPR 使产品质量得到全面提升<br>服务质量更趋完美</p>
+</blockquote>
+<p>（4）遵循原则</p>
+<blockquote>
+<p>流程中心原则企业业务流程<br>团队管理原则在流程式管理模式下,企业的组织结构必须服从业务流程<br>客户导向原则</p>
+</blockquote>
+
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <hr>
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-06-24T17:13:28+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>最后更新于 2019年6月24日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/软考/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>软考</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/架构师/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>架构师</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.yiyuclub.club/2019/06/05/（软考架构师笔记十四）信息系统基础知识/&title=（软考架构师笔记十四）信息系统基础知识 | 易语的博客&summary=（软考架构师笔记十四）信息系统基础知识"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.yiyuclub.club/2019/06/05/（软考架构师笔记十四）信息系统基础知识/&title=（软考架构师笔记十四）信息系统基础知识 | 易语的博客&summary=（软考架构师笔记十四）信息系统基础知识"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=http://www.yiyuclub.club/2019/06/05/（软考架构师笔记十四）信息系统基础知识/&title=（软考架构师笔记十四）信息系统基础知识 | 易语的博客&summary=（软考架构师笔记十四）信息系统基础知识"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+            <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                            <h4>
+                                <a href="/2019/06/05/redis知识汇总[初级]--安装/" rel="prev" title="redis知识汇总[初级]--安装">
+                                  
+                                      redis知识汇总[初级]--安装
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/redis/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>redis</a> <a class="tag" href="/tags/框架/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>框架</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2019/06/04/（软考架构师笔记十三）开发管理/" rel="prev" title="（软考架构师笔记十三）开发管理">
+                                    
+                                        （软考架构师笔记十三）开发管理
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/软考/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>软考</a> <a class="tag" href="/tags/架构师/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>架构师</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '（软考架构师笔记十四）信息系统基础知识',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              <section class='widget grid'>
+  
+<header class='pure'>
+  <div><i class="fas fa-map-signs fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;站内导航</div>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="grid navgation">
+      
+        <li><a class="flat-box" title="/" href="/"
+          
+          
+          id="home">
+          
+            <i class="fas fa-clock fa-fw" aria-hidden="true"></i>
+          
+          近期发布
+        </a></li>
+      
+        <li><a class="flat-box" title="/archives/" href="/archives/"
+          
+            rel="nofollow"
+          
+          
+          id="archives">
+          
+            <i class="fas fa-archive fa-fw" aria-hidden="true"></i>
+          
+          全部文章
+        </a></li>
+      
+        <li><a class="flat-box" title="/projects/" href="/projects/"
+          
+          
+          id="projects">
+          
+            <i class="fas fa-code-branch fa-fw" aria-hidden="true"></i>
+          
+          我的项目
+        </a></li>
+      
+        <li><a class="flat-box" title="/friends/" href="/friends/"
+          
+            rel="nofollow"
+          
+          
+          id="friends">
+          
+            <i class="fas fa-link fa-fw" aria-hidden="true"></i>
+          
+          我的友链
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/material-x/" href="https://xaoxuu.com/wiki/material-x/"
+          
+            rel="nofollow"
+          
+          
+          id="https:xaoxuu.comwikimaterial-x">
+          
+            <i class="fas fa-book fa-fw" aria-hidden="true"></i>
+          
+          常用代码
+        </a></li>
+      
+        <li><a class="flat-box" title="/about/" href="/about/"
+          
+            rel="nofollow"
+          
+          
+          id="about">
+          
+            <i class="fas fa-info-circle fa-fw" aria-hidden="true"></i>
+          
+          与我相关
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-概念"><span class="toc-text">1.概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-信息系统组成"><span class="toc-text">2.信息系统组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-信息系统工程"><span class="toc-text">2.信息系统工程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-政府信息化与电子政务"><span class="toc-text">3.政府信息化与电子政务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-企业信息化与电子商务"><span class="toc-text">4.企业信息化与电子商务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-企业资源规划（ERP）"><span class="toc-text">5.企业资源规划（ERP）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-客户关系管理（CRM）"><span class="toc-text">6.客户关系管理（CRM）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-产品数据管理（PDM）"><span class="toc-text">7.产品数据管理（PDM）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-企业门户"><span class="toc-text">8.企业门户</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-企业应用集成（EAI）"><span class="toc-text">9.企业应用集成（EAI）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-供应链管理"><span class="toc-text">10.供应链管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-电子商务"><span class="toc-text">11.电子商务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-知识管理与商业智能"><span class="toc-text">12.知识管理与商业智能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-业务流程重组（BPR）"><span class="toc-text">13.业务流程重组（BPR）</span></a></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml"
+            class="social fas fa-rss flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://mail.qq.com"
+            class="social fas fa-envelope flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/hhsyy"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="http://music.163.com"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>
+    本站使用
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">易语的博客</a>
+    作为主题
+    
+      ，
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+    。
+  </div>
+ <div>
+ <i class="fas fa-chart-area"></i><span class="post-count">字数统计：78.6k</span>
+ </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["https://img.vim-cn.com/f6/78aed21213230b9220f310f9ea6c822b011846.jpg", "https://img.vim-cn.com/d5/b004c81a13aea401375d03b1258ecadbfcbaa7.jpg", "https://img.vim-cn.com/4c/8e7294998989454b2dcd2624373d5a699c4414.jpg"],
+          {
+            duration: "6000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+          ["https://img.vim-cn.com/f6/78aed21213230b9220f310f9ea6c822b011846.jpg", "https://img.vim-cn.com/d5/b004c81a13aea401375d03b1258ecadbfcbaa7.jpg", "https://img.vim-cn.com/4c/8e7294998989454b2dcd2624373d5a699c4414.jpg"],
+          {
+            duration: "6000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+    
+      <script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js"></script>
+    
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'false' == true;
+  var verify = 'false' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "5lQzNxqx4MqwUJkUl8p8gMDn-gzGzoHsz",
+    appKey: "YXL8AD7S2KBv7efGilMYDOJl",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'mp',
+    lang:'zh-cn',
+    highlight:'false'
+  })
+  </script>
+
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/js/app.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/js/search.js"></script>
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

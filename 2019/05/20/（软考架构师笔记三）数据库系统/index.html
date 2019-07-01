@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>（软考架构师笔记三）数据库系统 | 易语的博客</title>
+  
+  
+  <meta name="description" content="这是易语的博客">
+  
+
+  
+  <link rel="alternate" href="/atom.xml" title="易语的博客">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/css/style.css">
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>yiyu's blog</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/"
+            
+            
+            id="home">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;最新文章
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/projects/"
+            
+            
+            id="projects">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;我的项目
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/friends/"
+            
+              rel="nofollow"
+            
+            
+            id="friends">
+            <i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/about/"
+            
+              rel="nofollow"
+            
+            
+            id="about">
+            <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于相关
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          易语的博客
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/"
+                  
+                  
+                  id="home">
+									<i class='fas fa-grin fa-fw'></i>&nbsp;最新文章
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="categories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;文章分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/tags/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="tags">
+									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签汇总
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="archives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;全部文章
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;最新文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/archives/"
+                
+                  rel="nofollow"
+                
+                
+                id="archives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;全部文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/projects/"
+                
+                
+                id="projects">
+								<i class='fas fa-code-branch fa-fw'></i>&nbsp;我的项目
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/friends/"
+                
+                  rel="nofollow"
+                
+                
+                id="friends">
+								<i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="https://xaoxuu.com/wiki/material-x/"
+                
+                  rel="nofollow"
+                
+                
+                id="https:xaoxuu.comwikimaterial-x">
+								<i class='fas fa-book fa-fw'></i>&nbsp;主题文档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2019/05/20/（软考架构师笔记三）数据库系统/">
+        （软考架构师笔记三）数据库系统
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    <a href="http://www.yiyuclub.club" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>易语</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-05-20</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/学习笔记/软考架构师/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>学习笔记&nbsp;/&nbsp;软考架构师</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          <p>（软考架构师笔记三）数据库系统<br><a id="more"></a></p>
+<h2 id="1-数据库类别"><a href="#1-数据库类别" class="headerlink" title="1.数据库类别"></a>1.数据库类别</h2><p>概念：</p>
+<blockquote>
+<p>存放数据库的仓库</p>
+</blockquote>
+<blockquote>
+<p>关系型数据库（sql）：mysql、oracle等<br>非关系型数据库（nosql）：memcached、redis等<br><br></p>
+</blockquote>
+<h2 id="2-数据库模式"><a href="#2-数据库模式" class="headerlink" title="2.数据库模式"></a>2.数据库模式</h2><p>（1）模式三级划分示例图：<br> <img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/ruankao/three/ruankao3-1.png" height="70%" width="100%"></p>
+<p>（2）三级抽象</p>
+<blockquote>
+<p>用户级数据库：也称用户视图，作用于外模式，被用户所操作，一个数据库能有多个不同的用户视图<br>概念级数据库：也称DBA视图，作用于概念模式，一个数据库只能有一个DBA视图<br>物理级数据库：也称内部视图，作用于内模式，其不是真正的物理存储而是金结余物理存储的级别</p>
+</blockquote>
+<p>（3）三级模式：</p>
+<blockquote>
+<p>外模式：用户使用条件语句操作数据库（可多个）<br>概念模式：描述数据库的逻辑关系（唯一）<br>内模式：物理结构和存储方式的描述（唯一）</p>
+</blockquote>
+<p>（4）三者关系</p>
+<blockquote>
+<p>程序依赖外模式，独立于模式与内模式<br>外模式面向应用，独立于内模式和存储设备<br>模式是数据库的中心与关键<br>内模式依赖于模式，独立于外模式和存储设备</p>
+</blockquote>
+<p>（5）两级独立性</p>
+<blockquote>
+<p>三个抽象级间通过两级映射（外模式—模式映射，模式—内模式映射）进行相互转换</p>
+</blockquote>
+<blockquote>
+<p>物理独立性：应用程序和存储在磁盘上的数据库的数据是独立性，一方改变不会影响另一方（概念模式与内模式的映射）<br>逻辑独立性：应用程序和数据库的逻辑结构是独立性，一方改变不会影响另一方（概念模式与内】外模式的映射）<br><br></p>
+</blockquote>
+<h2 id="3-概念数据模型"><a href="#3-概念数据模型" class="headerlink" title="3.概念数据模型"></a>3.概念数据模型</h2><p>（1）分类</p>
+<blockquote>
+<p>概念数据模型：按照用户的观点来对数据和信息建模，主要用于数据库设计（E-R模型）<br>基本数据模型：按照计算机系统的观点来对数据和信息建模，主要用于 DBMS 的实现</p>
+</blockquote>
+<p>（2）基本数据模型</p>
+<blockquote>
+<p>组成：基本数据模型通常由数据结构、数据操作和完整性约束三部分组成<br>常用模型：层次模型（1：n）、网状模型(m：n)、关系模型和面向对象模型<br><br>  </p>
+</blockquote>
+<h2 id="4-关系代数（基本运算类型）"><a href="#4-关系代数（基本运算类型）" class="headerlink" title="4.关系代数（基本运算类型）"></a>4.关系代数（基本运算类型）</h2><p>（1）并：如R与S的并集<br>（2）差：R与S的差集<br>（3）交：R与S的交集<br>（4）笛卡尔积：<br> <img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/ruankao/three/ruankao3-2.png" height="70%" width="100%"><br>（5）投影<br>（6）选择<br>（7）连接<br>（8）除<br><br></p>
+<h2 id="5-关系模型方式"><a href="#5-关系模型方式" class="headerlink" title="5.关系模型方式"></a>5.关系模型方式</h2><p>（1）概念：关系模型满足的确定约束条件称为范式，范式由低到高分为 1NF（第一范式）、2NF（第二范式）、3NF（第三范式）、BCNF（BC 范式）、4NF（第四范式）等</p>
+<p>（2）范式准则</p>
+<blockquote>
+<p>无损连接性：信息不失真（不增减信息）<br>函数依赖保持性：不破坏属性间存在的依赖关系</p>
+</blockquote>
+<p>（3）规范化理论</p>
+<blockquote>
+<p>用数据依赖的概念分析和表示各数据项之间的关系<br>消除 E-R 图中的冗余联系</p>
+</blockquote>
+<p>（4）函数依赖<br>一个表：学号，姓名，年龄，身份证，班级号</p>
+<blockquote>
+<p>定义：一个值确定，依赖它的值也确定<br>码（候选码）：数据库中唯一一行的属性集，相当于主键集合（学号和身份证）<br>主码：也称主键，人为从候选码（主键集合）中选择的唯一区分其他行属性集（学号）<br>外码：也称外键，该表出现的外表的主键（班级号）<br>主属性：候选码（主键集合）的属性（学号和身份证）<br>非主属性：不包含在主键中的属性（姓名，年龄，班级号）</p>
+</blockquote>
+<blockquote>
+<p>第一范式：不可再分，任何关系必须满足第一范式（如住址可分为省与市，其不满足）<br>第二范式：满足第一范式，所有非主属性完全依赖主属性（常见不符合的例子为部分依赖）<br>第三范式：满足第二范式，非主属性不传递依赖主属性（解决方法先出传递依赖，如投影分表）<br>BC范式：非主属性完全依赖于候选码；候选码中不存在依赖关系；非主属性不依赖于候选码中的其中一个属性（消除主属性对主码的部分依赖和传递依赖）</p>
+</blockquote>
+<p>（5）反规范化<br>定义：为了提高某些查询或应用的性能而破坏规范规则</p>
+<blockquote>
+<p>增加冗余列<br>增加派生列<br>重新组表<br>分割表</p>
+</blockquote>
+<p>（6）完整性约束</p>
+<blockquote>
+<p>实体完整性：主键的任意属性不能为空<br>参照完整性：两表关联，其主外键对应<br>用户自定义完整性：用户定义的条件约束</p>
+</blockquote>
+<p><br></p>
+<h2 id="6-数据库设计"><a href="#6-数据库设计" class="headerlink" title="6.数据库设计"></a>6.数据库设计</h2><p>（1）面临的困难与问题</p>
+<blockquote>
+<p>同时具备数据库知识与应用业务知识的人很少<br>项目初期往往不能确定应用业务的数据库系统的目标<br>缺乏完善的设计工具和设计方法<br>需求的不确定性<br>应用业务系统千差万别</p>
+</blockquote>
+<p>(2)设计方法</p>
+<blockquote>
+<p>直观设计法：单步逻辑设计法<br>规范设计法<br>计算机辅助设计法<br>自动化设计法</p>
+</blockquote>
+<p>缺点：缺乏工程规范的支持和科学根据，设计质量也不稳定，因此越来越不适应信息管理系统发展的需要<br>新奥尔良方法（4阶段）：</p>
+<blockquote>
+<p>1.需求分析：收集和分析用户对系统的信息需求和处理需求，得到设计系统所必需的需求信息，建立系统说明文档<br>2.概念结构设计：对需求说明书提供的所有数据和处理要求进行抽象与综合处理，按一定的方法构造反映用户环境的数据及其相互联系的概念模型，即用户的数据模型或企业数据模型<br>3.逻辑结构设计：把上一阶段得到的与 DBMS 无关的概念数据模型转换成等价的，并为某个特定的 DBMS 所接受的逻辑模型所表示的概念模式，同时将概念设计阶段得到的应用视图转换成外部模式，即特定 DBMS 下的应用视图<br>4.物理结构设计：把逻辑设计阶段得到的满足用户需求的已确定的逻辑模型在物理上加以实现，其主要内容是根据 DBMS 提供的各种手段，设计数据的存储形式和存取路径，如文件结构、索引设计等，即设计数据库的内模式或存储模式</p>
+</blockquote>
+<p> <img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/ruankao/three/ruankao3-4.png" height="70%" width="100%"></p>
+<p>基于其的设计： </p>
+<blockquote>
+<p>3NF的设计方法（重点）<br>LRA方法<br>面向对象的数据库设计方法<br>基于视图概念的数据库设计方法</p>
+</blockquote>
+<p>（3）3NF的设计方法<br>定义：基本思想是在需求分析的基础上，识别并确认数据库模式中的全部属性和属性间的依赖，将它们组织成一个单一的关系模型，然后再分析模式中不符合 3NF 的约束条件，用投影和连接的办法将其分解，使其达到 3NF 条件</p>
+<p>设计步骤（5阶段）：</p>
+<blockquote>
+<p>设计企业模式<br>设计数据库逻辑模式<br>设计数据库物理模式（存储模式）<br>评价物理模式<br>数据库实现</p>
+</blockquote>
+<p> <img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/ruankao/three/ruankao3-3.png" height="80%" width="100%"><br><br></p>
+<h2 id="7-事务管理"><a href="#7-事务管理" class="headerlink" title="7.事务管理"></a>7.事务管理</h2><p>（1）事务特性</p>
+<blockquote>
+<p>原子性（Atomicity）：数据库的逻辑工作单位。<br>一致性（Consistency）：使数据库从一个一致性状态变到另一个一致性状态。<br>隔离性（Isolation）：不能被其他事务干扰。<br>持续性（永久性）（Durability）：一旦提交，改变就是永久性的。</p>
+</blockquote>
+<blockquote>
+<p>事务开始：BEGIN TRANSACTION<br>事务提交：COMMIT<br>事务回滚：ROLLBACK</p>
+</blockquote>
+<p>(2)并发控制<br>定义：在多用户共享系统中，许多事务可能同时对同一数据进行操作，称为“并发操作”</p>
+<p>并发出线的问题：</p>
+<blockquote>
+<p>丢失更新<br>数据过期被读取（重复读）<br>脏数据（数据已提交但读取了旧的数据）</p>
+</blockquote>
+<p>解决方案：封锁技术</p>
+<blockquote>
+<p>排它锁（X封锁）：只允许事务 T 读取和修改数据 A，其他事务要等事务 T 解除 X 封锁以后，才能对数据 A 实现任何类型的封锁<br>共享锁（S封锁）：区别于X锁，S锁可读数据但不可修改（也不可加入X锁），除非解除</p>
+</blockquote>
+<p>封锁协议：</p>
+<blockquote>
+<p>1.一级封锁协议：加X锁，防止数据丢失更新<br>2.二级封锁协议：加S锁，防止数据丢失更新和脏数据<br>3.三级封锁协议：在1基础性上加入S锁，三者皆可防止<br>4.两段锁协议：所有事务必须分两个阶段对数据项加锁和解锁。其可能发生死锁请注意。<br><br></p>
+</blockquote>
+<h2 id="8-故障与恢复"><a href="#8-故障与恢复" class="headerlink" title="8.故障与恢复"></a>8.故障与恢复</h2><p>（1）故障类别</p>
+<blockquote>
+<p>事务故障（操作）<br>系统故障<br>介质故障（硬件）<br>计算机病毒</p>
+</blockquote>
+<p>（2）故障的恢复</p>
+<blockquote>
+<p>事务故障的恢复：事务为进行到终点时撤销<br>系统故障：根据日志找到已完成和未完成的事务，对事务进行逆操作，重新执行事务<br>介质故障：找到备份恢复，找到日志反向进行操作，正向阅读日志，重做已完成事务，回到事务之前<br>计算机病毒：检查点恢复<br>br&gt;</p>
+</blockquote>
+<h2 id="9-备份与恢复"><a href="#9-备份与恢复" class="headerlink" title="9.备份与恢复"></a>9.备份与恢复</h2><p>（1）遵守的原则</p>
+<blockquote>
+<p>保证数据丢失的情况尽量少或完全不丢失<br>备份和恢复时间尽量短，保证系统最大的可用性</p>
+</blockquote>
+<p>（2）物理备份</p>
+<blockquote>
+<p>冷备份：将数据库正常关闭，在停止状态下利用操作系统的 copy、cp、tar、 cpio等命令将数据库的文件全部备份下来，当数据库发生故障时，将数据文件复制回来，进行恢复<br>热备份：①备份软件备份；②不关闭数据库，将数据置为备份状态然后备份，再讲备份状态置为正常。</p>
+</blockquote>
+<blockquote>
+<p>完全备份：将数据库的内容全部备份，作为增量、累积的基础<br>增量备份：只备份上次完全、增量或累积备份以来修改的数据<br>累计备份：备份自上次完全或累积备份以来修改过的数据</p>
+</blockquote>
+<p>周期：一个完全备份和多个增量、累积备份组成<br>恢复：首先从完全备份恢复数据库，然后按照时间顺序从早到晚依次导入多个增量和累积备份文件</p>
+<p>（3）逻辑备份：利用各数据库系统自带的工具软件备份和恢复数据库的内容<br><br></p>
+<h2 id="10-分布式数据库系统"><a href="#10-分布式数据库系统" class="headerlink" title="10.分布式数据库系统"></a>10.分布式数据库系统</h2><p>（1）定义</p>
+<blockquote>
+<p>分布式数据库是由一组数据组成的，这组数据分布在计算机网络的不同计算机上，网络中的每个结点具有独立处理的能力，成为场地自治，它可以执行局部应用，同时，每个结点也能通过网络通信子系统执行全局应用。负责分布式数据库的建立、查询、更新、复制、管理和维护的软件称为分布式数据库管理系统。</p>
+</blockquote>
+<p>（2）分布式数据库系统特点</p>
+<blockquote>
+<p>数据的分布性<br>统一性<br>透明性<br>坚固性好<br>可扩充性好<br>可改善性能<br>自治性好</p>
+</blockquote>
+<p>(3)分布式数据库系统分类</p>
+<blockquote>
+<p>按 DDBMS 软件同构度来分:当所有服务器软件（或每个 LDBMS）和所有客户软件均用相同的软件时称为同构型分布式数据库；反之，则称为异构型分布式数据库</p>
+<p>按局部自治度来分:当对 DDBMS 的存取必须通过客户软件，则系统称为无局部自治；当局部事务允许对服务器软件进行直接存取，则系统称为有一定的局部自治</p>
+<p>按分布透明度来分:若用户可以对集成模式操作不需要涉及任何片段、重复、分布等信息时，则这类 DDBMS 称为有高度分布透明（或高度模式集成）；若用户必须知道所有关于片段、分配、重复等信息时，则这类 DDBMS没有分布透明，没有模式集成度</p>
+</blockquote>
+<p>(4)分布式数据库的目标</p>
+<blockquote>
+<p>局部结点自治性<br>不依赖中心结点<br>能连续操作<br>具有位置独立性（或称位置透明性）<br>分片独立性（或称分片透明性）<br>数据复制独立性<br>支持分布式查询处理<br>支持分布事务管理<br>具有硬件独立性<br>具有操作系统独立性<br>具有网络独立性<br>具有 DBMS 独立性</p>
+</blockquote>
+<p>(5)分布式数据库的架构<br>（1）示例图（下半部分是集中式数据库的模式结构，上半部分是分布式数据库系统增加的模式<br>级别）：<br> <img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/ruankao/three/ruankao3-5.png" height="60%" width="100%"></p>
+<blockquote>
+<p>1.全局外模式。它们是全局应用的用户视图。<br>2.全局概念模式。定义分布式数据库中数据的整体逻辑结构向其他层次的模式映像。<br>3.分片模式。每一个全局关系可以划分为若干不相交的部分，每一部分称为一个片<br>段，即“数据分片”。<br>4.分布模式。由数据分片得到的片断仍然是 DDB 的全局数据，是全局关系的逻辑<br>部分<br>5.局部概念模式。一个全局关系经逻辑划分成一个或多个逻辑片断，每个逻辑片断<br>被分配在一个或多个场地上，称为该逻辑片断在某场地上的物理映像或物理片断。<br>6.局部内模式。</p>
+</blockquote>
+<p>（2）其特点：</p>
+<blockquote>
+<p>数据分片和数据分配概念的分离，形成了“数据分布独立型”概念。<br>数据冗余的显示控制。<br>局部 DBMS 的独立性。这个特征也称为“局部映射透明性”。</p>
+</blockquote>
+<h2 id="11-数据仓库"><a href="#11-数据仓库" class="headerlink" title="11.数据仓库"></a>11.数据仓库</h2><p>（1）概念</p>
+<blockquote>
+<p>数据仓库（Data Warehouse）是一个面向主题的、集成的、相对稳定的、且随时间变化的数据集合，用于支持管理决策.主题性数据仓库，面向数据处理的数据仓库，稳定性数据仓库，随时间变化的数据仓库。</p>
+</blockquote>
+<p>（2）数据仓库的结构</p>
+<blockquote>
+<p>数据源<br>数据准备区<br>数据仓库数据库<br>数据集市/知识挖掘库<br>各种管理工具和应用工具</p>
+</blockquote>
+<p> <img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/ruankao/three/ruankao3-6.png" height="40%" width="100%"></p>
+<p>（3）数据仓库的参考架构</p>
+<blockquote>
+<p>数据仓库基本功能层：功能是从数据源抽取数据，对所抽取的数据进行筛选、清理，将处理过的数据导入或者说加载到数据仓库中，根据用户的需求设立数据集市，完成数据仓库的复杂查询、决策分析和知识的挖掘等</p>
+</blockquote>
+<blockquote>
+<p>数据仓库管理层：对这些基本功能进行管理与支持的结构框架</p>
+</blockquote>
+<blockquote>
+<p>数据仓库的环境支持层：由数据仓库数据传输层和数据仓库基础层组成</p>
+</blockquote>
+<p>（4）数据仓库的实现方法<br>自顶向下法适用情况：</p>
+<blockquote>
+<p>实现单位比较熟悉技术，并具有根据商业需求采用自顶向下方法开发应用程序的丰富经验。<br>决策层（总经理、决策者、投资者）完全清楚数据仓库的预测目标。<br>决策层（总经理、决策者、投资者）完全清楚数据仓库用作哪些机构的决策支持工具。<br>决策层（总经理、决策者、投资者）完全清楚数据仓库已经是商业过程中的一个子过程。</p>
+</blockquote>
+<p>自底向上法适用情况：</p>
+<blockquote>
+<p>企业还没有确实掌握数据仓库技术，希望进行技术评估来决定运行该技术的方式、地点和时间。<br>企业希望了解实现和运行数据仓库所需要的各种费用情况。<br>企业在对数据仓库进行投资选择。自底向上方法对于希望从数据仓库投资中快速得到回报的用户是非常有效的。该方法可以使企业充分利用各种技术，无须冒很大风险。</p>
+</blockquote>
+<p>联合方法适用情况：</p>
+<blockquote>
+<p>实现企业拥有经验丰富的设计师，有能力建立、证明、应用和维护数据结构、技术结构及企业模型，可以很容易地从具体（运作系统中的元数据）转移到抽象。<br>企业拥有固定的项目小组，完全清楚数据仓库技术应用的场所。他们可以清楚地看到当前的商务需求。<br><br></p>
+</blockquote>
+<h2 id="11-数据挖掘"><a href="#11-数据挖掘" class="headerlink" title="11.数据挖掘"></a>11.数据挖掘</h2><p>（1）定义：按企业既定业务目标，对大量的企业数据进行探索和分析，揭示隐藏的、未知的或验证已知的规律性，并进一步将其模型化的先进有效的方法</p>
+<p>（2）数据挖掘的功能</p>
+<blockquote>
+<p>自动预测趋势和行为数据挖掘自动在大型数据库中寻找预测性信息，以往需要进行大量手工分析的问题如今可以迅速直接由数据本身得出结论<br>关联分析数据关联是数据库中存在的一类重要的可被发现的知识<br>聚类数据库中的记录可被划分为一系列有意义的子集，即聚类<br>概念描述概念描述就是对某类对象的内涵进行描述，并概括这类对象的有关特征<br>偏差检测数据库中的数据常有一些异常记录，从数据库中检测这些偏差很有意义</p>
+</blockquote>
+<p>(3)数据挖掘常用技术</p>
+<blockquote>
+<p>关联分析<br>序列分析<br>分类分析<br>聚类分析<br>预测<br>时间序列</p>
+</blockquote>
+<p>（4）数据挖掘的流程</p>
+<blockquote>
+<p>问题定义在开始数据挖掘之前，最先的也是最重要的要求就是熟悉背景知识，弄清用户的需求<br>建立数据挖掘库<br>分析数据<br>调整数据<br>模型化<br>评价和解释</p>
+</blockquote>
+<p>（5）数据挖掘人员类别</p>
+<blockquote>
+<p>业务分析人员<br>数据分析人员<br>数据管理人员<br><br></p>
+</blockquote>
+<h2 id="12-NoSQL"><a href="#12-NoSQL" class="headerlink" title="12.NoSQL"></a>12.NoSQL</h2><p>（1）定义：全称Not Only SQL，NoSQL数据存储不需要固定的表结构，通常也不存在连接操作。</p>
+<p>（2）NOSQL特点</p>
+<blockquote>
+<p>易扩展<br>大数据量，高性能<br>灵活的数据模型<br>高可用</p>
+</blockquote>
+<h2 id="13-大数据"><a href="#13-大数据" class="headerlink" title="13.大数据"></a>13.大数据</h2><p>（1）定义</p>
+<blockquote>
+<p>无法在一定时间范围内用常规软件工具进行捕捉、管理和处理的数据集合，是需要新处理模式才能具有更强的决策力、洞察发现力和流程优化能力的海量、高增长率和多样化的信息资产</p>
+</blockquote>
+<p>（2）特点</p>
+<blockquote>
+<p>Volume：数据体量巨大<br>Variety：数据类型繁多<br>Value：价值密度低<br>Velocity：处理速度快</p>
+</blockquote>
+<p>（3）大数据处理关键技术</p>
+<blockquote>
+<p>大数据处理关键技术一般包括：大数据采集、大数据预处理、大数据存储及管理、大数据分析及挖掘、大&gt;数据展现和应用（大数据检索、大数据可视化、大数据应用、大数据安全等）。</p>
+</blockquote>
+<p>（4）大数据应用<br>4．大数据应用</p>
+<blockquote>
+<p>大数据可以在各行各业得以应用，如金融服务、医疗保健、零售业、制造业、政府机构等。</p>
+</blockquote>
+
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <hr>
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-06-24T17:13:28+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>最后更新于 2019年6月24日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/软考/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>软考</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/架构师/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>架构师</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.yiyuclub.club/2019/05/20/（软考架构师笔记三）数据库系统/&title=（软考架构师笔记三）数据库系统 | 易语的博客&summary=（软考架构师笔记三）数据库系统"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.yiyuclub.club/2019/05/20/（软考架构师笔记三）数据库系统/&title=（软考架构师笔记三）数据库系统 | 易语的博客&summary=（软考架构师笔记三）数据库系统"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=http://www.yiyuclub.club/2019/05/20/（软考架构师笔记三）数据库系统/&title=（软考架构师笔记三）数据库系统 | 易语的博客&summary=（软考架构师笔记三）数据库系统"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+            <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                            <h4>
+                                <a href="/2019/05/21/（软考架构师笔记四）计算机网络/" rel="prev" title="（软考架构师笔记四）计算机网络">
+                                  
+                                      （软考架构师笔记四）计算机网络
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/软考/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>软考</a> <a class="tag" href="/tags/架构师/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>架构师</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2019/05/17/（软考架构师笔记二（5））作业管理/" rel="prev" title="（软考架构师笔记二（5））作业管理">
+                                    
+                                        （软考架构师笔记二（5））作业管理
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/软考/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>软考</a> <a class="tag" href="/tags/架构师/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>架构师</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+      </section>
+    </article>
+  
+
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '（软考架构师笔记三）数据库系统',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              <section class='widget grid'>
+  
+<header class='pure'>
+  <div><i class="fas fa-map-signs fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;站内导航</div>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="grid navgation">
+      
+        <li><a class="flat-box" title="/" href="/"
+          
+          
+          id="home">
+          
+            <i class="fas fa-clock fa-fw" aria-hidden="true"></i>
+          
+          近期发布
+        </a></li>
+      
+        <li><a class="flat-box" title="/archives/" href="/archives/"
+          
+            rel="nofollow"
+          
+          
+          id="archives">
+          
+            <i class="fas fa-archive fa-fw" aria-hidden="true"></i>
+          
+          全部文章
+        </a></li>
+      
+        <li><a class="flat-box" title="/projects/" href="/projects/"
+          
+          
+          id="projects">
+          
+            <i class="fas fa-code-branch fa-fw" aria-hidden="true"></i>
+          
+          我的项目
+        </a></li>
+      
+        <li><a class="flat-box" title="/friends/" href="/friends/"
+          
+            rel="nofollow"
+          
+          
+          id="friends">
+          
+            <i class="fas fa-link fa-fw" aria-hidden="true"></i>
+          
+          我的友链
+        </a></li>
+      
+        <li><a class="flat-box" title="https://xaoxuu.com/wiki/material-x/" href="https://xaoxuu.com/wiki/material-x/"
+          
+            rel="nofollow"
+          
+          
+          id="https:xaoxuu.comwikimaterial-x">
+          
+            <i class="fas fa-book fa-fw" aria-hidden="true"></i>
+          
+          常用代码
+        </a></li>
+      
+        <li><a class="flat-box" title="/about/" href="/about/"
+          
+            rel="nofollow"
+          
+          
+          id="about">
+          
+            <i class="fas fa-info-circle fa-fw" aria-hidden="true"></i>
+          
+          与我相关
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-数据库类别"><span class="toc-text">1.数据库类别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-数据库模式"><span class="toc-text">2.数据库模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-概念数据模型"><span class="toc-text">3.概念数据模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-关系代数（基本运算类型）"><span class="toc-text">4.关系代数（基本运算类型）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-关系模型方式"><span class="toc-text">5.关系模型方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-数据库设计"><span class="toc-text">6.数据库设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-事务管理"><span class="toc-text">7.事务管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-故障与恢复"><span class="toc-text">8.故障与恢复</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-备份与恢复"><span class="toc-text">9.备份与恢复</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-分布式数据库系统"><span class="toc-text">10.分布式数据库系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-数据仓库"><span class="toc-text">11.数据仓库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-数据挖掘"><span class="toc-text">11.数据挖掘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-NoSQL"><span class="toc-text">12.NoSQL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-大数据"><span class="toc-text">13.大数据</span></a></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml"
+            class="social fas fa-rss flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://mail.qq.com"
+            class="social fas fa-envelope flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/hhsyy"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="http://music.163.com"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>
+    本站使用
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">易语的博客</a>
+    作为主题
+    
+      ，
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+    。
+  </div>
+ <div>
+ <i class="fas fa-chart-area"></i><span class="post-count">字数统计：78.6k</span>
+ </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["https://img.vim-cn.com/f6/78aed21213230b9220f310f9ea6c822b011846.jpg", "https://img.vim-cn.com/d5/b004c81a13aea401375d03b1258ecadbfcbaa7.jpg", "https://img.vim-cn.com/4c/8e7294998989454b2dcd2624373d5a699c4414.jpg"],
+          {
+            duration: "6000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+          ["https://img.vim-cn.com/f6/78aed21213230b9220f310f9ea6c822b011846.jpg", "https://img.vim-cn.com/d5/b004c81a13aea401375d03b1258ecadbfcbaa7.jpg", "https://img.vim-cn.com/4c/8e7294998989454b2dcd2624373d5a699c4414.jpg"],
+          {
+            duration: "6000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+    
+      <script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js"></script>
+    
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'false' == true;
+  var verify = 'false' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "5lQzNxqx4MqwUJkUl8p8gMDn-gzGzoHsz",
+    appKey: "YXL8AD7S2KBv7efGilMYDOJl",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'mp',
+    lang:'zh-cn',
+    highlight:'false'
+  })
+  </script>
+
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/js/app.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/js/search.js"></script>
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
