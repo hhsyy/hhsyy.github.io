@@ -386,7 +386,7 @@
 <p>先获取锁，再进行业务操作</p>
 </blockquote>
 <h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><blockquote>
-<p>不适合“读”操作频繁的场合<br>适合“写”操作频繁的场合</p>
+<p>不适合“读”操作频繁的场合<br>适合“写”操作频繁的场合4</p>
 </blockquote>
 <h3 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h3><blockquote>
 <p>行锁（包括：共享锁，排他锁）<br>表锁（包括：读锁，写锁）</p>
@@ -402,12 +402,11 @@
 <p>不适合“写”操作频繁的场合<br>适合“读”操作频繁的场合</p>
 </blockquote>
 <p><br></p>
-<h2 id="表级锁"><a href="#表级锁" class="headerlink" title="表级锁"></a>表级锁</h2><p>注：MyISAM和innoDB都用到</p>
-<h3 id="读锁"><a href="#读锁" class="headerlink" title="读锁"></a>读锁</h3><p>定义：</p>
+<h2 id="表级锁"><a href="#表级锁" class="headerlink" title="表级锁"></a>表级锁</h2><h3 id="读锁"><a href="#读锁" class="headerlink" title="读锁"></a>读锁</h3><p>定义：</p>
 <blockquote>
 <p>获得锁的前提时没有其他线程对该数据的写锁与读锁<br>其他和本线程都可以读操作，都不可以写操作<br>获得锁的线程如果对其他行进行读操作，会报 “tablename was not locked with LOCK TABLES”</p>
 </blockquote>
-<p>基本语句：</p>
+<p>基本语句（显式）：</p>
 <pre><code>//上锁
 LOCK TABLE table_name [ AS alias_name ] READ
 //解锁
@@ -416,7 +415,7 @@ UNLOCK table_name
 <blockquote>
 <p>获得锁的前提时没有其他线程对该数据的写锁<br>只能该线程对数据进行写操作，其他线程不可对其做任何操作<br>被增加写锁的表，其他请求无法在对该表增加读锁和写锁<br>可以指定锁的优先级</p>
 </blockquote>
-<p>基本语句：</p>
+<p>基本语句（显式）：</p>
 <pre><code>//上锁
 OCK TABLE table_name [AS alias_name] [ LOW_PRIORITY ] WRITE
 //解锁
@@ -426,7 +425,7 @@ UNLOCK table_name
 <blockquote>
 <p>无x锁才可获得s锁<br>被s锁的数据仍可被其他线程获得锁</p>
 </blockquote>
-<p>基本语句：</p>
+<p>基本语句（显式）：</p>
 <pre><code>SELECT ...LOCK IN SHARE MODE;
 </code></pre><h3 id="排他锁-X-LOCK"><a href="#排他锁-X-LOCK" class="headerlink" title="排他锁(X LOCK)"></a>排他锁(X LOCK)</h3><p>定义：</p>
 <blockquote>
@@ -434,7 +433,82 @@ UNLOCK table_name
 </blockquote>
 <p>基本语句：</p>
 <pre><code>SELECT ...LOCK FOR UPDATE;
-</code></pre>
+</code></pre><p><br></p>
+<h2 id="引擎支持"><a href="#引擎支持" class="headerlink" title="引擎支持"></a>引擎支持</h2><table>
+<thead>
+<tr>
+<th style="text-align:left">对比名称</th>
+<th style="text-align:left">MyISAM</th>
+<th>InnoDB</th>
+<th>BDB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">行锁</td>
+<td style="text-align:left">否</td>
+<td>是</td>
+<td>否 ｜</td>
+</tr>
+<tr>
+<td style="text-align:left">页锁</td>
+<td style="text-align:left">否</td>
+<td>否</td>
+<td>是 ｜</td>
+</tr>
+<tr>
+<td style="text-align:left">表锁</td>
+<td style="text-align:left">是</td>
+<td>是</td>
+<td>是  ｜</td>
+</tr>
+</tbody>
+</table>
+<p>注：</p>
+<blockquote>
+<p>BDB已经被InnoDB所取代<br>InnoDB行锁是通过给索引上的索引项加锁来实现的</p>
+</blockquote>
+<p><br></p>
+<h2 id="不同锁的对比"><a href="#不同锁的对比" class="headerlink" title="不同锁的对比"></a>不同锁的对比</h2><table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">开销</th>
+<th style="text-align:left">加锁速度</th>
+<th style="text-align:left">死锁</th>
+<th style="text-align:left">粒度</th>
+<th style="text-align:left">并 发性能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">表所</td>
+<td style="text-align:left">小</td>
+<td style="text-align:left">快</td>
+<td style="text-align:left">不会</td>
+<td style="text-align:left">高</td>
+<td style="text-align:left">低</td>
+</tr>
+<tr>
+<td style="text-align:left">行锁</td>
+<td style="text-align:left">大</td>
+<td style="text-align:left">慢</td>
+<td style="text-align:left">会</td>
+<td style="text-align:left">低</td>
+<td style="text-align:left">高</td>
+</tr>
+<tr>
+<td style="text-align:left">页锁</td>
+<td style="text-align:left">中</td>
+<td style="text-align:left">中</td>
+<td style="text-align:left">会</td>
+<td style="text-align:left">中</td>
+<td style="text-align:left">一般</td>
+</tr>
+</tbody>
+</table>
+<p>注：表锁适合查询和少量更新的操作，行锁适合大量更新的操作</p>
+
         </div>
         
           
@@ -445,10 +519,10 @@ UNLOCK table_name
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-07-02T10:15:41+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-07-03T08:50:48+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>最后更新于 2019年7月2日</p>
+    <p>最后更新于 2019年7月3日</p>
   </a>
 </div>
 
@@ -517,6 +591,25 @@ UNLOCK table_name
         
         
             <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                            <h4>
+                                <a href="/2019/07/03/MYSQL知识整理（MYSQL主从复制-基本原理）/" rel="prev" title="MYSQL知识整理（MYSQL主从复制-----基本原理）">
+                                  
+                                      MYSQL知识整理（MYSQL主从复制-----基本原理）
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/数据库/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>数据库</a> <a class="tag" href="/tags/MYSQL/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>MYSQL</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
                 
                 
                     <section class="next">
@@ -728,7 +821,7 @@ UNLOCK table_name
 </header>
 
     <div class='content pure'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#悲观锁"><span class="toc-text">悲观锁</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#定义"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特点"><span class="toc-text">特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用场景"><span class="toc-text">使用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内容"><span class="toc-text">内容</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#乐观锁"><span class="toc-text">乐观锁</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#定义-1"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特点-1"><span class="toc-text">特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用场景-1"><span class="toc-text">使用场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#表级锁"><span class="toc-text">表级锁</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#读锁"><span class="toc-text">读锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#写锁"><span class="toc-text">写锁</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#行级锁"><span class="toc-text">行级锁</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#共享锁-S-LOCK"><span class="toc-text">共享锁(S LOCK)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#排他锁-X-LOCK"><span class="toc-text">排他锁(X LOCK)</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#悲观锁"><span class="toc-text">悲观锁</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#定义"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特点"><span class="toc-text">特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用场景"><span class="toc-text">使用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内容"><span class="toc-text">内容</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#乐观锁"><span class="toc-text">乐观锁</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#定义-1"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特点-1"><span class="toc-text">特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用场景-1"><span class="toc-text">使用场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#表级锁"><span class="toc-text">表级锁</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#读锁"><span class="toc-text">读锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#写锁"><span class="toc-text">写锁</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#行级锁"><span class="toc-text">行级锁</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#共享锁-S-LOCK"><span class="toc-text">共享锁(S LOCK)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#排他锁-X-LOCK"><span class="toc-text">排他锁(X LOCK)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引擎支持"><span class="toc-text">引擎支持</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#不同锁的对比"><span class="toc-text">不同锁的对比</span></a></li></ol>
     </div>
   </section>
 
@@ -809,7 +902,7 @@ UNLOCK table_name
     。
   </div>
  <div>
- <i class="fas fa-chart-area"></i><span class="post-count">字数统计：83.3k</span>
+ <i class="fas fa-chart-area"></i><span class="post-count">字数统计：84.8k</span>
  </div>
 </footer>
 <script>setLoadingBarProgress(80);</script>
