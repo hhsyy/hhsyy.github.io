@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.yiyuclub.club/"/>
-  <updated>2019-07-03T03:02:00.686Z</updated>
+  <updated>2019-07-04T01:39:08.678Z</updated>
   <id>http://www.yiyuclub.club/</id>
   
   <author>
@@ -15,6 +15,54 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MYSQL知识整理（MYSQL优化---SQL优化）</title>
+    <link href="http://www.yiyuclub.club/2019/07/04/MYSQL%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86%EF%BC%88MYSQL%E4%BC%98%E5%8C%96-SQL%E4%BC%98%E5%8C%96%EF%BC%89/"/>
+    <id>http://www.yiyuclub.club/2019/07/04/MYSQL知识整理（MYSQL优化-SQL优化）/</id>
+    <published>2019-07-04T01:36:09.000Z</published>
+    <updated>2019-07-04T01:39:08.678Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;MYSQL知识整理（MYSQL优化—SQL优化）&lt;br&gt;
+    
+    </summary>
+    
+      <category term="MYSQL" scheme="http://www.yiyuclub.club/categories/MYSQL/"/>
+    
+      <category term="MYSQL优化" scheme="http://www.yiyuclub.club/categories/MYSQL/MYSQL%E4%BC%98%E5%8C%96/"/>
+    
+    
+      <category term="数据库" scheme="http://www.yiyuclub.club/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="MYSQL" scheme="http://www.yiyuclub.club/tags/MYSQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MYSQL知识整理（MYSQL优化---优化方案）</title>
+    <link href="http://www.yiyuclub.club/2019/07/04/MYSQL%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86%EF%BC%88MYSQL%E4%BC%98%E5%8C%96-%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88%EF%BC%89/"/>
+    <id>http://www.yiyuclub.club/2019/07/04/MYSQL知识整理（MYSQL优化-优化方案）/</id>
+    <published>2019-07-04T00:43:50.000Z</published>
+    <updated>2019-07-04T01:34:33.190Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;MYSQL知识整理（MYSQL优化—优化方案）&lt;br&gt;
+    
+    </summary>
+    
+      <category term="MYSQL" scheme="http://www.yiyuclub.club/categories/MYSQL/"/>
+    
+      <category term="MYSQL优化" scheme="http://www.yiyuclub.club/categories/MYSQL/MYSQL%E4%BC%98%E5%8C%96/"/>
+    
+    
+      <category term="数据库" scheme="http://www.yiyuclub.club/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="MYSQL" scheme="http://www.yiyuclub.club/tags/MYSQL/"/>
+    
+  </entry>
   
   <entry>
     <title>MYSQL知识整理（MYSQL主从复制-----基本原理）</title>
@@ -321,15 +369,15 @@
   </entry>
   
   <entry>
-    <title>MYSQL知识整理（MYSQL基础--DML数据操作语言）</title>
-    <link href="http://www.yiyuclub.club/2019/06/20/MYSQL%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86%EF%BC%88MYSQL%E5%9F%BA%E7%A1%80-DML%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E8%AF%AD%E8%A8%80%EF%BC%89/"/>
-    <id>http://www.yiyuclub.club/2019/06/20/MYSQL知识整理（MYSQL基础-DML数据操作语言）/</id>
+    <title>MYSQL知识整理（MYSQL基础--DDL数据定义语言）</title>
+    <link href="http://www.yiyuclub.club/2019/06/20/MYSQL%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86%EF%BC%88MYSQL%E5%9F%BA%E7%A1%80-DDL%E6%95%B0%E6%8D%AE%E5%AE%9A%E4%B9%89%E8%AF%AD%E8%A8%80%EF%BC%89/"/>
+    <id>http://www.yiyuclub.club/2019/06/20/MYSQL知识整理（MYSQL基础-DDL数据定义语言）/</id>
     <published>2019-06-20T00:54:06.000Z</published>
     <updated>2019-06-24T09:13:28.050Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;MYSQL知识整理（MYSQL基础–DML数据操作语言）&lt;br&gt;
+      &lt;p&gt;MYSQL知识整理（MYSQL基础–DDL数据定义语言）&lt;br&gt;
     
     </summary>
     
@@ -345,15 +393,15 @@
   </entry>
   
   <entry>
-    <title>MYSQL知识整理（MYSQL基础--DDL数据定义语言）</title>
-    <link href="http://www.yiyuclub.club/2019/06/20/MYSQL%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86%EF%BC%88MYSQL%E5%9F%BA%E7%A1%80-DDL%E6%95%B0%E6%8D%AE%E5%AE%9A%E4%B9%89%E8%AF%AD%E8%A8%80%EF%BC%89/"/>
-    <id>http://www.yiyuclub.club/2019/06/20/MYSQL知识整理（MYSQL基础-DDL数据定义语言）/</id>
+    <title>MYSQL知识整理（MYSQL基础--DML数据操作语言）</title>
+    <link href="http://www.yiyuclub.club/2019/06/20/MYSQL%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86%EF%BC%88MYSQL%E5%9F%BA%E7%A1%80-DML%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E8%AF%AD%E8%A8%80%EF%BC%89/"/>
+    <id>http://www.yiyuclub.club/2019/06/20/MYSQL知识整理（MYSQL基础-DML数据操作语言）/</id>
     <published>2019-06-20T00:54:06.000Z</published>
     <updated>2019-06-24T09:13:28.050Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;MYSQL知识整理（MYSQL基础–DDL数据定义语言）&lt;br&gt;
+      &lt;p&gt;MYSQL知识整理（MYSQL基础–DML数据操作语言）&lt;br&gt;
     
     </summary>
     
@@ -426,54 +474,6 @@
     <summary type="html">
     
       &lt;p&gt;（软考架构师笔记二十一）虚拟化、云计算与物联网&lt;br&gt;
-    
-    </summary>
-    
-      <category term="学习笔记" scheme="http://www.yiyuclub.club/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="软考架构师" scheme="http://www.yiyuclub.club/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%BD%AF%E8%80%83%E6%9E%B6%E6%9E%84%E5%B8%88/"/>
-    
-    
-      <category term="软考" scheme="http://www.yiyuclub.club/tags/%E8%BD%AF%E8%80%83/"/>
-    
-      <category term="架构师" scheme="http://www.yiyuclub.club/tags/%E6%9E%B6%E6%9E%84%E5%B8%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>（软考架构师笔记二十）应用数学</title>
-    <link href="http://www.yiyuclub.club/2019/06/12/%EF%BC%88%E8%BD%AF%E8%80%83%E6%9E%B6%E6%9E%84%E5%B8%88%E7%AC%94%E8%AE%B0%E4%BA%8C%E5%8D%81%EF%BC%89%E5%BA%94%E7%94%A8%E6%95%B0%E5%AD%A6/"/>
-    <id>http://www.yiyuclub.club/2019/06/12/（软考架构师笔记二十）应用数学/</id>
-    <published>2019-06-12T00:46:18.000Z</published>
-    <updated>2019-06-24T09:13:28.050Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;（软考架构师笔记二十）应用数学&lt;br&gt;
-    
-    </summary>
-    
-      <category term="学习笔记" scheme="http://www.yiyuclub.club/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="软考架构师" scheme="http://www.yiyuclub.club/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%BD%AF%E8%80%83%E6%9E%B6%E6%9E%84%E5%B8%88/"/>
-    
-    
-      <category term="软考" scheme="http://www.yiyuclub.club/tags/%E8%BD%AF%E8%80%83/"/>
-    
-      <category term="架构师" scheme="http://www.yiyuclub.club/tags/%E6%9E%B6%E6%9E%84%E5%B8%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>（软考架构师笔记十九）标准化知识</title>
-    <link href="http://www.yiyuclub.club/2019/06/12/%EF%BC%88%E8%BD%AF%E8%80%83%E6%9E%B6%E6%9E%84%E5%B8%88%E7%AC%94%E8%AE%B0%E5%8D%81%E4%B9%9D%EF%BC%89%E6%A0%87%E5%87%86%E5%8C%96%E7%9F%A5%E8%AF%86/"/>
-    <id>http://www.yiyuclub.club/2019/06/12/（软考架构师笔记十九）标准化知识/</id>
-    <published>2019-06-12T00:43:47.000Z</published>
-    <updated>2019-06-24T09:13:28.066Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;（软考架构师笔记十九）标准化知识&lt;br&gt;
     
     </summary>
     
