@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>MYSQL知识整理（MYSQL安装---centos7环境）</title>
+      <link href="/2019/07/04/MYSQL%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86%EF%BC%88MYSQL%E5%AE%89%E8%A3%85-centos7%E7%8E%AF%E5%A2%83%EF%BC%89/"/>
+      <url>/2019/07/04/MYSQL%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86%EF%BC%88MYSQL%E5%AE%89%E8%A3%85-centos7%E7%8E%AF%E5%A2%83%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<p>MYSQL知识整理（MYSQL安装—centos7环境）<br><a id="more"></a></p><h2 id="1-安装前的检查"><a href="#1-安装前的检查" class="headerlink" title="1.安装前的检查"></a>1.安装前的检查</h2><p><em>注：如果第一次安装mysql，可以跳过,此次版本为8.0.13</em></p><p>① 输入命令检查mysql是否已存在:rpm -qa | grep mysql</p><p>② 1步骤不存在则跳过下面，输入命令删除文件:yum remove mysql-xxx-xxx(其为上图所列的文件名称)</p><p>③ 查找mysql配置文件:find / -name mysql</p><p>④ 删除mysql配置文件:rm -rf -var/lib/mysql</p><p>由于我下centos7的版本有mariadb（mysql的分支），需删除否则可能报错</p><p>① 输入命令检查mariadb 是否已存在:rpm -qa | grep mariadb </p><p>② 1步骤不存在则跳过下面，输入命令删除文件:yum remove mariadb文件名(其为上述所列的文件名称)</p><p>③  删除mariadb文件：yum -y remove mariadb文件名</p><p><br></p><h2 id="2-安装mysql"><a href="#2-安装mysql" class="headerlink" title="2.安装mysql"></a>2.安装mysql</h2><p>① 打开centos7并连接，最好登录为root权限的用户</p><p>② 输入地址进入mysql官网相关地址：<a href="https://dev.mysql.com/downloads/repo/yum/" target="_blank" rel="noopener">https://dev.mysql.com/downloads/repo/yum/</a></p><p>③ 由于使用在线下载，用到yum与wget，点击如图界面获取地址（可按自己方式获取链接）</p><p><img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/mysql/install/mysql-install-1.1.png" height="50%" width="100%"></p><p><img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/mysql/install/mysql-install-1.2.png" height="50%" width="100%"></p><p><img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/mysql/install/mysql-install-1.3.png" height="50%" width="100%"></p><p>④ 输入命令下载（链接为上述链接）：<br>wget <a href="https://repo.mysql.com//mysql80-community-release-el7-3.noarch.rpm" target="_blank" rel="noopener">https://repo.mysql.com//mysql80-community-release-el7-3.noarch.rpm</a></p><p><img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/mysql/install/mysql-install-1.4.png" height="20%" width="100%"></p><p>⑤ 安装rpm包（时间略久）<br>rpm -ivh mysql80-community-release-el7-3.noarch.rpm</p><p>⑥ 安装mysql：yum install mysql-community-server</p><p><img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/mysql/install/mysql-install-1.5.png" height="30%" width="100%"></p><p>注：此过程会有两部y/n，y即可</p><p><br></p><h2 id="3-mysql设置"><a href="#3-mysql设置" class="headerlink" title="3.mysql设置"></a>3.mysql设置</h2><h3 id="文件介绍"><a href="#文件介绍" class="headerlink" title="文件介绍"></a>文件介绍</h3><blockquote><p>cnf 配置：/etc/my.cnf<br>日志：/var/log/var/log/mysqld.log<br>启动脚本：/usr/lib/systemd/system/mysqld.service<br>socket：/var/run/mysqld/mysqld.pid</p></blockquote><h3 id="开机自启"><a href="#开机自启" class="headerlink" title="开机自启"></a>开机自启</h3><blockquote><p>systemctl start mysqld.service<br>systemctl enable mysqld.service</p></blockquote><p><img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/mysql/install/mysql-install-1.6.png" height="10%" width="100%"></p><h3 id="密码"><a href="#密码" class="headerlink" title="密码"></a>密码</h3><p>查看临时密码：</p><blockquote><p>mysql安装结束，其会有个临时密码<br>输入命令查看：cat /var/log/mysqld.log | grep password</p></blockquote><p><img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/mysql/install/mysql-install-1.7.png" height="5%" width="100%"></p><p>更改密码：<br>① 进入mysql界面，mysql -uroot -p,输入临时密码</p><p>② 修改密码：ALTER USER ‘root‘@’localhost’ IDENTIFIED WITH mysql_native_password BY ‘root1234’</p><p>③ 如果未更改，初始策略等级较高，会报错：</p><p><img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/mysql/install/mysql-install-1.9.png" height="5%" width="100%"></p><p>④ 降低验证等级：</p><blockquote><p>set global validate_password.policy=0;   (策略等级，如数字密码等)<br>set global validate_password.length=1;  （长度）</p></blockquote><p>注：5.*版本修改命令为：</p><blockquote><p>set global validate_password_policy=0;<br>set global validate_password_length=1;</p></blockquote><p><img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/mysql/install/mysql-install-1.10.png" height="15%" width="70%"></p><p>⑤ 再次修改密码、成功</p><p><br></p><h2 id="4-远程连接"><a href="#4-远程连接" class="headerlink" title="4.远程连接"></a>4.远程连接</h2><h3 id="win10连接"><a href="#win10连接" class="headerlink" title="win10连接"></a>win10连接</h3><p>① win10安装好mysql图形操作软件（这里是Navicat）</p><p>② 关闭centos7防火墙</p><blockquote><p>systemctl stop firewalld （关闭）<br>systemctl disable firewalld（开机关闭）</p></blockquote><p>③ 由于安装后默认权限只允许localhost,新建一用户，输入：</p><pre><code>use mysql;update user set host = &quot;%&quot; where user=&apos;root&apos;;create user &apos;hhs&apos;@&apos;%&apos; identified by &apos;root1234&apos;;grant all privileges on *.* to &apos;hhs&apos;@&apos;%&apos; with grant option;</code></pre><p>④ Navicat输入ip、用户名、密码连接成功<br><img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/mysql/install/mysql-install-1.12.png" height="50%" width="50%"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> MYSQL </category>
+          
+          <category> MYSQL安装 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据库 </tag>
+            
+            <tag> MYSQL </tag>
+            
+            <tag> centos7 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>MYSQL知识整理（MYSQL优化---SQL优化）</title>
       <link href="/2019/07/04/MYSQL%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86%EF%BC%88MYSQL%E4%BC%98%E5%8C%96-SQL%E4%BC%98%E5%8C%96%EF%BC%89/"/>
       <url>/2019/07/04/MYSQL%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86%EF%BC%88MYSQL%E4%BC%98%E5%8C%96-SQL%E4%BC%98%E5%8C%96%EF%BC%89/</url>

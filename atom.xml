@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.yiyuclub.club/"/>
-  <updated>2019-07-04T01:39:08.678Z</updated>
+  <updated>2019-07-04T07:47:46.106Z</updated>
   <id>http://www.yiyuclub.club/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MYSQL知识整理（MYSQL安装---centos7环境）</title>
+    <link href="http://www.yiyuclub.club/2019/07/04/MYSQL%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86%EF%BC%88MYSQL%E5%AE%89%E8%A3%85-centos7%E7%8E%AF%E5%A2%83%EF%BC%89/"/>
+    <id>http://www.yiyuclub.club/2019/07/04/MYSQL知识整理（MYSQL安装-centos7环境）/</id>
+    <published>2019-07-04T01:55:45.000Z</published>
+    <updated>2019-07-04T07:47:46.106Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;MYSQL知识整理（MYSQL安装—centos7环境）&lt;br&gt;
+    
+    </summary>
+    
+      <category term="MYSQL" scheme="http://www.yiyuclub.club/categories/MYSQL/"/>
+    
+      <category term="MYSQL安装" scheme="http://www.yiyuclub.club/categories/MYSQL/MYSQL%E5%AE%89%E8%A3%85/"/>
+    
+    
+      <category term="数据库" scheme="http://www.yiyuclub.club/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="MYSQL" scheme="http://www.yiyuclub.club/tags/MYSQL/"/>
+    
+      <category term="centos7" scheme="http://www.yiyuclub.club/tags/centos7/"/>
+    
+  </entry>
   
   <entry>
     <title>MYSQL知识整理（MYSQL优化---SQL优化）</title>
@@ -461,30 +487,6 @@
       <category term="数据库" scheme="http://www.yiyuclub.club/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
       <category term="MYSQL" scheme="http://www.yiyuclub.club/tags/MYSQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>（软考架构师笔记二十一）虚拟化、云计算与物联网</title>
-    <link href="http://www.yiyuclub.club/2019/06/12/%EF%BC%88%E8%BD%AF%E8%80%83%E6%9E%B6%E6%9E%84%E5%B8%88%E7%AC%94%E8%AE%B0%E4%BA%8C%E5%8D%81%E4%B8%80%EF%BC%89%E8%99%9A%E6%8B%9F%E5%8C%96%E3%80%81%E4%BA%91%E8%AE%A1%E7%AE%97%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/"/>
-    <id>http://www.yiyuclub.club/2019/06/12/（软考架构师笔记二十一）虚拟化、云计算与物联网/</id>
-    <published>2019-06-12T02:37:57.000Z</published>
-    <updated>2019-06-24T09:13:28.050Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;（软考架构师笔记二十一）虚拟化、云计算与物联网&lt;br&gt;
-    
-    </summary>
-    
-      <category term="学习笔记" scheme="http://www.yiyuclub.club/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="软考架构师" scheme="http://www.yiyuclub.club/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%BD%AF%E8%80%83%E6%9E%B6%E6%9E%84%E5%B8%88/"/>
-    
-    
-      <category term="软考" scheme="http://www.yiyuclub.club/tags/%E8%BD%AF%E8%80%83/"/>
-    
-      <category term="架构师" scheme="http://www.yiyuclub.club/tags/%E6%9E%B6%E6%9E%84%E5%B8%88/"/>
     
   </entry>
   
