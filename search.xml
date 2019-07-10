@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>数据结构（java二叉树---遍历）</title>
+      <link href="/2019/07/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88java%E4%BA%8C%E5%8F%89%E6%A0%91-%E9%81%8D%E5%8E%86%EF%BC%89/"/>
+      <url>/2019/07/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88java%E4%BA%8C%E5%8F%89%E6%A0%91-%E9%81%8D%E5%8E%86%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<p>数据结构（java二叉树—遍历）<br><a id="more"></a></p><h2 id="1-基本定义"><a href="#1-基本定义" class="headerlink" title="1.基本定义"></a>1.基本定义</h2><h3 id="节点类"><a href="#节点类" class="headerlink" title="节点类"></a>节点类</h3><pre><code>//类名BinaryTreeNode//属性public String data;public BinaryTreeNode leftNode;public BinaryTreeNode rightNode;</code></pre><h3 id="二叉树类"><a href="#二叉树类" class="headerlink" title="二叉树类"></a>二叉树类</h3><pre><code>//二叉树类BinaryTree//属性private BinaryTreeNode rootNode;//方法get set省略</code></pre><p><br></p><h2 id="2-先序遍历"><a href="#2-先序遍历" class="headerlink" title="2.先序遍历"></a>2.先序遍历</h2><h3 id="递归方式"><a href="#递归方式" class="headerlink" title="递归方式"></a>递归方式</h3><pre><code> //先序遍历public void showOrderByFirst(BinaryTreeNode node){    if(node == null){        return;    }else{        System.out.println(node.data);        showOrderByFirst(node.getLeftNode());        showOrderByFirst(node.getRightNode());    }}</code></pre><p><br></p><h2 id="3-中序遍历"><a href="#3-中序遍历" class="headerlink" title="3.中序遍历"></a>3.中序遍历</h2><h3 id="递归方式-1"><a href="#递归方式-1" class="headerlink" title="递归方式"></a>递归方式</h3><pre><code>//中序遍历public void showOrderByMiddle(BinaryTreeNode node){    if(node == null){        return;    }else{        showOrderByMiddle(node.getLeftNode());        System.out.println(node.data);        showOrderByMiddle(node.getRightNode());    }}</code></pre><p><br></p><h2 id="4-后序遍历"><a href="#4-后序遍历" class="headerlink" title="4.后序遍历"></a>4.后序遍历</h2><h3 id="递归方式-2"><a href="#递归方式-2" class="headerlink" title="递归方式"></a>递归方式</h3><pre><code>//后序遍历public void showOrderByLast(BinaryTreeNode node){    if(node == null){        return;    }else{        showOrderByLast(node.getLeftNode());        showOrderByLast(node.getRightNode());        System.out.println(node.data);    }}</code></pre><p><br></p><h2 id="4-层序遍历"><a href="#4-层序遍历" class="headerlink" title="4.层序遍历"></a>4.层序遍历</h2><pre><code>//层序遍历public void showOrderByFlood(BinaryTreeNode node) {    if (node == null) {        return;    }    Queue&lt;BinaryTreeNode&gt; qe = new LinkedList&lt;BinaryTreeNode&gt;();    qe.add(node);    while (!qe.isEmpty()) {        BinaryTreeNode binaryTreeNode = qe.poll();        System.out.println(binaryTreeNode.data);        if (binaryTreeNode.leftNode != null) {            qe.add(binaryTreeNode.leftNode);        }        if (binaryTreeNode.rightNode != null) {            qe.add(binaryTreeNode.rightNode);        }    }}</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构 </category>
+          
+          <category> 二叉树 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> java </tag>
+            
+            <tag> 数据结构 </tag>
+            
+            <tag> 二叉树 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>数据结构（java二叉树基本操作）</title>
       <link href="/2019/07/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88java%E4%BA%8C%E5%8F%89%E6%A0%91%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%89/"/>
       <url>/2019/07/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88java%E4%BA%8C%E5%8F%89%E6%A0%91%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%89/</url>
@@ -15,7 +46,7 @@
           
           <category> 数据结构 </category>
           
-          <category> 二叉树树 </category>
+          <category> 二叉树 </category>
           
       </categories>
       
