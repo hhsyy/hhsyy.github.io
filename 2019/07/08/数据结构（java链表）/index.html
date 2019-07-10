@@ -504,7 +504,7 @@ public void addData(int data){
 }
 </code></pre><p>注：单项循环链表就是把最后一个节点的next设置为head即可，在增改操作时注意更换最后一个node的next</p>
 <p><br></p>
-<h2 id="2-双向链表"><a href="#2-双向链表" class="headerlink" title="2.双向链表"></a>2.双向链表</h2><p>（1）实体类Node：<br>    public class Node {</p>
+<h2 id="2-双向链表"><a href="#2-双向链表" class="headerlink" title="2.双向链表"></a>2.双向链表</h2><h3 id="新增操作"><a href="#新增操作" class="headerlink" title="新增操作"></a>新增操作</h3><p>（1）实体类Node：<br>    public class Node {</p>
 <pre><code>    public Integer data;
 
     // 下一个node
@@ -567,8 +567,38 @@ public void addSideNode(Integer well){
     System.out.println(&quot;遍历结束&quot;);
     return;
 }
-</code></pre><p>（4）删除：</p>
-<pre><code>public boolean deleteSideNode(Integer index){
+</code></pre><p>（4）测试：</p>
+<pre><code>  public static void main(String[] args){
+
+    TestNode test = new TestNode();
+
+   while (true){
+       Scanner scanner1 = new Scanner(System.in);
+
+       Integer next = scanner1.nextInt();
+
+       test.addSideNode(next);
+
+       System.out.println(&quot;是否删除&quot;);
+
+       Scanner scanner2 = new Scanner(System.in);
+
+       Integer delete = scanner2.nextInt();
+
+       if(delete==1){
+           System.out.println(&quot;删除索引号&quot;);
+           Scanner scanner3 = new Scanner(System.in);
+
+           Integer  index= scanner3.nextInt();
+
+           boolean result = test.deleteSideNode(index);
+           System.out.println(&quot;删除结束，结果：&quot;+result);
+       }
+
+      test.printSideNode();
+   }
+}
+</code></pre><h3 id="删除操作-1"><a href="#删除操作-1" class="headerlink" title="删除操作"></a>删除操作</h3><pre><code>public boolean deleteSideNode(Integer index){
     //索引小于1处理
     if(index&lt;1){
         System.out.println(&quot;索引值需大于1&quot;);
@@ -609,37 +639,6 @@ public void addSideNode(Integer well){
     }
     return false;
 }
-</code></pre><p>（5）测试：</p>
-<pre><code>  public static void main(String[] args){
-
-    TestNode test = new TestNode();
-
-   while (true){
-       Scanner scanner1 = new Scanner(System.in);
-
-       Integer next = scanner1.nextInt();
-
-       test.addSideNode(next);
-
-       System.out.println(&quot;是否删除&quot;);
-
-       Scanner scanner2 = new Scanner(System.in);
-
-       Integer delete = scanner2.nextInt();
-
-       if(delete==1){
-           System.out.println(&quot;删除索引号&quot;);
-           Scanner scanner3 = new Scanner(System.in);
-
-           Integer  index= scanner3.nextInt();
-
-           boolean result = test.deleteSideNode(index);
-           System.out.println(&quot;删除结束，结果：&quot;+result);
-       }
-
-      test.printSideNode();
-   }
-}
 </code></pre><p>注：双向循环链表就是把最后一个节点的next设置为head即可，head的上一个节点up设置为链表最后一个节点即可，在增删增草注意替换即可</p>
 
         </div>
@@ -652,7 +651,7 @@ public void addSideNode(Integer well){
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-07-09T09:47:03+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-07-09T09:51:23+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
     <p>最后更新于 2019年7月9日</p>
@@ -724,6 +723,20 @@ public void addSideNode(Integer well){
         
         
             <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                            <h4>
+                                <a href="/2019/07/09/数据结构（堆）/" rel="prev" title="数据结构（堆）">
+                                  
+                                      数据结构（堆）
+                                  
+                                </a>
+                            </h4>
+                            
+                        </span>
+                    </section>
                 
                 
                     <section class="next">
@@ -935,7 +948,7 @@ public void addSideNode(Integer well){
 </header>
 
     <div class='content pure'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-单向链表"><span class="toc-text">1.单向链表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本实现（新增）"><span class="toc-text">基本实现（新增）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除操作"><span class="toc-text">删除操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-双向链表"><span class="toc-text">2.双向链表</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-单向链表"><span class="toc-text">1.单向链表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本实现（新增）"><span class="toc-text">基本实现（新增）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除操作"><span class="toc-text">删除操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-双向链表"><span class="toc-text">2.双向链表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#新增操作"><span class="toc-text">新增操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除操作-1"><span class="toc-text">删除操作</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -1016,7 +1029,7 @@ public void addSideNode(Integer well){
     。
   </div>
  <div>
- <i class="fas fa-chart-area"></i><span class="post-count">字数统计：88.2k</span>
+ <i class="fas fa-chart-area"></i><span class="post-count">字数统计：89.4k</span>
  </div>
 </footer>
 <script>setLoadingBarProgress(80);</script>
