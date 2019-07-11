@@ -4,6 +4,48 @@
   
     
     <entry>
+      <title></title>
+      <link href="/2019/07/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88java%E5%A0%86%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%89/"/>
+      <url>/2019/07/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88java%E5%A0%86%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<hr><p>title: 数据结构（java堆基本操作）<br>date: 2019-07-11 09:16:59<br>categories: </p><ul><li>数据结构</li><li>堆<br>tags: </li><li>数据结构</li><li>堆</li><li>java<br>body: [article, related_posts, comments]<br>sidebar: [grid, toc] # 放置任何你想要显示的侧边栏部件</li></ul><hr><p>数据结构（java堆基本操作）<br><a id="more"></a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>数据结构（堆结构）</title>
+      <link href="/2019/07/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88%E5%A0%86%E7%BB%93%E6%9E%84%EF%BC%89/"/>
+      <url>/2019/07/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88%E5%A0%86%E7%BB%93%E6%9E%84%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<p>数据结构（堆结构）<br><a id="more"></a></p><h2 id="1-概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><blockquote><p>堆是一个完全二叉树结构<br>是一个数组按照完全二叉树的方式排序</p></blockquote><h3 id="最大堆"><a href="#最大堆" class="headerlink" title="最大堆"></a>最大堆</h3><blockquote><p>父节点永远比子节点大，即根大于左右两节点</p></blockquote><h3 id="最小堆"><a href="#最小堆" class="headerlink" title="最小堆"></a>最小堆</h3><blockquote><p>父节点永远比子节点小，即根小于左右两节点</p></blockquote><p>图解</p><p><img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/datastrut/datastruct-3.1.png" height="30%" width="100%"></p><p>注意：</p><blockquote><p>　数据结构堆栈结构和内存中的堆栈是不同概念<br>　最大堆中最大元素一定位于第一位，最小元素不一定再最后一位<br>　最小堆同理<br>　堆相对二叉树查询较慢，插入删除较快</p></blockquote><p><br></p><h2 id="上浮-shiftUp"><a href="#上浮-shiftUp" class="headerlink" title="上浮 shiftUp"></a>上浮 shiftUp</h2><blockquote><p>最大堆中，如果一个节点比它父节点大，则与父节点置换（子节点是往上的过程）<br>最小堆中，如果一个节点比它父节点小，则与父节点置换（子节点是往上的过程）</p></blockquote><p><img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/datastrut/datastruct-3.2.png" height="30%" width="100%"></p><p><br></p><h2 id="下沉-shiftDown"><a href="#下沉-shiftDown" class="headerlink" title="下沉 shiftDown"></a>下沉 shiftDown</h2><blockquote><p>最大堆中，如果一个节点比它子节点小（子节点左右先比较），则与子节点置换（父节点是往下的过程）<br>最小堆中，如果一个节点比它子节点大（子节点左右先比较），则与子节点置换（父节点是往下的过程）</p></blockquote><p>图解</p><p><img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/datastrut/datastruct-3.3.png" height="40%" width="50%"></p><p><br></p><h2 id="插入-insert"><a href="#插入-insert" class="headerlink" title="插入 insert"></a>插入 insert</h2><blockquote><p>在堆的尾部添加新新节点，然后对其进行 shiftUp</p></blockquote><p><br></p><h2 id="移除-remove"><a href="#移除-remove" class="headerlink" title="移除 remove"></a>移除 remove</h2><blockquote><p>删除堆头部的最大（小）值，把最后一个节点放到根节点，然后对其进行 shiftDown </p></blockquote><p><br></p><h2 id="搜索-search"><a href="#搜索-search" class="headerlink" title="搜索 search"></a>搜索 search</h2><blockquote><p>时间复杂度：O(n)<br>相对二叉树较慢</p></blockquote><p><br></p><h2 id="堆排序-heapSort"><a href="#堆排序-heapSort" class="headerlink" title="堆排序 heapSort"></a>堆排序 heapSort</h2><blockquote><p>待补充</p></blockquote><p><br></p><h3 id="常见实现方式"><a href="#常见实现方式" class="headerlink" title="常见实现方式"></a>常见实现方式</h3><blockquote><p>使用数组存储二叉树</p></blockquote><p>（1）左边：左边节点数组下标为其父节点的2倍( leftNode = Parent * 2 )</p><p>（2）右边：右边节点数组下标为其父节点的2倍+1( leftNode = Parent*2 + 1 )</p><p><br></p><h2 id="堆化-heapify"><a href="#堆化-heapify" class="headerlink" title="堆化 heapify"></a>堆化 heapify</h2><blockquote><p>算法复杂度：O(n)</p></blockquote><h3 id="数组转最大堆"><a href="#数组转最大堆" class="headerlink" title="数组转最大堆"></a>数组转最大堆</h3><blockquote><p>对数组进行堆化<br>堆化后第一个根元素是最大值</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构 </category>
+          
+          <category> 堆 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据结构 </tag>
+            
+            <tag> 堆 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>数据结构（java二叉树---遍历）</title>
       <link href="/2019/07/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88java%E4%BA%8C%E5%8F%89%E6%A0%91-%E9%81%8D%E5%8E%86%EF%BC%89/"/>
       <url>/2019/07/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88java%E4%BA%8C%E5%8F%89%E6%A0%91-%E9%81%8D%E5%8E%86%EF%BC%89/</url>
@@ -89,19 +131,6 @@
             <tag> 二叉树 </tag>
             
         </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>数据结构（堆）</title>
-      <link href="/2019/07/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88%E5%A0%86%EF%BC%89/"/>
-      <url>/2019/07/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88%E5%A0%86%EF%BC%89/</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
       
     </entry>
     
