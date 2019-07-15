@@ -379,6 +379,71 @@
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
           <p>数据结构（java堆基本操作）<br><a id="more"></a></p>
+<h2 id="1-前提说明"><a href="#1-前提说明" class="headerlink" title="1.前提说明"></a>1.前提说明</h2><blockquote>
+<p>由于 int类型去余取整，子节点无论左右只要除以2，都可以得到父节点数组的下标<br>数组下标从0开始（第一个元素下标为0）<br>节点下标从1开始（根节点下标为1）</p>
+</blockquote>
+<p><br></p>
+<h2 id="2-类属性"><a href="#2-类属性" class="headerlink" title="2.类属性"></a>2.类属性</h2><blockquote>
+<p>THead 类</p>
+</blockquote>
+<p><br></p>
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><pre><code>private Integer[] data;
+
+private Integer size;
+</code></pre><p><br></p>
+<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><pre><code> //自动扩展比传入的数组大小大一
+THead(Integer[] str) {
+ this.size = str.length + 1;
+ this.data = new Integer[this.size];
+ for (int i = 0; i &lt; this.size; i++) {
+     try {
+         data[i] = str[i];
+     } catch (Exception e) {
+         data[i] = null;
+     }
+ }
+ }
+</code></pre><p><br></p>
+<h2 id="3-打印"><a href="#3-打印" class="headerlink" title="3.打印"></a>3.打印</h2><pre><code>//循环遍历打印数组
+public void printHead(Integer[] data) {
+
+    for (int str : data) {
+        System.out.println(str);
+    }
+
+}
+</code></pre><p><br></p>
+<h2 id="4-插入"><a href="#4-插入" class="headerlink" title="4.插入"></a>4.插入</h2><pre><code>public void insertHeap(int ob) {
+    //n为数组data长度
+    int n = this.size;
+    //由于数组从0开始，需减1
+    this.data[n - 1] = ob;
+    //调用最大堆方法
+    MaxHeap(this.data, n);
+    //打印
+    printHead(this.data);
+}
+</code></pre><p><br></p>
+<h2 id="5-最大堆"><a href="#5-最大堆" class="headerlink" title="5.最大堆"></a>5.最大堆</h2><pre><code>public void MaxHeap(Integer[] ob, int n) {
+    //传入数组不为空
+    if (ob != null) {
+        //保证n-1&gt;0,和判断最后一位是否大于它的父节点
+        while (n &gt; 1 &amp;&amp; ob[n - 1] &gt; ob[n / 2 - 1]) {
+            //父节点与传入的值对换
+            int temp = ob[n - 1];
+            ob[n - 1] = ob[n / 2 - 1];
+            ob[n / 2 - 1] = temp;
+            //n变为父节点的下标（n-1）
+            n = n / 2;
+        }
+    }
+}
+</code></pre><p><br></p>
+<h2 id="6-最小堆"><a href="#6-最小堆" class="headerlink" title="6.最小堆"></a>6.最小堆</h2><blockquote>
+<p>ob[n - 1] &lt; ob[n / 2 - 1]  即可</p>
+</blockquote>
+<p><br></p>
+<h2 id="7-堆化"><a href="#7-堆化" class="headerlink" title="7.堆化"></a>7.堆化</h2><p>待续</p>
 
         </div>
         
@@ -390,10 +455,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-07-11T16:14:01+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-07-15T09:01:15+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>最后更新于 2019年7月11日</p>
+    <p>最后更新于 2019年7月15日</p>
   </a>
 </div>
 
@@ -462,6 +527,25 @@
         
         
             <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                            <h4>
+                                <a href="/2019/07/15/数据结构（数据逻辑结构分类）/" rel="prev" title="数据结构（数据逻辑结构分类）">
+                                  
+                                      数据结构（数据逻辑结构分类）
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/java/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>java</a> <a class="tag" href="/tags/数据结构/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>数据结构</a> <a class="tag" href="/tags/堆/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>堆</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
                 
                 
                     <section class="next">
@@ -663,6 +747,20 @@
           
             
               
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-前提说明"><span class="toc-text">1.前提说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-类属性"><span class="toc-text">2.类属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#属性"><span class="toc-text">属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#构造函数"><span class="toc-text">构造函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-打印"><span class="toc-text">3.打印</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-插入"><span class="toc-text">4.插入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-最大堆"><span class="toc-text">5.最大堆</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-最小堆"><span class="toc-text">6.最小堆</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-堆化"><span class="toc-text">7.堆化</span></a></li></ol>
+    </div>
+  </section>
+
 
             
           
@@ -740,7 +838,7 @@
     。
   </div>
  <div>
- <i class="fas fa-chart-area"></i><span class="post-count">字数统计：90.2k</span>
+ <i class="fas fa-chart-area"></i><span class="post-count">字数统计：90.6k</span>
  </div>
 </footer>
 <script>setLoadingBarProgress(80);</script>
