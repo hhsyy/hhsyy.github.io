@@ -4,6 +4,97 @@
   
     
     <entry>
+      <title>数据结构（java队列-循环队列）</title>
+      <link href="/2019/07/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88java%E9%98%9F%E5%88%97-%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97%EF%BC%89/"/>
+      <url>/2019/07/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88java%E9%98%9F%E5%88%97-%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<p>数据结构（java队列-循环队列）<br><a id="more"></a></p><h2 id="1-说明"><a href="#1-说明" class="headerlink" title="1.说明"></a>1.说明</h2><blockquote><p>循环队列中，由于需要认为空出一块区域，故数组的front和rear之间的空间为null</p></blockquote><p><br></p><h2 id="2-循环队列实体类"><a href="#2-循环队列实体类" class="headerlink" title="2.循环队列实体类"></a>2.循环队列实体类</h2><h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><pre><code>private int front;private int rear;private int maxsize;private Object data[];</code></pre><h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><pre><code>//设置自定义大小的队列public CirculateQueue(int maxSize) {    this.front = 0;    this.rear = 0;    this.maxsize = maxSize;    this.data = new Object[maxSize];}</code></pre><p><br></p><h2 id="3-方法"><a href="#3-方法" class="headerlink" title="3.方法"></a>3.方法</h2><h3 id="判空"><a href="#判空" class="headerlink" title="判空"></a>判空</h3><pre><code>//判断是否为空public boolean isEmpty(){    if(this.rear==this.front){        return true;    }    return false;}</code></pre><h3 id="判断溢出"><a href="#判断溢出" class="headerlink" title="判断溢出"></a>判断溢出</h3><pre><code>//判断是否满public boolean isFull(){    if(this.front ==((this.rear+1) % maxsize)){        System.out.println(&quot;front&quot;+front+&quot;,rear:&quot;+rear);        return true;    }    return false;}</code></pre><h3 id="获取队列头"><a href="#获取队列头" class="headerlink" title="获取队列头"></a>获取队列头</h3><pre><code>//获取队列头public Object getQueueHead(){    if(this.rear != 0){        //数组的front位置即位头        return this.data[this.front];    }    return null;}</code></pre><h3 id="获取队列长度"><a href="#获取队列长度" class="headerlink" title="获取队列长度"></a>获取队列长度</h3><pre><code>//获取队列长度public Object getQueueLength(){    if(front &lt; rear){        return this.rear-this.front;    }else{        return  maxsize - front + rear;    }}</code></pre><h3 id="清空"><a href="#清空" class="headerlink" title="清空"></a>清空</h3><pre><code>//清空public boolean clearQueue(){    if(maxsize&gt;0){        this.front = 0;        this.rear = 0;        return true;    }    return false;}</code></pre><h3 id="入队"><a href="#入队" class="headerlink" title="入队"></a>入队</h3><pre><code>public boolean push(Object ob){    if(isFull()){        return false;    }else{        this.data[this.rear] = ob;        this.rear = (this.rear + 1) % this.maxsize;        return true;    }}</code></pre><h3 id="出队"><a href="#出队" class="headerlink" title="出队"></a>出队</h3><pre><code>//出队public boolean pop(){    if(isEmpty()){        return false;    }else{            data[this.front]=null;            this.front = (this.front + 1) % maxsize;        return true;    }}</code></pre><h3 id="打印"><a href="#打印" class="headerlink" title="打印"></a>打印</h3><pre><code>//打印public void printStack() {    ;    if (front &lt; rear) {        for (int i = this.front; i &lt; maxsize; i++) {            System.out.println(this.data[i]);        }    } else {        for (int i = this.front; i &lt; maxsize; i++) {            System.out.println(this.data[i]);            if (i == maxsize - 1) {                i = 0;                for (int j = i; j &lt; rear + 1; j++) {                    System.out.println(this.data[j]);                }                break;            }        }    }}</code></pre><p><br></p><h2 id="4-测试"><a href="#4-测试" class="headerlink" title="4.测试"></a>4.测试</h2><h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><pre><code>public class TestQueue {    public static void main(String[] args){        CirculateQueue sq = new CirculateQueue(4);        System.out.println(&quot;空栈：&quot;+sq.isEmpty()+&quot;---满栈&quot;+ sq.isFull());        System.out.println(&quot;------------------&quot;);        System.out.println(&quot;入队&quot;);        sq.push(&quot;yiyu1&quot;);        sq.push(&quot;yiyu2&quot;);        sq.push(&quot;yiyu3&quot;);        System.out.println(&quot;队头：&quot;+sq.getQueueHead());        System.out.println(&quot;长度：&quot;+sq.getQueueLength());        System.out.println(&quot;空栈：&quot;+sq.isEmpty()+&quot;---满栈&quot;+ sq.isFull());        sq.printStack();        System.out.println(&quot;------------------&quot;);        System.out.println(&quot;出队&quot;);        sq.pop();        System.out.println(&quot;队头：&quot;+sq.getQueueHead());        System.out.println(&quot;长度：&quot;+sq.getQueueLength());        System.out.println(&quot;空栈：&quot;+sq.isEmpty()+&quot;---满栈&quot;+ sq.isFull());        sq.printStack();        System.out.println(&quot;------------------&quot;);        System.out.println(&quot;入队&quot;);        sq.push(&quot;yiyu4&quot;);        System.out.println(&quot;队头：&quot;+sq.getQueueHead());        System.out.println(&quot;长度：&quot;+sq.getQueueLength());        System.out.println(&quot;空栈：&quot;+sq.isEmpty()+&quot;---满栈&quot;+ sq.isFull());        sq.printStack();        System.out.println(&quot;------------------&quot;);        System.out.println(&quot;清空&quot;);        sq.clearQueue();        System.out.println(&quot;队头：&quot;+sq.getQueueHead());        System.out.println(&quot;长度：&quot;+sq.getQueueLength());        System.out.println(&quot;空栈：&quot;+sq.isEmpty()+&quot;---满栈&quot;+ sq.isFull());    }}</code></pre><h3 id="输出结果"><a href="#输出结果" class="headerlink" title="输出结果"></a>输出结果</h3><pre><code>空栈：true---满栈false------------------入队队头：yiyu1长度：3front0,rear:3空栈：false---满栈trueyiyu1yiyu2yiyu3null------------------出队队头：yiyu2长度：2空栈：false---满栈falseyiyu2yiyu3null------------------入队队头：yiyu2长度：3front1,rear:0空栈：false---满栈trueyiyu2yiyu3yiyu4null------------------清空队头：null长度：4空栈：true---满栈false</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构 </category>
+          
+          <category> 队列 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> java </tag>
+            
+            <tag> 数据结构 </tag>
+            
+            <tag> 队列 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>数据结构（java队列-顺序队列）</title>
+      <link href="/2019/07/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88java%E9%98%9F%E5%88%97-%E9%A1%BA%E5%BA%8F%E9%98%9F%E5%88%97%EF%BC%89/"/>
+      <url>/2019/07/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88java%E9%98%9F%E5%88%97-%E9%A1%BA%E5%BA%8F%E9%98%9F%E5%88%97%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<p>数据结构（java队列-顺序队列）<br><a id="more"></a></p><h2 id="1-说明"><a href="#1-说明" class="headerlink" title="1.说明"></a>1.说明</h2><blockquote><p>顺序队列由于rear和front都会往后移动，会造成队列显示已满而数组为空的现象</p></blockquote><p><br></p><h2 id="2-顺序队列实体类"><a href="#2-顺序队列实体类" class="headerlink" title="2.顺序队列实体类"></a>2.顺序队列实体类</h2><h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><pre><code>private int front;private int rear;private int maxsize;private Object data[];</code></pre><h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><pre><code>//设置自定义大小的队列public SequenceQueue(int maxSize) {    this.front = 0;    this.rear = 0;    this.maxsize = maxSize;    this.data = new Object[maxSize];}</code></pre><p><br></p><h2 id="3-方法"><a href="#3-方法" class="headerlink" title="3.方法"></a>3.方法</h2><h3 id="判空"><a href="#判空" class="headerlink" title="判空"></a>判空</h3><pre><code>//判断是否为空public boolean isEmpty(){    //rear == front    if(this.rear==this.front){        return true;    }    return false;}</code></pre><h3 id="判断溢出"><a href="#判断溢出" class="headerlink" title="判断溢出"></a>判断溢出</h3><pre><code>//判断是否满public boolean isFull(){    //rear达到数组最大    if(this.rear==maxsize){        return true;    }    return false;}</code></pre><h3 id="获取队列头"><a href="#获取队列头" class="headerlink" title="获取队列头"></a>获取队列头</h3><pre><code>//获取队列头public Object getQueueHead(){    if(this.rear != 0){        //数组的front位置即位头        return this.data[this.front];    }    return null;}</code></pre><h3 id="获取队列长度"><a href="#获取队列长度" class="headerlink" title="获取队列长度"></a>获取队列长度</h3><pre><code>//获取队列长度public Object getQueueLength(){    if(this.rear != 0){        return this.rear-this.front;    }    return false;}</code></pre><h3 id="清空"><a href="#清空" class="headerlink" title="清空"></a>清空</h3><pre><code>//清空public boolean clearQueue(){    if(maxsize&gt;0){        this.front = 0;        this.rear = 0;        return true;    }    return false;}</code></pre><h3 id="入队"><a href="#入队" class="headerlink" title="入队"></a>入队</h3><pre><code>//入队public boolean push(Object ob){    if(isFull()){        return false;    }else{        //尾部赋值        this.data[this.rear] = ob;        //未达到数组上限，rear后移        if(this.rear&lt;maxsize){            this.rear++;        }        return true;    }}</code></pre><h3 id="出队"><a href="#出队" class="headerlink" title="出队"></a>出队</h3><pre><code>//出队public boolean pop(){    if(isEmpty()){        return false;    }else{        //未达到尾部，rear后移        if(this.front&lt;this.rear){            this.front++;        }        return true;    }}</code></pre><h3 id="打印"><a href="#打印" class="headerlink" title="打印"></a>打印</h3><pre><code>//打印front和rear之间的数据public void printStack(){  for (int i = this.front;i&lt;this.rear ; i++){      System.out.println(this.data[i]);  }}</code></pre><p><br></p><h2 id="4-测试"><a href="#4-测试" class="headerlink" title="4.测试"></a>4.测试</h2><h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><pre><code>public class TestQueue {    public static void main(String[] args){        SequenceQueue sq = new SequenceQueue(4);        System.out.println(&quot;空栈：&quot;+sq.isEmpty()+&quot;---满栈&quot;+ sq.isFull());        System.out.println(&quot;------------------&quot;);        System.out.println(&quot;入队&quot;);        sq.push(&quot;yiyu1&quot;);        sq.push(&quot;yiyu2&quot;);        sq.push(&quot;yiyu3&quot;);        System.out.println(&quot;队头：&quot;+sq.getQueueHead());        System.out.println(&quot;长度：&quot;+sq.getQueueLength());        System.out.println(&quot;空栈：&quot;+sq.isEmpty()+&quot;---满栈&quot;+ sq.isFull());        sq.printStack();        System.out.println(&quot;------------------&quot;);        System.out.println(&quot;出队&quot;);        sq.pop();        System.out.println(&quot;队头：&quot;+sq.getQueueHead());        System.out.println(&quot;长度：&quot;+sq.getQueueLength());        System.out.println(&quot;空栈：&quot;+sq.isEmpty()+&quot;---满栈&quot;+ sq.isFull());        sq.printStack();        System.out.println(&quot;------------------&quot;);        System.out.println(&quot;入队&quot;);        sq.push(&quot;yiyu4&quot;);        System.out.println(&quot;队头：&quot;+sq.getQueueHead());        System.out.println(&quot;长度：&quot;+sq.getQueueLength());        System.out.println(&quot;空栈：&quot;+sq.isEmpty()+&quot;---满栈&quot;+ sq.isFull());        sq.printStack();        System.out.println(&quot;------------------&quot;);        System.out.println(&quot;清空&quot;);        sq.clearQueue();        System.out.println(&quot;队头：&quot;+sq.getQueueHead());        System.out.println(&quot;长度：&quot;+sq.getQueueLength());        System.out.println(&quot;空栈：&quot;+sq.isEmpty()+&quot;---满栈&quot;+ sq.isFull());    }}</code></pre><h3 id="输出结果"><a href="#输出结果" class="headerlink" title="输出结果"></a>输出结果</h3><pre><code>空栈：true---满栈false------------------入队队头：yiyu1长度：3空栈：false---满栈falseyiyu1yiyu2yiyu3------------------出队队头：yiyu2长度：2空栈：false---满栈falseyiyu2yiyu3------------------入队队头：yiyu2长度：3空栈：false---满栈trueyiyu2yiyu3yiyu4------------------清空队头：null长度：false空栈：true---满栈false</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构 </category>
+          
+          <category> 队列 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> java </tag>
+            
+            <tag> 数据结构 </tag>
+            
+            <tag> 队列 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>数据结构（队列结构）</title>
+      <link href="/2019/07/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88%E9%98%9F%E5%88%97%E7%BB%93%E6%9E%84%EF%BC%89/"/>
+      <url>/2019/07/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88%E9%98%9F%E5%88%97%E7%BB%93%E6%9E%84%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<p>数据结构（队列结构）<br><a id="more"></a></p><h2 id="1-概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h2><blockquote><p>元素从尾部进入，从头部出来<br>对队列的操作，只能在队头和队尾<br>先进先出，后进后出</p></blockquote><h3 id="假溢出"><a href="#假溢出" class="headerlink" title="假溢出"></a>假溢出</h3><blockquote><p>队尾已达到上限<br>不可再入队<br>单队列中还有空位置</p></blockquote><p>注：解决方案：采用循环队列</p><h3 id="基础设置"><a href="#基础设置" class="headerlink" title="基础设置"></a>基础设置</h3><blockquote><p>添加头结点和尾节点<br>头结点和尾节点相等即为空队列</p></blockquote><h3 id="图解"><a href="#图解" class="headerlink" title="图解"></a>图解</h3><p><img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/datastrut/datastruct-5.1.png" height="30%" width="100%"></p><p><br></p><h2 id="2-存储方式"><a href="#2-存储方式" class="headerlink" title="2.存储方式"></a>2.存储方式</h2><h3 id="顺序队列"><a href="#顺序队列" class="headerlink" title="顺序队列"></a>顺序队列</h3><blockquote><p>即顺序存储结构<br>在内存中开辟一个连续的空间用来存储数据</p></blockquote><p><img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/datastrut/datastruct-5.5.png" height="40%" width="40%"></p><h3 id="循环队列"><a href="#循环队列" class="headerlink" title="循环队列"></a>循环队列</h3><blockquote><p>即链式存储结构<br>用链表指针来指示数据的存储位置</p></blockquote><p><img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/datastrut/datastruct-5.4.png" height="20%" width="80%"></p><h3 id="顺序与链的对比"><a href="#顺序与链的对比" class="headerlink" title="顺序与链的对比"></a>顺序与链的对比</h3><blockquote><p>顺序队列建立时指定（有长度限制，前端数据无法释放，假溢出）<br>链队无长度限制，不会满，但是消耗更多的内存空间存储指针</p></blockquote><p><br></p><h2 id="3-常见操作"><a href="#3-常见操作" class="headerlink" title="3.常见操作"></a>3.常见操作</h2><blockquote><p>创建队列<br>判空<br>判满<br>入队<br>出队<br>清空队列<br>获取队头元素<br>获取队列的长度</p></blockquote><h3 id="4-循环队列"><a href="#4-循环队列" class="headerlink" title="4.循环队列"></a>4.循环队列</h3><blockquote><p>将存储队列元素的数组首位相连，形成闭环</p></blockquote><p><img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/datastrut/datastruct-5.2.png" height="50%" width="100%"></p><h3 id="新问题"><a href="#新问题" class="headerlink" title="新问题"></a>新问题</h3><blockquote><p>无论是队列空还是满，都会造成 front=rear<br>解决方案①：使用计数器记录队列个数<br>解决方案②：浪费一个单元（队列头指针上一个和队列尾指针的下个位置上呈现“满”的标志）—常用</p></blockquote><p> <img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/datastrut/datastruct-5.3.png" height="30%" width="80%"></p><h3 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h3><blockquote><p>队列空条件：front = rear</p><p>队列满条件：front = （rear+1）% n, n为数组大小，队列大小为n-1</p><p>队列长度：（n + rear - front）% n</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构 </category>
+          
+          <category> 队列 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据结构 </tag>
+            
+            <tag> 队列 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>数据结构（java栈操作--顺序）</title>
       <link href="/2019/07/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88java%E6%A0%88%E6%93%8D%E4%BD%9C-%E9%A1%BA%E5%BA%8F%EF%BC%89/"/>
       <url>/2019/07/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88java%E6%A0%88%E6%93%8D%E4%BD%9C-%E9%A1%BA%E5%BA%8F%EF%BC%89/</url>
@@ -1811,7 +1902,7 @@
           
           <category> MYSQL </category>
           
-          <category> MYSQL基础 </category>
+          <category> MYSQL安装 </category>
           
       </categories>
       
