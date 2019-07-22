@@ -4,11 +4,42 @@
   
     
     <entry>
+      <title>数据结构（排序---冒泡排序）</title>
+      <link href="/2019/07/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88%E6%8E%92%E5%BA%8F-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F%EF%BC%89/"/>
+      <url>/2019/07/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88%E6%8E%92%E5%BA%8F-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<p>数据结构（排序—冒泡排序）<br><a id="more"></a></p><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><blockquote><p>一个数组，从第一位开始，依次和下一位的数进行比较，满足条件则交换<br>交换一个轮回后不一定排序好了，往往需要几轮上述操作</p></blockquote><h3 id="适用范围"><a href="#适用范围" class="headerlink" title="适用范围"></a>适用范围</h3><blockquote><p>适合数据量较小的场合<br>适合数组基本上已经有序的场合</p></blockquote><p><br></p><h2 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h2><p>① 第一位数和第二位数比较，满足条件交换，反之不交换</p><p>② 第二位数和第三位数比较，满足条件交换，反之不交换</p><p>③ 依次下去，直至最后一位数，第一轮结束</p><p>④ 第二轮按照上述步骤，直至全部无法交换为止-</p><p><img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/datastrut/datastruct-6.2.png" height="80%" width="100%"></p><p>注意：如果两数相等，后一位的数依然在后（因为没有比前一位小，依然在后）</p><p><br></p><h2 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h2><h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>① 最坏情况：</p><blockquote><p>后一位的数全都比前面的小，每一位数都要和前面的数比较<br>时间复杂度：Θ(n的二次方)</p></blockquote><p>① 最好情况：</p><blockquote><p>后一位的数全都比前面的大，每一位数都不需要和前面的数比较<br>时间复杂度：Θ(n)</p></blockquote><p>注意：一般数据是随机的，未知情况下平均时间复杂度：Θ(n的二次方)</p><h3 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h3><blockquote><p>由于在空间上并未增加或减少空间，使用量不变<br>空间复杂度：Θ(1),(Θ(1)表示大小未改变)</p></blockquote><h3 id="稳定性"><a href="#稳定性" class="headerlink" title="稳定性"></a>稳定性</h3><blockquote><p>插入排序 排序前和排序后相等的值顺序不变<br>稳定性：稳定</p></blockquote><h3 id="复杂性"><a href="#复杂性" class="headerlink" title="复杂性"></a>复杂性</h3><blockquote><p>在排序中插入排序复杂性 ：简单</p></blockquote><p><br></p><h2 id="java-demo"><a href="#java-demo" class="headerlink" title="java demo"></a>java demo</h2><pre><code>//冒泡排序public void bubbleSort(int[] data){    //判空    if(data.length==0||data ==null){            return;    }    //初始化参数，temp暂存点，length长度，isChange是否已换位    int temp = 0;    int length = data.length;    boolean isChange = false;    //轮数，以数组长度为上线    for (int count = 0 ; count &lt; length ; count++){        isChange = false;        System.out.println(&quot;第&quot;+count+&quot;轮&quot;);        for (int i = 1 ; i &lt; length ; i++){            if(data[i]&lt;data[i-1]){                temp = data[i-1];                data[i-1] = data[i];                data[i] = temp;                //声明已交换，还需要继续下一轮                isChange = true;            }        }        //打印测试        for (int i :data){            System.out.print(i+&quot;,&quot;);        }        //如果没有交换说明已排序完毕        if(isChange == false){            return;        }    }}</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构 </category>
+          
+          <category> 排序 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据结构 </tag>
+            
+            <tag> 排序 </tag>
+            
+            <tag> 冒泡排序 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>数据结构（排序---插入排序）</title>
       <link href="/2019/07/19/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88%E6%8E%92%E5%BA%8F-%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F%EF%BC%89/"/>
       <url>/2019/07/19/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88%E6%8E%92%E5%BA%8F-%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F%EF%BC%89/</url>
       
-        <content type="html"><![CDATA[<p>数据结构（排序—插入排序）<br><a id="more"></a></p><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><blockquote><p>一组数据，第一位不动，从第二位开始的数依次和前面的数据比较，直到不比前面的数小为止。</p></blockquote><h3 id="适用范围"><a href="#适用范围" class="headerlink" title="适用范围"></a>适用范围</h3><blockquote><p>适合数据量较小的场合<br>适合数组基本上已经有序的场合</p></blockquote><p><br></p><h2 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h2><p>① 固定数组第一个数</p><p>② 取出数组第二位数与第一位比较，小于则换位，否则依然位于第二位</p><p>③ 取出数组第三位数与第二位比较，小于则换位（否则依然位于第三位），与第一位比较，小于则换位（否则依然位于第二位）</p><p>④ 后续的数依次如此，排序结束</p><p><img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/datastrut/datastruct-6.1.png" height="80%" width="100%"></p><p>注意：如果两数相等，后一位的数依然在后（因为没有比前一位小，依然在后）</p><p><br></p><h2 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h2><h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>① 最坏情况：</p><blockquote><p>后一位的数全都比前面的小，每一位数都要和前面的数比较<br>时间复杂度：Θ(n的二次方)</p></blockquote><p>① 最好情况：</p><blockquote><p>后一位的数全都比前面的大，每一位数都不需要和前面的数比较<br>时间复杂度：Θ(n)</p></blockquote><p>注意：一般数据是随机的，位置情况下时间复杂度：Θ(n的二次方)</p><h3 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h3><blockquote><p>由于在空间上并未增加或减少空间，使用量不变<br>空间复杂度：Θ(1),(Θ(1)表示大小未改变)</p></blockquote><h3 id="稳定性"><a href="#稳定性" class="headerlink" title="稳定性"></a>稳定性</h3><blockquote><p>插入排序 排序前和排序后相等的值顺序不变<br>稳定性：稳定</p></blockquote><h3 id="复杂性"><a href="#复杂性" class="headerlink" title="复杂性"></a>复杂性</h3><blockquote><p>在排序中插入排序复杂性 ：简单</p></blockquote><p><br></p><h2 id="java-demo"><a href="#java-demo" class="headerlink" title="java demo"></a>java demo</h2><pre><code>//插入排序public void insertSort(int[] data){    //判空停止    if(data.length==0||data == null){        return;    }    //交换时的临时参数    int temp = 0;    //数组大小    int length = data.length;    //要去比较的数，从数组第二位开始    for (int i = 1 ; i &lt; length;i++){        //为了不改变i，而使交换后该数的地址跟随，即data[2]和data[3]交换后，data[3]的替换到了data[2]        int maxCount =i;        //被比较的值        for (int j = i-1 ; j &gt;= 0;j--){            //开始比较，小于即交换            if(data[maxCount] &lt; data[j]){                temp = data[j];                data[j] = data[maxCount];                data[maxCount] = temp;                //替换后数组下标减1，跟随该值继续比较                maxCount--;            }        }    }    //打印测试    for (int i :data){        System.out.println(i);    }}</code></pre>]]></content>
+        <content type="html"><![CDATA[<p>数据结构（排序—插入排序）<br><a id="more"></a></p><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><blockquote><p>一组数据，第一位不动，从第二位开始的数依次和前面的数据比较，直到不比前面的数小为止。</p></blockquote><h3 id="适用范围"><a href="#适用范围" class="headerlink" title="适用范围"></a>适用范围</h3><blockquote><p>适合数据量较小的场合<br>适合数组基本上已经有序的场合</p></blockquote><p><br></p><h2 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h2><p>① 固定数组第一个数</p><p>② 取出数组第二位数与第一位比较，小于则换位，否则依然位于第二位</p><p>③ 取出数组第三位数与第二位比较，小于则换位（否则依然位于第三位），与第一位比较，小于则换位（否则依然位于第二位）</p><p>④ 后续的数依次如此，排序结束</p><p><img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/datastrut/datastruct-6.1.png" height="80%" width="100%"></p><p>注意：如果两数相等，后一位的数依然在后（因为没有比前一位小，依然在后）</p><p><br></p><h2 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h2><h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>① 最坏情况：</p><blockquote><p>后一位的数全都比前面的小，每一位数都要和前面的数比较<br>时间复杂度：Θ(n的二次方)</p></blockquote><p>① 最好情况：</p><blockquote><p>后一位的数全都比前面的大，每一位数都不需要和前面的数比较<br>时间复杂度：Θ(n)</p></blockquote><p>注意：一般数据是随机的，未知情况下平均时间复杂度：Θ(n的二次方)</p><h3 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h3><blockquote><p>由于在空间上并未增加或减少空间，使用量不变<br>空间复杂度：Θ(1),(Θ(1)表示大小未改变)</p></blockquote><h3 id="稳定性"><a href="#稳定性" class="headerlink" title="稳定性"></a>稳定性</h3><blockquote><p>插入排序 排序前和排序后相等的值顺序不变<br>稳定性：稳定</p></blockquote><h3 id="复杂性"><a href="#复杂性" class="headerlink" title="复杂性"></a>复杂性</h3><blockquote><p>在排序中插入排序复杂性 ：简单</p></blockquote><p><br></p><h2 id="java-demo"><a href="#java-demo" class="headerlink" title="java demo"></a>java demo</h2><pre><code>//插入排序public void insertSort(int[] data){    //判空停止    if(data.length==0||data == null){        return;    }    //交换时的临时参数    int temp = 0;    //数组大小    int length = data.length;    //要去比较的数，从数组第二位开始    for (int i = 1 ; i &lt; length;i++){        //为了不改变i，而使交换后该数的地址跟随，即data[2]和data[3]交换后，data[3]的替换到了data[2]        int maxCount =i;        //被比较的值        for (int j = i-1 ; j &gt;= 0;j--){            //开始比较，小于即交换            if(data[maxCount] &lt; data[j]){                temp = data[j];                data[j] = data[maxCount];                data[maxCount] = temp;                //替换后数组下标减1，跟随该值继续比较                maxCount--;            }        }    }    //打印测试    for (int i :data){        System.out.println(i);    }}</code></pre>]]></content>
       
       
       <categories>
