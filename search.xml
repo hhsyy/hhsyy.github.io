@@ -4,6 +4,99 @@
   
     
     <entry>
+      <title>数据结构（排序---堆排序）</title>
+      <link href="/2019/07/31/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88%E6%8E%92%E5%BA%8F-%E5%A0%86%E6%8E%92%E5%BA%8F%EF%BC%89/"/>
+      <url>/2019/07/31/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88%E6%8E%92%E5%BA%8F-%E5%A0%86%E6%8E%92%E5%BA%8F%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<p>数据结构（排序—堆排序）<br><a id="more"></a></p><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><blockquote><p>大顶堆：每个结点的值都大于或等于其左右孩子结点的值，在堆排序算法中用于升序排列<br>小顶堆：每个结点的值都小于或等于其左右孩子结点的值，在堆排序算法中用于降序排列</p></blockquote><h3 id="适用范围"><a href="#适用范围" class="headerlink" title="适用范围"></a>适用范围</h3><blockquote><p>从数据中找到最大最小的数<br>数据量庞大且需求是不消耗过多空间</p></blockquote><p><br></p><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><blockquote><p>① 得到一组待排序的数组（此次按大顶堆处理）；</p><p>② 开始最大堆化，先找到最后一个非叶子节点(n/2 -1)，</p><p>③ 其左右子节点（2(n/2 -1+1）比较，大的一端和其该节点比较，大则交换</p><p>④ 依次自下而上，自右而左找到非叶子结点，与其左右子节点比较</p><p>⑤ 大顶堆完成后，拿出堆顶（最大元素）放入数组最后一位<br>注：放最后一位其实就是和第⑥ 部的位置交换，其只是达到了它最终的位置</p><p>⑥ 重新调整为最大堆结构</p><p>⑦ 按⑤ 步骤向上依次取出，得到从小到大的数组</p></blockquote><h3 id="图解"><a href="#图解" class="headerlink" title="图解"></a>图解</h3><p><img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/datastrut/datastruct-6.7.jpg" height="50%" width="100%"></p><p>注：图出自<a href="https://www.douban.com/group/topic/128720541/" target="_blank" rel="noopener">https://www.douban.com/group/topic/128720541/</a></p><p><br></p><h2 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h2><h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><blockquote><p>由于无论是最好情况还是最坏情况，所需要的步骤都一直，花费的时间也一致<br>时间复杂度：O(nlog2n)</p></blockquote><h3 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h3><blockquote><p>不需要消耗额外的空间资源<br>复杂度：O(1)</p></blockquote><h3 id="稳定性"><a href="#稳定性" class="headerlink" title="稳定性"></a>稳定性</h3><blockquote><p>插入排序 排序前和排序后相等的值顺序可能改变<br>稳定性：不稳定</p></blockquote><h3 id="复杂性"><a href="#复杂性" class="headerlink" title="复杂性"></a>复杂性</h3><blockquote><p>在排序中插入排序复杂性 ：较为复杂</p></blockquote><p><br></p><h2 id="java-demo"><a href="#java-demo" class="headerlink" title="java demo"></a>java demo</h2><pre><code>//堆排序public void headSort(int[] str){    int temp;    //得到数组长度    int length = str.length;    //找到最后一个非叶子节点length/2-1，然后向前依次寻找,最大堆化    for(int i =length/2-1;i &gt;= 0;i--){        //堆化        headify(str,length,i);    }    //开始排序    for(int j = length - 1;j &gt; 0 ; j--){        //交换堆顶和树的最后元素（最后元素一次往前）        temp = str[j];        str[j] = str[0];        str[0]  = temp;        //最大堆化        headify(str,j,0);    }}//建堆public void headify(int[] str,int length,int node){    int maxNode;    int temp = 0;    for (int i = 2*node+1;i&lt;length;i = 2*node+1){        temp = i;        //判断左右子节点哪一个大,i+1&lt;lengt是为了防止最后一个非叶子节点只有一个子节点        if( i+1&lt;length &amp;&amp; str[i]&lt;str[i+1]){            temp = i+1;        }        //节点与最大子节点比较        if(str[node] &lt; str[temp]){            maxNode = str[node];            str[node] = str[temp];            str[temp] = maxNode;            //交换后跟着节点往下继续和下面的子节点排序            node = temp;        }else{            break;        }    }}</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构 </category>
+          
+          <category> 排序 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据结构 </tag>
+            
+            <tag> 排序 </tag>
+            
+            <tag> 合并排序 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>数据结构（排序---合并排序）</title>
+      <link href="/2019/07/29/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88%E6%8E%92%E5%BA%8F-%E5%90%88%E5%B9%B6%E6%8E%92%E5%BA%8F%EF%BC%89/"/>
+      <url>/2019/07/29/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88%E6%8E%92%E5%BA%8F-%E5%90%88%E5%B9%B6%E6%8E%92%E5%BA%8F%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<p>数据结构（排序—合并排序）<br><a id="more"></a></p><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><blockquote><p>先分后合，把一组数划分为不可分割的单元，两两比较，合并，合并后的数据再次两两比较，最终成为一组有序的数据</p></blockquote><h3 id="适用范围"><a href="#适用范围" class="headerlink" title="适用范围"></a>适用范围</h3><blockquote><p>追求数据稳定<br>数据量较大，且空间花费不做要求</p></blockquote><p><br></p><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><blockquote><p>① 得到一组待排序的数组；<br>② 把数组按1/2的方法依次划分为两两一组的数据（如果数不为双数，则多出来的单个数为一组）；<br>③ 两个为一组的数据相互比较，按规则换位；<br>④ 两组换位的数组再相互比较（先比较两者头，分别依次向后遍历比较）<br>⑤ 逐级数据比较，最后得倒有序数组</p></blockquote><h3 id="图解"><a href="#图解" class="headerlink" title="图解"></a>图解</h3><p><img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/datastrut/datastruct-6.5.png" height="80%" width="100%"></p><p><img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/datastrut/datastruct-6.6.png" height="80%" width="100%"></p><h3 id="组与组排序方法"><a href="#组与组排序方法" class="headerlink" title="组与组排序方法"></a>组与组排序方法</h3><blockquote><p>① 拿上述图举例，两数组0与0比较，把小的放入到新数组的第一位<br>② 被拿出的数组+1，1与0比较，把小的放入到新的数组<br>③ 大致步骤②依次+1，最后得到新数组</p></blockquote><p><br></p><h2 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h2><h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><blockquote><p>由于无论是最好情况还是最坏情况，所需要的步骤都一直，花费的时间也一致<br>时间复杂度：O(nlog2n)</p></blockquote><p>注意：一般数据是随机的，未知情况下平均时间复杂度：Θ(n的二次方)</p><h3 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h3><blockquote><p>两数组比较时需要临时数组作为暂存空间<br>复杂度：O(n)</p></blockquote><h3 id="稳定性"><a href="#稳定性" class="headerlink" title="稳定性"></a>稳定性</h3><blockquote><p>插入排序 排序前和排序后相等的值顺序不变<br>稳定性：稳定</p></blockquote><h3 id="复杂性"><a href="#复杂性" class="headerlink" title="复杂性"></a>复杂性</h3><blockquote><p>在排序中插入排序复杂性 ：较为复杂</p></blockquote><p><br></p><h2 id="java-demo"><a href="#java-demo" class="headerlink" title="java demo"></a>java demo</h2><pre><code>//已排序好的数组public static int[] str;//临时数组public static int[] temp;//合并排序01---输入数组public void mergeInsertStr(int[] str){    if(str.length&lt;=0 || str == null){        return;    }    temp=new int[str.length];    mergeSortByRecursion(str,0,str.length-1);}//合并排序02----递归public void mergeSortByRecursion(int[] str,int left,int right){    while (left&lt;right){        //把数组分成两半        int middel =  (right+left)/2;        //递归分左边两边        mergeSortByRecursion(str,left,middel);        //递归分右边两边        mergeSortByRecursion(str,middel+1,right);        //切分结束，开始排序        mergeSort(str,left,middel,right);        return;    }}//合并排序03--排序public void mergeSort(int[] str,int left,int middel,int right){    //左索引    int lindex = left;    //中索引    int tempindex = 0;    //右索引    int rindex = middel+1;    //比较排序    while (lindex&lt;=middel&amp;&amp;rindex&lt;=right){        if(str[lindex]&lt;=str[rindex]){            temp[tempindex++]=str[lindex++];        }else{            temp[tempindex++]=str[rindex++];        }    }    //左未被排序的放入数组    while(lindex&lt;=middel){        temp[tempindex++]=str[lindex++];    }    //右未被排序的放入数组    while(rindex&lt;=right){        temp[tempindex++]=str[rindex++];    }    int t=0;    赋给临时数组    while(left&lt;=right){        str[left++]=temp[t++];    }}</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构 </category>
+          
+          <category> 排序 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据结构 </tag>
+            
+            <tag> 排序 </tag>
+            
+            <tag> 合并排序 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>数据结构（排序---快速排序）</title>
+      <link href="/2019/07/29/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88%E6%8E%92%E5%BA%8F-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%EF%BC%89/"/>
+      <url>/2019/07/29/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88%E6%8E%92%E5%BA%8F-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<p>title: 数据结构（排序—快速排序）<br><a id="more"></a></p><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><blockquote><p>又名：划分交换排序<br>选取基数，各数分别和基数比较，最后一侧小于基数，一侧大于基数</p></blockquote><h3 id="适用范围"><a href="#适用范围" class="headerlink" title="适用范围"></a>适用范围</h3><blockquote><p>实际情况中，此排序为最佳选择，常被使用<br>数据量较大</p></blockquote><p><br></p><h2 id="基准值选择"><a href="#基准值选择" class="headerlink" title="基准值选择"></a>基准值选择</h2><blockquote><p>基准值（pivot）是在排序时被左右两边比较的数<br>① 前后固定位<br>② 随机选取<br>③ 三数取中<br>④ 挖坑法</p></blockquote><p><br></p><h2 id="前后固定位"><a href="#前后固定位" class="headerlink" title="前后固定位"></a>前后固定位</h2><h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><blockquote><p>选数据中第一位（或最后一位）作为基准值（判断时，从基准位的另一侧开始判断）<br>第一位和最后一位作为low和high指针移动</p></blockquote><h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p><br></p><h3 id="随机选取"><a href="#随机选取" class="headerlink" title="随机选取"></a>随机选取</h3><p><br></p><h2 id="三数取中"><a href="#三数取中" class="headerlink" title="三数取中"></a>三数取中</h2><p><br></p><h2 id="挖坑法"><a href="#挖坑法" class="headerlink" title="挖坑法"></a>挖坑法</h2><h3 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h3><blockquote><p>① 选取数组头作为基数<br>② 从另一侧的尾部向左遍历，直到找到小于基数的值（right位），放到基数的位置<br>③ 然后从左侧开始向右遍历，找到比基数大的值，放入上一步骤right位中<br>④ 直到左右两侧遍历相遇（基数放入该位置），否则重复第② ③步骤<br>⑤ 第一轮结束<br>⑥ 第二轮分别对第一轮基数左右两侧的数重复从①开始的步骤<br>⑦ 直到无法划分，结束</p></blockquote><h3 id="图解"><a href="#图解" class="headerlink" title="图解"></a>图解</h3><p><img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/datastrut/datastruct-6.3.png" height="60%" width="100%"></p><p><img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/datastrut/datastruct-6.4.png" height="60%" width="100%"></p><p>代码</p><p><br></p><h2 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h2><h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>① 最坏情况：</p><blockquote><p>后一位的数全都比前面的小，每一位数都要和前面的数比较<br>时间复杂度：Θ(n的二次方)</p></blockquote><p>① 最好情况：</p><blockquote><p>后一位的数全都比前面的大，每一位数都不需要和前面的数比较<br>时间复杂度：Θ(n)</p></blockquote><p>注意：一般数据是随机的，未知情况下平均时间复杂度：Θ(n的二次方)</p><h3 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h3><blockquote><p>由于在空间上并未增加或减少空间，使用量不变<br>空间复杂度：Θ(1),(Θ(1)表示大小未改变)</p></blockquote><h3 id="稳定性"><a href="#稳定性" class="headerlink" title="稳定性"></a>稳定性</h3><blockquote><p>插入排序 排序前和排序后相等的值顺序不变<br>稳定性：稳定</p></blockquote><h3 id="复杂性"><a href="#复杂性" class="headerlink" title="复杂性"></a>复杂性</h3><blockquote><p>在排序中插入排序复杂性 ：简单</p></blockquote><p><br></p><h2 id="java-demo"><a href="#java-demo" class="headerlink" title="java demo"></a>java demo</h2><pre><code>//冒泡排序public void bubbleSort(int[] data){    //判空    if(data.length==0||data ==null){            return;    }    //初始化参数，temp暂存点，length长度，isChange是否已换位    int temp = 0;    int length = data.length;    boolean isChange = false;    //轮数，以数组长度为上线    for (int count = 0 ; count &lt; length ; count++){        isChange = false;        System.out.println(&quot;第&quot;+count+&quot;轮&quot;);        for (int i = 1 ; i &lt; length ; i++){            if(data[i]&lt;data[i-1]){                temp = data[i-1];                data[i-1] = data[i];                data[i] = temp;                //声明已交换，还需要继续下一轮                isChange = true;            }        }        //打印测试        for (int i :data){            System.out.print(i+&quot;,&quot;);        }        //如果没有交换说明已排序完毕        if(isChange == false){            return;        }    }}</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构 </category>
+          
+          <category> 排序 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据结构 </tag>
+            
+            <tag> 排序 </tag>
+            
+            <tag> 冒泡排序 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>数据结构（排序---冒泡排序）</title>
       <link href="/2019/07/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88%E6%8E%92%E5%BA%8F-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F%EF%BC%89/"/>
       <url>/2019/07/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88%E6%8E%92%E5%BA%8F-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F%EF%BC%89/</url>
