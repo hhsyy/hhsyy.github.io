@@ -397,13 +397,15 @@
 <p>指令流：机器执行的指令序列<br>数据流：指令流执行时调用的数据序列。（输入与中间结果，不包含输出结果）</p>
 </blockquote>
 <h3 id="2-类别"><a href="#2-类别" class="headerlink" title="2.类别"></a>2.类别</h3><blockquote>
-<p>单指令流单数据流 （SISD）：对一指令译码对一对象分配数据（传统计算机）<br>单指令流多数据流 （SIMD）：由但指令流控制对多个对象分配所需数据（并行处理机）<br>多指令流单数据流 （MISD）：对多条指令处理输出单一数据流（不常见-&gt;流水线计算机）<br>多指令流多数据流 （MIMD）：对各级全面并行处理（多核处理器）<br><br></p>
+<p>单指令流单数据流 （SISD）：单一指令译码对单一对象分配数据（传统计算机）<br>单指令流多数据流 （SIMD）：由单指令流控制对多个对象分配所需数据（并行处理机）<br>多指令流单数据流 （MISD）：多条指令并行处理，输出单一数据（不常见-&gt;流水线计算机）<br>多指令流多数据流 （MIMD）：对各级全面并行处理（多核处理器）<br><br></p>
 </blockquote>
-<h2 id="4-指令系统"><a href="#4-指令系统" class="headerlink" title="4.指令系统"></a>4.指令系统</h2><h3 id="1-类别"><a href="#1-类别" class="headerlink" title="1.类别"></a>1.类别</h3><p>复杂指令集系统（CISI）和精简指令集系统（RISI）  </p>
-<h3 id="2-CISI指令系统特点"><a href="#2-CISI指令系统特点" class="headerlink" title="2.CISI指令系统特点"></a>2.CISI指令系统特点</h3><blockquote>
+<h2 id="4-指令系统"><a href="#4-指令系统" class="headerlink" title="4.指令系统"></a>4.指令系统</h2><h3 id="1-类别"><a href="#1-类别" class="headerlink" title="1.类别"></a>1.类别</h3><blockquote>
+<p>复杂指令集系统（CISI）<br>精简指令集系统（RISI）  </p>
+</blockquote>
+<h3 id="2-CISI指令集系统特点"><a href="#2-CISI指令集系统特点" class="headerlink" title="2.CISI指令集系统特点"></a>2.CISI指令集系统特点</h3><blockquote>
 <p>指令数量多<br>使用频率相差悬殊<br>支持多种寻址方式<br>指令长度不固定<br>由微程序控制为主<br>可对主单元数据直接处理</p>
 </blockquote>
-<h3 id="3-RISI指令系统特点"><a href="#3-RISI指令系统特点" class="headerlink" title="3.RISI指令系统特点"></a>3.RISI指令系统特点</h3><p>单周期完成，简化指令，加快速度</p>
+<h3 id="3-RISI指令集系统特点"><a href="#3-RISI指令集系统特点" class="headerlink" title="3.RISI指令集系统特点"></a>3.RISI指令集系统特点</h3><p>单周期完成，简化指令，加快速度</p>
 <blockquote>
 <p>指令数量少<br>寻址方式少<br>长度固定<br>以硬布线逻辑控制为主（即组合逻辑构建控制器）<br>流水线技术，单周期指令执行<br>优化编译器（由于简化了指令、寻址方式等，编译更为简单）<br>cpu通用寄存器多<br>RISI使用cache来改善性能：指令cache和数据cache，互不干扰<br><br></p>
 </blockquote>
@@ -455,10 +457,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-06-24T17:13:28+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-08-05T16:06:23+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>最后更新于 2019年6月24日</p>
+    <p>最后更新于 2019年8月5日</p>
   </a>
 </div>
 
@@ -757,7 +759,7 @@
 </header>
 
     <div class='content pure'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-计算机组成"><span class="toc-text">1.计算机组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-表示方式"><span class="toc-text">2.表示方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-flynn分类"><span class="toc-text">3.flynn分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-概念"><span class="toc-text">1.概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-类别"><span class="toc-text">2.类别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-指令系统"><span class="toc-text">4.指令系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-类别"><span class="toc-text">1.类别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-CISI指令系统特点"><span class="toc-text">2.CISI指令系统特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-RISI指令系统特点"><span class="toc-text">3.RISI指令系统特点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-总线"><span class="toc-text">5.总线</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-概念-1"><span class="toc-text">1.概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-按位置分类"><span class="toc-text">2.按位置分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-按功能划分"><span class="toc-text">3.按功能划分</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-存储器系统"><span class="toc-text">6.存储器系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-概念-2"><span class="toc-text">1.概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-分类"><span class="toc-text">2.分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-局部性原理"><span class="toc-text">3.局部性原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-存取方式"><span class="toc-text">4.存取方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-主存储器"><span class="toc-text">5.主存储器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#概念"><span class="toc-text">概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#类别"><span class="toc-text">类别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#存储器编址的方式"><span class="toc-text">存储器编址的方式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-辅助存储器"><span class="toc-text">6.辅助存储器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-缓存存储器（cache）"><span class="toc-text">7.缓存存储器（cache）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#介绍"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#cache基本原理"><span class="toc-text">cache基本原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#映射机制（Cache-的地址映射）"><span class="toc-text">映射机制（Cache 的地址映射）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#映射方式"><span class="toc-text">映射方式</span></a></li></ol></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-计算机组成"><span class="toc-text">1.计算机组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-表示方式"><span class="toc-text">2.表示方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-flynn分类"><span class="toc-text">3.flynn分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-概念"><span class="toc-text">1.概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-类别"><span class="toc-text">2.类别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-指令系统"><span class="toc-text">4.指令系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-类别"><span class="toc-text">1.类别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-CISI指令集系统特点"><span class="toc-text">2.CISI指令集系统特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-RISI指令集系统特点"><span class="toc-text">3.RISI指令集系统特点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-总线"><span class="toc-text">5.总线</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-概念-1"><span class="toc-text">1.概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-按位置分类"><span class="toc-text">2.按位置分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-按功能划分"><span class="toc-text">3.按功能划分</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-存储器系统"><span class="toc-text">6.存储器系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-概念-2"><span class="toc-text">1.概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-分类"><span class="toc-text">2.分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-局部性原理"><span class="toc-text">3.局部性原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-存取方式"><span class="toc-text">4.存取方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-主存储器"><span class="toc-text">5.主存储器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#概念"><span class="toc-text">概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#类别"><span class="toc-text">类别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#存储器编址的方式"><span class="toc-text">存储器编址的方式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-辅助存储器"><span class="toc-text">6.辅助存储器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-缓存存储器（cache）"><span class="toc-text">7.缓存存储器（cache）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#介绍"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#cache基本原理"><span class="toc-text">cache基本原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#映射机制（Cache-的地址映射）"><span class="toc-text">映射机制（Cache 的地址映射）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#映射方式"><span class="toc-text">映射方式</span></a></li></ol></li></ol></li></ol>
     </div>
   </section>
 
@@ -838,7 +840,7 @@
     。
   </div>
  <div>
- <i class="fas fa-chart-area"></i><span class="post-count">字数统计：100.2k</span>
+ <i class="fas fa-chart-area"></i><span class="post-count">字数统计：101k</span>
  </div>
 </footer>
 <script>setLoadingBarProgress(80);</script>
