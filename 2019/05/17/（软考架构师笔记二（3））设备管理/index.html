@@ -380,20 +380,52 @@
         <div class="article-entry" itemprop="articleBody">
           <p>（软考架构师笔记二（3））设备管理<br><a id="more"></a></p>
 <h2 id="1-概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h2><blockquote>
-<p>定义：除了处理器和内存之外，其他的大部分硬设备<br>主要任务：控制设备和内存或 CPU 之间的数据传送</p>
+<p>定义：除了处理器和内存之外，其他的大部分硬设备（输入/输出设备，辅存设备及终端设备）</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>主要任务：控制设备和内存或 CPU 之间的数据传送</p>
 </blockquote>
 <h2 id="2-数据传输控制方式"><a href="#2-数据传输控制方式" class="headerlink" title="2.数据传输控制方式"></a>2.数据传输控制方式</h2><p>（1）选择和衡量控制方式的原则：</p>
 <blockquote>
-<p>数据传送速度足够高，能满足用户的需要但又不丢失数据。<br>系统开销小，所需的处理控制程序少。<br>能充分发挥硬件资源的能力，使得 I/O 设备尽量处于使用状态中，而 CPU 等待时间少</p>
+<p>数据传送速度足够高，能满足用户的需要但又不丢失数据</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>系统开销小，所需的处理控制程序少</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>能充分发挥硬件资源的能力，使得 I/O 设备尽量处于使用状态中，而 CPU 等待时间少</p>
 </blockquote>
 <p>(2)外围设备和内存之间常用的数据传送控制方式:</p>
 <blockquote>
-<p>程序控制<br>中断方式<br>直接存储访问方式（DMA）<br>通道方式</p>
+<p>程序控制：处理器启动数据传输，然后等设备完成</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>中断方式</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>直接存储访问方式（DMA）：外部设备和内存之间开辟直接的数据交换通路(采用窃取（或挪用）处理器的工作周期和控制总线而实现辅助存储器和内存之间的数据交换)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>通道方式:通过执行自身的输入/输出专用程序（称通道程序）进行内存和外设之间的数据传输(字节多路通道、选择通道和成组多路通道)</p>
 </blockquote>
 <h2 id="3-虚设备与-SPOOLING-技术"><a href="#3-虚设备与-SPOOLING-技术" class="headerlink" title="3.虚设备与 SPOOLING 技术"></a>3.虚设备与 SPOOLING 技术</h2><blockquote>
-<p>假脱机（SPOOLING）:外部设备同时联机操作，又称为假脱机输入/输出操作，采用一组程序或进程模拟一台输入/输出处理器<br>作用：将低速的独占设备改造成一种可共享的设备</p>
+<p>假脱机（假脱机输入/输出操作，SPOOLING）：外部设备同时联机操作，采用一组程序或进程模拟一台输入/输出处理器</p>
 </blockquote>
-<p> <img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/ruankao/three/ruankao2.3-1.png" height="50%" width="100%"></p>
+<hr>
+<blockquote>
+<p>作用：将低速的独占设备改造成一种可共享的设备</p>
+</blockquote>
+<p> <img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/ruankao/two/ruankao2.3-1.png" height="50%" width="100%"></p>
+<p> 要求</p>
+<blockquote>
+<p>必须有高速、大容量并且可随机存取的外存支持</p>
+</blockquote>
 
         </div>
         
@@ -405,10 +437,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-06-24T17:13:28+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-09-26T15:54:19+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>最后更新于 2019年6月24日</p>
+    <p>最后更新于 2019年9月26日</p>
   </a>
 </div>
 
@@ -788,7 +820,7 @@
     。
   </div>
  <div>
- <i class="fas fa-chart-area"></i><span class="post-count">字数统计：102.2k</span>
+ <i class="fas fa-chart-area"></i><span class="post-count">字数统计：103.1k</span>
  </div>
 </footer>
 <script>setLoadingBarProgress(80);</script>

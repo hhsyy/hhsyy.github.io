@@ -382,11 +382,13 @@
 <h2 id="1-概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h2><blockquote>
 <p>处理机管理也被称为进程管理,处理机管理的功能就是组织和协调用户对处理机的争夺使用，把处理机分配给进程，对进程进行管理和控制，最大限度也发挥处理机的作用。其为并发执行。</p>
 </blockquote>
-<h2 id="2-顺序程序"><a href="#2-顺序程序" class="headerlink" title="2.顺序程序"></a>2.顺序程序</h2><p>程序按照先后顺序执行，为了增强计算机系统的处理能力和提高机器的利用率，其发生了变化</p>
+<h2 id="2-顺序程序"><a href="#2-顺序程序" class="headerlink" title="2.顺序程序"></a>2.顺序程序</h2><p>程序中若干操作必须按照某种先后次序来执行，并且每次操作前和操作后的数据、状态之间都有一定的关系</p>
 <blockquote>
-<p>资源共享，多程序共享资源<br>程序并发运行或交替运行</p>
+<p>资源共享，多程序共享资源：提高资源的利用率<br>多处理机并发运行—单处理机交替运行</p>
 </blockquote>
-<p>程序大多是时间上有次序，但也有同时进行的</p>
+<blockquote>
+<p>程序大多是时间上有次序，但也有同时进行的<br>独立运行和分配资源的基本单位：进程</p>
+</blockquote>
 <h2 id="3-进程状态的转化"><a href="#3-进程状态的转化" class="headerlink" title="3.进程状态的转化"></a>3.进程状态的转化</h2><p>1.三状态</p>
 <blockquote>
 <p>就绪状态：进入就绪队列，等待获取资源<br>执行状态：得到资源，开始执行<br>阻塞状态：由于某些原因暂停执行，进入阻塞队列，其也称为等待或睡眠状态</p>
@@ -394,48 +396,114 @@
 <p>2.由于自身或外部的原因，状态发生变化<br> <img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/ruankao/two/ruankao2.1-1.png" height="50%" width="100%"></p>
 <p>3.挂机状态<br>（1）产生的原因</p>
 <blockquote>
-<p>对换的需求：进程等待期盼被执行，但不具备执行的条件无法进入就绪状态<br>终端用户的请求：进程被暂停进行研究或修改<br>父进程请求：父进程对子进程挂机，对其协调或修改操作<br>负荷调节：保证工作正常进行，把非主要的进程挂机<br>系统的需要：系统挂起程序检查资源或记录数据</p>
+<p>对换的需求：进程等待期盼被执行，但不具备执行的条件无法进入就绪状态</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>终端用户的请求：进程被暂停进行研究或修改</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>父进程请求：父进程对子进程挂机，对其协调或修改操作</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>负荷调节：保证工作正常进行，把非主要的进程挂机</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>系统的需要：系统挂起程序检查资源或记录数据</p>
 </blockquote>
 <p>（2）挂机状态三属性</p>
 <blockquote>
-<p>就绪被挂起称为挂起就绪，阻塞被挂起称为挂起阻塞，其进程都不能被调度而被执行<br>静止阻塞状态转换为挂起就绪状态后才可被调度而执行<br>进程可由任意对象挂起，目的是组织进程执行，但只能显示激活进程</p>
+<p>就绪被挂起称为挂起就绪，阻塞被挂起称为挂起阻塞，其进程都不能被调度而被执行</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>静止阻塞状态转换为挂起就绪状态后才可被调度而执行</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>进程可由任意对象挂起，目的是组织进程执行，但只能显示激活进程</p>
 </blockquote>
 <p> <img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/ruankao/two/ruankao2.1-2.png" height="50%" width="100%"></p>
 <p>（3）进程互斥与进程同步</p>
 <blockquote>
-<p>进程同步：进程之间是异步执行的，各进程按一定的制约顺序和速度执行（协同关系）<br>进程互斥：临界资源在某一时刻只被一个进程访问（竞争关系）</p>
+<p>临界资源：一次仅允许一个进程使用的资源</p>
 </blockquote>
-<h2 id="4-临界区"><a href="#4-临界区" class="headerlink" title="4.临界区"></a>4.临界区</h2><p>1.概念：一次仅允许一个进程使用的资源（包含物力资源：如打印机）<br>2.临界区的互斥：禁止两个或两个以上的进程同时进入访问同一临界资源的临界区<br>3.解决方法（协调准则）</p>
+<hr>
 <blockquote>
-<p>空闲让进：临界区无进程，新进程可进入<br>忙则等待：临界区有进程，新进程需等待旧进城离开<br>有限等待：解决进程相互等待而都无法进入临界区的问题<br>让权等待：等待进去临界区的进程必须释放其占有的资源</p>
+<p>临界区：一个进程访问临界资源的那段程序代码(进程互斥不允许两个以上共享临界资源的并发进程同时进入临界区)</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>进程同步：把异步环境下的一组并发进程因直接制约而互相发送消息而进行互相合作、互相等待，使得各进程按一定的速度执行的过程（协同关系）</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>进程互斥：临界资源在某一时刻只被一个进程访问（竞争关系）</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>中断：计算机运行过程中，出现某些意外情况需主机干预时，机器能自动停止正在运行的程序并转入处理新情况的程序，处理完毕后又返回原被暂停的程序继续运行</p>
+</blockquote>
+<h2 id="4-临界区"><a href="#4-临界区" class="headerlink" title="4.临界区"></a>4.临界区</h2><p>协调准则</p>
+<blockquote>
+<p>空闲让进：临界区无进程，新进程可进入<br>忙则等待：临界区有进程，新进程需等待旧进城离开<br>有限等待：有若干进程要求进入临界区时，应在有限时间内使一进程进入临界区<br>让权等待：等待进去临界区的进程必须释放其占有的资源</p>
 </blockquote>
 <p>3.信号量（sem）<br>（1）概念：实现进程的同步与互斥<br>（2）表示：</p>
 <pre><code>①sem&gt;0时：表示可使用的资源数量
  ②sem&lt;0时：表示等待资源的进程数  
 </code></pre><p>（3）P操作和V操作</p>
 <blockquote>
-<p>P操作：sem-1，sem&lt;0,P进程暂停（资源不足）<br>V操作：sem+1，sem&lt;=0，唤醒相关V进程（唤醒等待的进程）</p>
+<p>P操作：sem-1，如sem&lt;0,P进程暂停（资源不足）<br>V操作：sem+1，如sem&lt;=0，cpu资源增加（唤醒等待的进程）</p>
 </blockquote>
-<h2 id="5-前趋图"><a href="#5-前趋图" class="headerlink" title="5.前趋图"></a>5.前趋图</h2><p>概念：一个由结点和有向边构成的有向无循环图，有先后制约关系<br> <img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/ruankao/two/ruankao2.1-3.png" height="50%" width="100%"></p>
-<pre><code>①直接制约：同步的进程之间的制约关系，如A1,B1,C1
- ②间接制约：互斥的进程之间的制约关系，如A1,A2,A3
+<h2 id="5-前趋图"><a href="#5-前趋图" class="headerlink" title="5.前趋图"></a>5.前趋图</h2><blockquote>
+<p>概念：一个由结点和有向边构成的有向无循环图，有先后制约关系</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>节点：表示一个语句、一个程序段或是一个进程</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>有向边：表示两个结点之间存在的前趋关系</p>
+</blockquote>
+<p> <img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/ruankao/two/ruankao2.1-3.png" height="50%" width="100%"></p>
+<p> 注：三步（取指、分析、执行）</p>
+<pre><code>①直接制约（横向）：同步的进程之间的制约关系，如A1,B1,C1
+ ②间接制约（竖向）：互斥的进程之间的制约关系，如A1,A2,A3
 </code></pre><h2 id="6-进程调度与死锁"><a href="#6-进程调度与死锁" class="headerlink" title="6.进程调度与死锁"></a>6.进程调度与死锁</h2><p>（1）进程调度</p>
-<pre><code>①定义：处理机调度，控制进程执行顺序
- ②引起调度的原因：
-    进程执行完毕
-    运行状态转成阻塞状态
-    执行P操作。资源不足；执行V操作唤醒等待的进程
-    分时系统，进程用完时间片
-    优先级高的进程抢占了当前执行的进程
- ③进程调度算法
-    先来先服务：按队列顺序
-    优先数调度：按优先级顺序
-    轮转发：每个j进程按规定时间，超过则等待下一次调度
-</code></pre><p>（2）死锁</p>
-<pre><code>①定义：进程间相互抢占对方资源，无法释放也无法获取资源，陷入无限等待
- ②解决策略：发生前防止与避免；发生后检测与恢复
- ③建议：系统出现死锁的概率很小，故从系统所花的代价上看，采用死锁发生后的检测与恢复策略要比采用死锁发生前的预防与避免策略代价小一些
-</code></pre>
+<blockquote>
+<p>定义：处理机调度(上下文转换)，让正在执行的进程改变状态并转入就绪队列的队尾，再由调度原语将就绪队列的队首进程取出，投入执行</p>
+</blockquote>
+<p>引起调度的原因：</p>
+<blockquote>
+<p>进程执行完毕<br>运行状态转成阻塞状态<br>执行P操作。资源不足；执行V操作唤醒等待的进程<br>分时系统，进程用完时间片<br>优先级改变</p>
+</blockquote>
+<p>进程调度算法</p>
+<blockquote>
+<p>先来先服务：按队列顺序<br>优先数调度：按优先级顺序<br>轮转发：按时间轮转分配时间（每个j进程按规定时间，超过则等待下一次调度）</p>
+</blockquote>
+<p>（2）死锁</p>
+<p>定义</p>
+<blockquote>
+<p>进程间相互抢占对方资源，无法释放也无法获取资源，陷入无限等待(即相互调用的进程形成环状)</p>
+</blockquote>
+<p>产生的主要问题</p>
+<blockquote>
+<p>共享的系统资源不足<br>必要条件：互斥条件、保持和等待条件、不剥夺条件、环路等待条件</p>
+</blockquote>
+<p>解决策略(4个必要条件)</p>
+<blockquote>
+<p>预防策略：静态分配法（打破了资源动态分配条件）和有序分配法：（循环等待条件）<br>死锁避免策略：执行死锁避免算法（耗费大量的 CPU 和时间）</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>发生后检测与恢复</p>
+</blockquote>
+<p>注：系统出现死锁的概率很小，故从系统所花的代价上看，采用死锁发生后的检测与恢复策略要比采用死锁发生前的预防与避免策略代价小一些</p>
+
         </div>
         
           
@@ -446,10 +514,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-06-24T17:13:28+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-09-26T14:55:25+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>最后更新于 2019年6月24日</p>
+    <p>最后更新于 2019年9月26日</p>
   </a>
 </div>
 
@@ -829,7 +897,7 @@
     。
   </div>
  <div>
- <i class="fas fa-chart-area"></i><span class="post-count">字数统计：102.2k</span>
+ <i class="fas fa-chart-area"></i><span class="post-count">字数统计：103.1k</span>
  </div>
 </footer>
 <script>setLoadingBarProgress(80);</script>

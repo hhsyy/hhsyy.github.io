@@ -381,22 +381,39 @@
           <p>（软考架构师笔记二（5））作业管理<br><a id="more"></a></p>
 <h2 id="1-概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h2><blockquote>
 <p>从用户的角度看，作业是系统为完成一个用户的计算任务（或一次事务处理）所做的工作总和</p>
-<p>从系统的角度看，作业则是一个比程序更广的概念。它由程序、数据和作业说明书组成。系统通过作业说明书控制文件形式的程序和数据，使之执行和操作。而且，在批处理系统中，作业是占据内存的基本单位</p>
 </blockquote>
 <blockquote>
-<p>联机方式：由用户自己按照作业步顺序操作（直接方式）<br>脱机方式：由用户率先编写的作业步依次执行的说明，一次交给操作系统，由系统按照说明依次处理（间接方式）</p>
+<p>从系统的角度看，作业则是一个比程序更广的概念。它由程序、数据和作业说明书组成。系统通过作业说明书控制文件形式的程序和数据，使之执行和操作。而且，在批处理系统中，作业是占据内存的基本单位</p>
+</blockquote>
+<p>用户作业方式</p>
+<blockquote>
+<p>联机方式：由用户自己按照作业步顺序操作（直接方式）</p>
+</blockquote>
+<blockquote>
+<p>脱机方式：由用户率先编写的作业步依次执行的说明，一次性交给操作系统，由系统按照说明依次处理（间接方式）</p>
 </blockquote>
 <h2 id="2-作业状态及转换"><a href="#2-作业状态及转换" class="headerlink" title="2.作业状态及转换"></a>2.作业状态及转换</h2><p>（1）状态</p>
 <blockquote>
-<p>1.提交：作业由输入设备进入外存储器（也称输入井）的过程<br>2.后备：当作业的全部信息进入外存后，系统就为该作业建立一个作业控制块（Job Control Block，JCB）。系统通过 JCB 感知作业的存在。JCB 主要内容包括作业名、作业状态、资源要求、作业控制方式、作业类型及作业优先权等</p>
-<p>3.执行：个后备作业被作业调度程序选中而分配了必要的资源并进入了内存，作业调度程序同时为其建立了相应的进程后，该作业就由后备状态变成了执行状态<br>4.完成：当作业正常运行结束，它所占用的资源尚未全部被系统回收时的状态为完成状态。</p>
+<p>1.提交：作业由输入设备进入外存储器（也称输入井）的过程</p>
 </blockquote>
-<p> <img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/ruankao/five/ruankao2.5-1.png" height="50%" width="100%"></p>
-<h2 id="3-用户接口（用户界面）"><a href="#3-用户接口（用户界面）" class="headerlink" title="3.用户接口（用户界面）"></a>3.用户接口（用户界面）</h2><p>（1）定义</p>
 <blockquote>
-<p>操作系统的接口：用户与操作系统交互的途径和通道<br>操作环境：指这种交互环境的控制方式</p>
+<p>2.后备：当作业的全部信息进入外存后，系统就为该作业建立一个作业控制块（Job Control Block，JCB）。系统通过 JCB 感知作业的存在。JCB 主要内容包括作业名、作业状态、资源要求、作业控制方式、作业类型及作业优先权等</p>
 </blockquote>
-<p>（2）详情</p>
+<blockquote>
+<p>3.执行：个后备作业被作业调度程序选中而分配了必要的资源并进入了内存，作业调度程序同时为其建立了相应的进程后，该作业就由后备状态变成了执行状态</p>
+</blockquote>
+<blockquote>
+<p>4.完成：当作业正常运行结束，它所占用的资源尚未全部被系统回收时的状态为完成状态。</p>
+</blockquote>
+<p> <img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/ruankao/two/ruankao2.5-1.png" height="50%" width="100%"></p>
+<h2 id="3-用户接口（用户界面）"><a href="#3-用户接口（用户界面）" class="headerlink" title="3.用户接口（用户界面）"></a>3.用户接口（用户界面）</h2><p>定义</p>
+<blockquote>
+<p>操作系统的接口：用户与操作系统交互的途径和通道</p>
+</blockquote>
+<blockquote>
+<p>操作环境：指这种交互环境的控制方式</p>
+</blockquote>
+<p>详情</p>
 <blockquote>
 <p>操作系统的接口：操作系统的接口又可分成命令接口和程序接口。命令接口包含键盘命令和作业控制命令；程序接口又称为编程接口或系统调用，程序经编程接口请求系统服务，即通过系统调用程序与操作系统通信。系统调用是操作系统提供给编程人员的唯一接口。系统调用对用户屏蔽了操作系统的具体动作而只提供有关功能。系统调用大致分为设备管理、文件管理、进程控制、进程通信和存储管理等</p>
 </blockquote>
@@ -414,10 +431,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-06-24T17:13:28+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-09-26T16:13:15+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>最后更新于 2019年6月24日</p>
+    <p>最后更新于 2019年9月26日</p>
   </a>
 </div>
 
@@ -797,7 +814,7 @@
     。
   </div>
  <div>
- <i class="fas fa-chart-area"></i><span class="post-count">字数统计：102.2k</span>
+ <i class="fas fa-chart-area"></i><span class="post-count">字数统计：103.1k</span>
  </div>
 </footer>
 <script>setLoadingBarProgress(80);</script>
