@@ -380,33 +380,66 @@
         <div class="article-entry" itemprop="articleBody">
           <p>（软考架构师笔记六）开发方法<br><a id="more"></a></p>
 <h2 id="1-软件生命周期"><a href="#1-软件生命周期" class="headerlink" title="1.软件生命周期"></a>1.软件生命周期</h2><p>（1）定义：软件自开始构思与研发到不再使用而消亡的过程</p>
-<p>（2）生命周期阶段：</p>
+<p>（2）生命周期阶段：<br>1.可行性研究与计划</p>
 <blockquote>
-<p>可行性研究与计划<br>需求分析<br>概要设计<br>详细设计<br>实现<br>集成测试<br>确认测试<br>使用和维护</p>
+<p>通过可行性研究，来确定开发此软件的必要性，并根据可行性研究的结果初步确定软件的目标、范围、风险、开发成本等内容<br>《可行性研究报告》和《软件开发计划》</p>
+</blockquote>
+<p>2.需求分析</p>
+<blockquote>
+<p>对软件的需求进行细致的分析，来确定软件要做成什么</p>
+</blockquote>
+<p>3.概要设计</p>
+<blockquote>
+<p>确定系统架构、各子系统间的关系、接口规约、数据库模型、编码规范等内容<br>概要设计的结果将作为程序员的工作指南</p>
+</blockquote>
+<p>4.详细设计（非必须）</p>
+<blockquote>
+<p>详细设计在概要设计的基础上，进行细化<br>非必须阶段，有时只会对部分关键模块进行详细设计</p>
+</blockquote>
+<p>5.实现</p>
+<blockquote>
+<p>编码和单元测试</p>
+</blockquote>
+<p>6.集成测试(组装测试)</p>
+<p>7.确认测试</p>
+<blockquote>
+<p>验证软件是否同需求一致，</p>
+</blockquote>
+<p>8.使用和维护</p>
+<blockquote>
+<p>须不断地对软件进行维护，修正软件中的缺陷，修改软件中已经不能适应最新情况的功能或者增加新的功能<br>贯穿整个软件的使用过程</p>
 </blockquote>
 <h2 id="2-软件开发模型"><a href="#2-软件开发模型" class="headerlink" title="2.软件开发模型"></a>2.软件开发模型</h2><p>（1）瀑布模型<br>定义：</p>
 <blockquote>
 <p>软件开发是一个阶段化的精确的过程,要经过需求分析、总体设计、详细设计、编码、调试、集成测试和系统测试阶段才能够被准确地实现,在软件开发中当在后续阶段发现缺陷的时候，可以把这个缺陷反馈到上一阶段进行修正,如图：</p>
 </blockquote>
 <p> <img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/ruankao/six/ruankao6-1.png" height="50%" width="60%"></p>
-<p>缺陷：当软件需求不明确或变动剧烈时，成后期修改代价太大，难以控制开发的风险。</p>
+<p> 特点</p>
+<blockquote>
+<p>阶段明确，阶段间有明确分界线<br>有固定的文档或源程序流入下一阶段(是面向文档的软件开发模型)<br>适用于需求明确、稳定时，可以采用瀑布模型按部就班地开发软件</p>
+</blockquote>
+<p>缺陷：当软件需求不明确或变动剧烈时，成后期修改代价太大，难以控制开发的风险</p>
 <p>（2）瀑布V模型</p>
 <blockquote>
-<p>定义：同标准瀑布模型，但除总体设计外，需求分析还有一条虚线指向系统测试，需求分析的结果将作为系统测试的准则，即需求分析阶段也将产生同软件需求一致的系统测试<br> <img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/ruankao/six/ruankao6-2.png" height="50%" width="80%"></p>
+<p>定义：同标准瀑布模型，在每一阶段加入了测试功能，即每阶段结果指向测试<br> <img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/ruankao/six/ruankao6-2.png" height="50%" width="80%"></p>
 </blockquote>
 <p>缺点：</p>
 <blockquote>
-<p>需求分析阶有偏差，对后续影响大<br>每阶段依赖上阶段，如后续变化，每个阶段都将改变<br>瀑布模型只有在所有阶段完成后客户才能看到结果，时间久<br>文档驱动型的瀑布模型文档冗余，大多对客户无用</p>
+<p>需求分析阶有偏差，对后续影响大<br>每阶段依赖上阶段，如后续需求变化，需重新开始<br>瀑布模型只有在所有阶段完成后客户才能看到结果，时间久<br>文档驱动型的瀑布模型文档冗余，大多对客户无用</p>
 </blockquote>
 <p>（3）演化模型</p>
 <blockquote>
-<p>一般情况下，一个演化模型可以看做若干次瀑布模型的迭代，当完成一个瀑布模型后，重新进入下一个迭代周期，软件在这样的迭代过程中得以演化、完善。根据不同的迭代特点，演化模型可以演变为螺旋模型、增量模型和原型法开发</p>
+<p>演化模型可以看做若干次瀑布模型的迭代，当完成一个瀑布模型后，重新进入下一个迭代周期，软件在这样的迭代过程中得以演化、完善<br>根据不同的迭代特点，演化模型可以演变为螺旋模型、增量模型和原型法开发</p>
 </blockquote>
 <p>（4）螺旋模型<br>定义：</p>
 <blockquote>
 <p>结合了瀑布模型和演化模型，每一周期都包括需求定义、风险分析、工程实现和评审 4 个阶段，需进行风险分析，其把项目分为众多小项目，每个小项目都有风险评估</p>
 </blockquote>
 <p> <img src="https://newblog-1255583673.cos.ap-guangzhou.myqcloud.com/ruankao/six/ruankao6-3.png" height="40%" width="50%"></p>
+<p> 特点</p>
+<blockquote>
+<p>适合庞大复杂、风险高的系统</p>
+</blockquote>
 <p>缺点：</p>
 <blockquote>
 <p>需要丰富的风险评估经验<br>迭代次数会增加成本和时间</p>
@@ -598,10 +631,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-06-24T17:13:28+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-09-30T11:17:50+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>最后更新于 2019年6月24日</p>
+    <p>最后更新于 2019年9月30日</p>
   </a>
 </div>
 
@@ -981,7 +1014,7 @@
     。
   </div>
  <div>
- <i class="fas fa-chart-area"></i><span class="post-count">字数统计：104.8k</span>
+ <i class="fas fa-chart-area"></i><span class="post-count">字数统计：105.9k</span>
  </div>
 </footer>
 <script>setLoadingBarProgress(80);</script>

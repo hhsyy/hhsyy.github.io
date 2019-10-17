@@ -389,17 +389,56 @@
 </blockquote>
 <p>（2）计算机指标</p>
 <blockquote>
-<p>时钟频率（主频）：其越高cpu工作越快<br>高速缓存：<br>运算速度<br>运算精度<br>内存的存储容量<br>存储器的存取周期<br>数据处理速率<br>响应时间<br>RASIS 特性：可靠性、可用性、可维护性、完整性、安全性<br>平均故障响应时间<br>兼容性</p>
+<p>1.时钟频率（主频）：其越高cpu工作越快</p>
+</blockquote>
+<blockquote>
+<p>2.高速缓存：高速缓冲存储器均由静态 RAM（Random Access Memory，随机存取存储器）组成</p>
+</blockquote>
+<blockquote>
+<p>3.运算速度：计算机工作能力和生产效率的主要表征，取决于给定时间内 CPU 所能处理的数据量和 CPU 的主频<br>MIPS 用于描述计算机的定点运算能力；<br>MFLOPS 则用来表示计算机的浮点运算能力</p>
+</blockquote>
+<blockquote>
+<p>4.运算精度：能直接处理的二进制数据的位数，位数越多，精度就越高</p>
+</blockquote>
+<blockquote>
+<p>5.内存的存储容量：用来存储数据和程序，直接与 CPU 进行信息交换</p>
+</blockquote>
+<blockquote>
+<p>6.存储器的存取周期<br>完成一次读（取）或写（存）操作所需的时间称为存储器的存取时间或者访问时间<br>连续两次读（或写）所需的最短时间称为存储周期<br>存储周期越短，表示从内存存取信息的时间越短，系统的性能也就越好</p>
+</blockquote>
+<blockquote>
+<p>7.数据处理速率</p>
+</blockquote>
+<blockquote>
+<p>8.响应时间：某一事件从发生到结束的这段时间</p>
+</blockquote>
+<blockquote>
+<p>RASIS 特性：可靠性、可用性、可维护性、完整性、安全性</p>
+</blockquote>
+<blockquote>
+<p>平均故障响应时间：出现故障到该故障得到确认修复前的这段时间</p>
+</blockquote>
+<blockquote>
+<p>兼容性：是指一个系统的硬件或软件与另一个系统或多种操作系统的硬件或软件的兼容能力，是指系统间某些方面具有的并存性，即两个系统之间存在一定程度的通用性</p>
+</blockquote>
+<blockquote>
+<p>其他：吞吐率、利用率；定性指标如保密性、可扩充性；功能特性指标如文字处理能力、联机事务处理能力、I/O 总线特性、网络特性</p>
 </blockquote>
 <p>（3）网络的性能指标</p>
 <blockquote>
-<p>设备级性能指标：吞吐量、延迟、丢包率和转发速度<br>网络级性能指标：可达性、网络系统的吞吐量、传输速率、信道利用率、信道容量、带宽利用率、丢包率、平均传输延迟、平均延迟抖动、延迟/吞吐量的关系、延迟抖动/吞吐量的关系、丢包率/吞吐量的关系</p>
+<p>设备级性能指标：吞吐量、延迟、丢包率和转发速度</p>
+</blockquote>
+<blockquote>
+<p>网络级性能指标：可达性、网络系统的吞吐量、传输速率、信道利用率、信道容量、带宽利用率、丢包率、平均传输延迟、平均延迟抖动、延迟/吞吐量的关系、延迟抖动/吞吐量的关系、丢包率/吞吐量的关系</p>
 </blockquote>
 <blockquote>
 <p>应用级性能指标：网络对语言应用的支持程度、网络对视频应用的支持程度、延迟/服务质量的关系、丢包率/服务质量的关系、延迟抖动/服务质量的关系</p>
 </blockquote>
 <blockquote>
-<p>用户级：可靠性、可用性<br>吞吐量：设备能够接受的最大速率</p>
+<p>用户级：可靠性、可用性</p>
+</blockquote>
+<blockquote>
+<p>吞吐量：设备能够接受的最大速率</p>
 </blockquote>
 <p>（4）操作系统吸能指标</p>
 <blockquote>
@@ -454,18 +493,17 @@
 <p>性能评估是对一个系统进行各项检测，并形成一份直观的文档，因此性能评估是通过各项测试来完成的</p>
 </blockquote>
 <p>（2）目的：为性能的优化提供参考</p>
-<p>（3）基准测试程序</p>
-<p>定义：</p>
+<p>（3）基准测试程序<br>定义：</p>
 <blockquote>
 <p>应用程序中用得最多、最频繁的那部分核心程序作为评价计算机性能的标准程序</p>
 </blockquote>
 <p>类别：</p>
 <blockquote>
-<p>整数测试程序<br>浮点测试程序<br>SPEC基准测试程序<br>TPC基准程序<br>Linpack测试：Linpack100、Linpack1000 和 HPL</p>
+<p>整数测试程序<br>浮点测试程序<br>Whetstone 基准测试程序<br>SPEC基准测试程序<br>TPC基准程序<br>Linpack测试：Linpack100、Linpack1000 和 HPL</p>
 </blockquote>
 <p>（4）Web服务器的性能评估<br>主要性能指标：</p>
 <blockquote>
-<p>最大并发连接数<br>响应延迟和吞吐量（每秒处理的请求数）</p>
+<p>最大并发连接数<br>响应延迟<br>吞吐量（每秒处理的请求数）</p>
 </blockquote>
 <p>常用设计方法：</p>
 <blockquote>
@@ -475,7 +513,11 @@
 <blockquote>
 <p>美国 IXIA 公司的一个有关 Web 测试的解决方案，它是一个高性能业务负 载生成与分析应用系统，可在 TCP 和应用层模拟现实世界的业务负载方案，能够对设备 进行强度测试、检验转发策略和验证 4～7 层的性能</p>
 </blockquote>
-<p>（5）系统监视<br>性能数据：</p>
+<p>（5）系统监视</p>
+<blockquote>
+<p>目标：为了评估系统性能</p>
+</blockquote>
+<p>需收集性能数据：</p>
 <blockquote>
 <p>常规性能数据<br>比较基准的性能数据<br>服务水平报告数据</p>
 </blockquote>
@@ -494,10 +536,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-06-24T17:13:28+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-09-30T10:32:16+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>最后更新于 2019年6月24日</p>
+    <p>最后更新于 2019年9月30日</p>
   </a>
 </div>
 
@@ -877,7 +919,7 @@
     。
   </div>
  <div>
- <i class="fas fa-chart-area"></i><span class="post-count">字数统计：104.8k</span>
+ <i class="fas fa-chart-area"></i><span class="post-count">字数统计：105.9k</span>
  </div>
 </footer>
 <script>setLoadingBarProgress(80);</script>

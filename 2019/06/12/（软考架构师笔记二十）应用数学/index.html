@@ -381,7 +381,10 @@
           <p>（软考架构师笔记二十）应用数学<br><a id="more"></a></p>
 <h2 id="1-运筹方法"><a href="#1-运筹方法" class="headerlink" title="1.运筹方法"></a>1.运筹方法</h2><p>（1）定义</p>
 <blockquote>
-<p>① 将生产、管理等事件中出现的一些带有普遍性的运筹问题加以提炼，然后利用数学方法进行解决<br>② 步骤：确定目标、制订方案、建立模型、制订解法</p>
+<p>① 将生产、管理等事件中出现的一些带有普遍性的运筹问题加以提炼，然后利用数学方法进行解决</p>
+</blockquote>
+<blockquote>
+<p>② 步骤：确定目标、制订方案、建立模型、制订解法</p>
 </blockquote>
 <p><br></p>
 <h2 id="2-网络计划技术"><a href="#2-网络计划技术" class="headerlink" title="2.网络计划技术"></a>2.网络计划技术</h2><p>（1）定义</p>
@@ -395,11 +398,44 @@
 <p>③ AOV网：在有向图中，若以顶点表示活动，弧表示活动之间的先后关系</p>
 <p>④ AOE网：若以顶点表示事件，弧表示活动，权表示完成该活动所需的时间（称为活动历时或持续时间）</p>
 </blockquote>
+<blockquote>
+<p>⑤ 完成工程最少时间（关键路径）：开始顶点到结束顶点最长路径</p>
+</blockquote>
+<blockquote>
+<p>⑥ 关键活动：关键路径上的活动（即线段），关键路径可以不止一条</p>
+</blockquote>
+<p>关键路径步骤：</p>
+<blockquote>
+<p>最早发生时间：每个节点从前往后寻找最长路径记录ve（第一个节点为0）</p>
+</blockquote>
+<blockquote>
+<p>最迟发生时间：每个节点从后往前寻找， = 最迟发生时间（后一个） - 两节点长度。(最后一个节点最迟发生时间为整个项目最长路径)</p>
+</blockquote>
+<blockquote>
+<p>寻找最早发生时间和最迟发生时间，相同即为关键路径节点</p>
+</blockquote>
+<blockquote>
+<p>最早开始时间：等于当前边起始结点的最早发生时间</p>
+</blockquote>
+<blockquote>
+<p>最晚开始时间：等于当前边指向结点的最迟发生时间-当前边的权值</p>
+</blockquote>
+<blockquote>
+<p>最早完工时间：等于当前边指向结点的最早发生时间</p>
+</blockquote>
+<blockquote>
+<p>最晚完工时间：等于当前边指向结点的最迟发生时间</p>
+</blockquote>
 <p>（3）网络优化</p>
 <blockquote>
-<p>① 时间优化：<br>② 时间-资源优化<br>③ 时间-费用优化</p>
+<p>① 时间优化</p>
 </blockquote>
-<p><br></p>
+<blockquote>
+<p>② 时间-资源优化</p>
+</blockquote>
+<blockquote>
+<p>③ 时间-费用优化</p>
+</blockquote>
 <h2 id="3-决策论"><a href="#3-决策论" class="headerlink" title="3.决策论"></a>3.决策论</h2><p>（1）决策过程和模型构造决策行为的模型主</p>
 <blockquote>
 <p>① 面向结果的方法<br>② 面向过程的方法</p>
@@ -444,8 +480,8 @@
 <blockquote>
 <p>决策者对客观情况不甚了解，但对将发生各事件的概率是已知的</p>
 </blockquote>
-<p>① 最大期望收益决策准则</p>
-<p>② 最小机会损失决策准则</p>
+<p>① 最大期望收益决策准则：从期望收益中选择最大值</p>
+<p>② 最小机会损失决策准则：从期望收益中选择最小值</p>
 <p>（7）对策论（竞赛论或博弈论）</p>
 <blockquote>
 <p>研究具有竞争（或斗争）性质现象的数学理论和方法</p>
@@ -478,10 +514,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-06-24T17:13:28+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-10-17T17:14:56+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>最后更新于 2019年6月24日</p>
+    <p>最后更新于 2019年10月17日</p>
   </a>
 </div>
 
@@ -861,7 +897,7 @@
     。
   </div>
  <div>
- <i class="fas fa-chart-area"></i><span class="post-count">字数统计：104.8k</span>
+ <i class="fas fa-chart-area"></i><span class="post-count">字数统计：105.9k</span>
  </div>
 </footer>
 <script>setLoadingBarProgress(80);</script>
