@@ -490,6 +490,9 @@
 <blockquote>
 <p>进程间相互抢占对方资源，无法释放也无法获取资源，陷入无限等待(即相互调用的进程形成环状)</p>
 </blockquote>
+<blockquote>
+<p> 保证资源数量则不会死锁：K*(n-1)+1（k值有进程数量，n值每个需要几个资源）</p>
+</blockquote>
 <p>产生的主要问题</p>
 <blockquote>
 <p>共享的系统资源不足<br>必要条件：互斥条件、保持和等待条件、不剥夺条件、环路等待条件</p>
@@ -514,10 +517,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-09-26T14:55:25+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-10-18T15:08:50+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>最后更新于 2019年9月26日</p>
+    <p>最后更新于 2019年10月18日</p>
   </a>
 </div>
 
